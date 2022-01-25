@@ -83,7 +83,7 @@ Thr following script demonstrates the use of functions
 
 function step2 {
     echo "Step 2"
-    return
+    return 0 # shell functions can return an exit status by including an integer argument to the return command
 }
 
 # Main program starts here
@@ -110,3 +110,36 @@ func () {
 echo "global: foo = $foo"
 func
 ```
+### If Statement
+```sh
+#!/bin/bash
+x=5
+
+if ["$x" -eq 5]; then # quotes ensure it is always a string, avoiding errors
+    echo "x equals 5"
+else
+    echo "x does not equal 5"
+fi
+```
+### test
+The test command performs a variety of checks and comparisons. It has two equivalent expression. It returns an exit status of 0 if true, and 1 if false.
+- test *expression*
+- [expression]
+
+Compound command
+- [[expression]]
+  - string1 =~ regex ; adds regex support
+### (( ))—Designed for Integers
+(( )) is used to perform arithmetic truth tests.
+### Combining Expressions
+| Operation | test | [[ ]] and (( )) |
+| --------- | ---- | --------------- |
+| AND       | -a   | &&              |
+| OR        | -o   | `||`            |
+| NOT       | !    | !               |
+### Control Operators: Another Way to Branch
+bash provides two control operators that can perform branching. The &&
+(AND) and || (OR) operators work like the logical operators in the [[ ]] compound command.
+
+- With the && operator, command1 is executed, and command2 is executed if, and only if, command1 is successful.
+-  With the || operator, command1 is executed and command2 is executed if, and only if, command1 is unsuccessful
