@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Python - Intermediate</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" />
+	</noscript>
+	<link rel="icon" href="../images/logo.svg">
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="../index.html" class="logo">
+					<span class="symbol"><img src="../images/logo.svg" alt="" /></span><span class="title">Yemane
+						Yohannes</span>
+				</a>
+
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="generic.html">Articles</a></li>
+				<li><a href="generic.html">Resume</a></li>
+				<li><a href="generic.html">Contact</a></li>
+				<li><a href="elements.html">Elements</a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<h1>Python Intermediate</h1>
+				<span class="image main"><img src="../images/pic13.jpg" alt="" /></span>
+				<h3>Content</h3>
+				<ol>
+					<li><a href="#classes">Classes</a></li>
+					<li><a href="#data-model">Python Data Model</a></li>
+					<li><a href="#interfaces">Interfaces: Protocols and ABC's</a></li>
+				</ol>
+				<hr />
+
+				<a name="classes">
+					<h2>Classes</h2>
+				</a>
+				<p>Classes are defined by the <code>class</code> keyword. The basic pattern of a class in python looks
+					like.</p>
+				<pre><code>
+class MyClass:  # class keyword followed by name of class to be created
+
+	def __init__(self, name: str): # multiple functions inside the body of the class
+	    self.name = name
+
+	def method(self):
+		return self.name
+
+# instantiating the class
+my_name = 'Yemane'
+my_class_instance = MyClass(my_name)
+
+# using the class
+name = my_class_instance.method()
+print(name)
+# Yemane
+				</code></pre>
+				<p>As shown above, classes in python are syntactically just a collection of related functions,
+					underneath a class name. <strong>They serve as blueprints for the behavior and structure of
+						objects.</strong> The actual object instances are created using the
+					<code>Class(arguments)</code>.
+				</p>
+				<hr />
+
+				<a name="data-model">
+					<h2>Python Data Model</h2>
+				</a>
+				<h4> everything is an object</h4>
+				<p>The python data model is critical to understanding how objects work in python. Consider the code
+					below.</p>
+				<pre><code>
+arr = [1,2,3,4]
+print(type(arr))
+# &ltclass 'list'&gt
+</code></pre>
+				<p>We create a list and then ask python to print out its type. Predictably it tells us are list is of
+					list type. But it also prints out the word <em>class</em>. Which is telling us <em>arr</em> is an
+					object defined by a list class. Similar results occur when this is tried on on other basic types
+					like integers and dictionaries. It this case objects such as lists are so common that the
+					class boilerplate is automatically handled by the python interpreter.
+				</p>
+				<h4>special methods</h4>
+				<p>Special methods in are a set of reserved names for class methods that have a naming convention that
+					follows the pattern of <code>__&ltname&gt__</code>. The first special method we've seen is the
+					<code>__init__</code> method, which is implicitly called when the user instantiates a
+					class by invoking the class name followed by round brackets like <code>UserClass()</code>.
+				</p>
+				<h4>Example 1: Size of a container</h4>
+				<pre><code>
+class MySeq1:
+	def __init__(self, *args):
+		self.myseq = list(*args)
+
+	def size(self):
+		return len(self.myseq)
+
+class MySeq2:
+	def __init__(self, *args):
+		self.myseq = list(*args)
+	
+	def __len__(self):
+		return len(self.myseq)
+
+arr = [1,2,3,4]
+ms1 = MySeq1(arr)
+ms2 = MySeq2(arr)
+
+# Get number of elements in our object
+print(ms1.size())
+print(len(ms1))
+# 4
+# 4
+				</code></pre>
+				<p> If you were to create a custom sequence-like class, one function to implement is a method to return
+					the number of elements in the object. This can be by either defining a custom method
+					<code>size</code> or by implementing the <code>__len__</code> special method.
+				</p>
+				<h4>Example 2: Operator Overloading</h4>
+				<p>Continuing with the example of implementing a custom sequence-like class, you may want to implement
+					custom math operations for the class. In this case we will implement the addition operator
+					<code>+</code> such that adding an integer to the class instance will add the integer to every
+					element. <code>MySeq([1,2,3]) + 1 = MySeq([2,3,4])</code>
+				</p>
+				<pre><code>
+class MySeq1:
+	def __init__(self, *args):
+		self.myseq = list(*args)
+
+	def add(self, i):
+		return MySeq1((elem+i for elem in self.myseq))
+
+class MySeq2:
+	def __init__(self, *args):
+		self.myseq = list(*args)
+	
+	def __add__(self, i):
+		return MySeq2((elem+i for elem in self.myseq))
+
+arr = [1,2,3,4]
+ms1 = MySeq1(arr)
+ms2 = MySeq2(arr)
+
+# Perform the operation
+ms1 = ms1.add(1)
+ms2 = ms2 + 1
+
+# Print new values
+print(ms1.myseq)
+print(ms2.myseq)
+# [2,3,4,5]
+# [2,3,4,5]
+				</code></pre>
+				<p>Similar to the first example we can either create a custom method, or use a special method. Notice,
+					the logic in the functions is identical, it is only the name that differs.
+				</p>
+				<p>These special methods (<code>__&ltname&gt__</code>) are not meant to be explicitly called by a user,
+					but rather implicitly by the python interpreter. They are understood by the interpreter to be called
+					when the correct built-in function like or operator is used. This is why the <code>__add__</code>
+					method allowed the class to be compatible with the <code>+</code> operator..
+				</p>
+				<h4>Some patterns</h4>
+				<p>
+					The first pattern is that names of the special methods often tied to the operation they are
+					responsible for. And these <em>inner</em> class methods often map to a top level function or
+					operator that a human will use to communicate with the object. Like <code>__len__</code> maps to the
+					<code>len()</code> function.
+				</p>
+				<p>
+					The second pattern is that the implementation of the special methods often uses the functions or
+					operators they delegate to.
+				</p>
+				<p>
+					It's generally best practice to use special methods instead of custom methods when possible, and to
+					follow the pattern described. This will lead to will behaved <em>pythonic</em> classes that work the
+					same way as builtin classes do, which will allow the custom classes to integrate easily with the
+					standard library. It will also make the custom class more understandable and predictable to other
+					people who use your objects, because they will act the same normal python objects do.
+				</p>
+				<hr />
+
+				<a name="interfaces">
+					<h2>Interfaces: Protocols and ABC's</h2>
+				</a>
+				<hr />
+
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<section>
+					<h2>Get in touch</h2>
+					<ul class="icons">
+						<li><a href="https://github.com/yemaney" class="icon brands style2 fa-github"><span
+									class="label">GitHub</span></a></li>
+						<li><a href="https://www.linkedin.com/in/yemane-yohannes/"
+								class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a>
+						</li>
+						<li><a href="mailto:Yemane_@outlook.com" class="icon solid style2 fa-envelope"><span
+									class="label">Email</span></a></li>
+					</ul>
+				</section>
+				<ul class="copyright">
+					<li>&copy; Untitled. All rights reserved</li>
+					<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
