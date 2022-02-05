@@ -227,3 +227,40 @@ done
 echo "Finished."
 ```
 - An until loop continues until it receives a zero exit status.
+
+### Case
+```sh
+case word in
+    [pattern [| pattern]...) commands ;;]...
+esac
+```
+- patterns used by case are the same as those used by pathname expansion
+- Patterns are terminated with a ) character
+
+| Pattern      | Description                                       |
+| ------------ | ------------------------------------------------- |
+| a)           | Matches if word equals a.                         |
+| [[:alpha:]]) | Matches if word is a single alphabetic character. |
+| ???)         | Matches if word is exactly three characters long. |
+| *.txt)       | Matches if word ends with the characters .txt.    |
+| *)           | Matches any value of word.                        |
+
+- can also use | to combine patterns as an `or` conditional
+- add the `;;&` notation to terminate each action to enable performing multiple actions
+
+```sh
+#!/bin/bash
+# case4-2: test a character
+read -n 1 -p "Type a character > "
+echo
+case "$REPLY" in
+    [[:upper:]]) echo "'$REPLY' is upper case." ;;&
+    [[:lower:]]) echo "'$REPLY' is lower case." ;;&
+    [[:alpha:]]) echo "'$REPLY' is alphabetic." ;;&
+    [[:digit:]]) echo "'$REPLY' is a digit." ;;&
+    [[:graph:]]) echo "'$REPLY' is a visible character." ;;&
+    [[:punct:]]) echo "'$REPLY' is a punctuation symbol." ;;&
+    [[:space:]]) echo "'$REPLY' is a whitespace character." ;;&
+    [[:xdigit:]]) echo "'$REPLY' is a hexadecimal digit." ;;&
+esac
+```
