@@ -143,3 +143,54 @@ bash provides two control operators that can perform branching. The &&
 
 - With the && operator, command1 is executed, and command2 is executed if, and only if, command1 is successful.
 -  With the || operator, command1 is executed and command2 is executed if, and only if, command1 is unsuccessful
+
+### Reading Keyboard Input
+-  read assigns fields from standard input to the specified variables. 
+- `read [-options] [variable...]`
+
+```sh
+#!/bin/bash
+
+echo -n "Enter one or more values > "
+
+read var1 var2 
+
+echo "var1 = '$var1'"
+echo "var2 = '$var2'"
+```
+- If read receives fewer than the expected number, the extra variables are empty `''`
+-  an excessive amount of input results in the final variable containing all of the extra input
+-  - If no variable name is supplied, the shell variable REPLY contains the line of data.
+
+| Option | Description                                                                                                                                       |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -a     | array Assign the input to array, starting with index zero.                                                                                        |
+| -d     | delimiter The first character in the string delimiter is used to indicate the end of input, rather than a newline character.                      |
+| -e     | Use Readline to handle input. This permits input editing in the same manner as the command line.                                                  |
+| -i     | string Use string as a default reply if the user simply presses enter. Requires the -e option.                                                    |
+| -n     | num Read num characters of input, rather than an entire line.                                                                                     |
+| -p     | prompt Display a prompt for input using the string prompt.                                                                                        |
+| -r     | Raw mode. Do not interpret backslash characters as escapes.                                                                                       |
+| -s     | Silent mode. Do not echo characters to the display as they are typed. This is useful when inputting passwords and other confidential information. |
+| -t     | seconds Timeout. Terminate input after seconds. read returns a non-zero exit status if an input times out.                                        |
+| -u     | fd Use input from file descriptor fd, rather than standard input.                                                                                 |
+
+### IFS
+- shell normally performs word splitting using white spaces 
+  - behavior is configured by shell variable IFS
+
+### Menus
+```sh
+#!/bin/bash
+# read-menu: a menu driven system information program
+clear
+echo "
+Please Select:
+1. Display System Information
+2. Display Disk Space
+3. Display Home Space Utilization
+0. Quit
+"
+read -p "Enter selection [0-3] > "
+echo "You have chosen $REPLY"
+```
