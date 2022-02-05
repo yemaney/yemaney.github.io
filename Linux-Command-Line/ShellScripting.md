@@ -194,3 +194,36 @@ Please Select:
 read -p "Enter selection [0-3] > "
 echo "You have chosen $REPLY"
 ```
+
+### while loop
+- `while commands; do commands; done`
+
+```sh
+#!/bin/bash
+# while-count: display a series of numbers
+count=1
+
+while [[ "$count" -le 5 ]]; do
+    echo "$count"
+    count=$((count + 1))
+done
+echo "Finished."
+```
+bash provides two builtin commands that can be used to control program 
+flow inside loops
+- break: immediately terminate the loop, and resume with next statement
+- continue: skip remainder of loop, and resume with next iteration of the loop
+
+### until loop
+```sh
+#!/bin/bash
+# until-count: display a series of numbers
+count=1
+
+until [[ "$count" -gt 5 ]]; do
+    echo "$count"
+    count=$((count + 1))
+done
+echo "Finished."
+```
+- An until loop continues until it receives a zero exit status.
