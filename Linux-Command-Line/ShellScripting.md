@@ -264,3 +264,39 @@ case "$REPLY" in
     [[:xdigit:]]) echo "'$REPLY' is a hexadecimal digit." ;;&
 esac
 ```
+
+### for loops
+- traditional shell form
+```sh
+for variable [in words]; do
+ commands
+done
+```
+```sh
+#!/bin/bash
+
+for i in 0 1 2 3 4; do
+        echo "$i"
+done
+```
+
+
+- C Language form
+```sh
+for (( expression1; expression2; expression3 )); do
+ commands
+done
+```
+
+```sh
+#!/bin/bash
+# simple_counter: demo of C style for command
+
+for (( i=0; i<5; i=i+1 )); do
+    echo $i
+done
+```
+
+- expression1 initializes the variable i
+- expression2 sets the condition for loop to run until
+- expression3 increments the value of i by 1 each time the loop repeats
