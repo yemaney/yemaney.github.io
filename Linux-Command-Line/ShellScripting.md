@@ -385,3 +385,15 @@ Case Conversion
 | `||`              | Logical OR.                      |
 | expr1?expr2:expr3 | If expr1  then expr2; else expr3 |
 
+### Arrays
+Limited to one dimension
+- single value: `name[subscript]=value`
+- multiple values: `name=(value1 value2 ...)`
+- subscript `@` can be used to access every element in an array
+- number of array elements: `o ${#a[@]}`
+- find subscript used in array: `${!array[@]}`
+- appending to an array: `array+=value`
+- delete an array: `unset array`
+- sort an array : `($(for i in "${a[@]}"; do echo $i; done | sort))`
+- Associative arrays (string indexes): `array["string"]=value`
+
