@@ -300,3 +300,24 @@ done
 - expression1 initializes the variable i
 - expression2 sets the condition for loop to run until
 - expression3 increments the value of i by 1 each time the loop repeats
+
+### Positional Parameters
+- The shell provides a set of variables called positional parameters that contain the individual words on the command line. The variables are named 0 through 9.
+  - 0 is script name
+  - can be accessed like $0 $1 $2 etc.
+- determine number of arguments: `$#` 
+- to access many arguments use `shift`
+  - cause each parameter to "move down one" each time it is executed
+
+```sh
+#!/bin/bash
+# posit-param2: script to display all arguments
+count=1
+while [[ $# -gt 0 ]]; do
+    echo "Argument $count = $1"
+    count=$((count + 1))
+    shift
+done
+```
+- To handle many positional parameters at once use `"$@"`
+
