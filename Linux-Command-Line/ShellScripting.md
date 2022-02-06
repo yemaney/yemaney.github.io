@@ -321,3 +321,67 @@ done
 ```
 - To handle many positional parameters at once use `"$@"`
 
+### Parameter Expansion
+
+Expansions to Manage Empty Variables
+- expansion with defaults to manage empty variables
+  - `${parameter:-default}`
+- expansion with defaults to manage empty variables and assign default value to parameter if used
+  - `${parameter:=default}`
+- exit with an error if parameter is unset
+  - `${parameter:?default}`
+- expand to default if parameter exists, else return nothing
+  - `${parameter:+default}`
+
+Expansions That Return Variable Names
+- to return the names of variables
+  - `{!prefix*}`
+
+String Operations
+- expand into length of string contained in parameter
+  - `${#parameter}`
+- getting a slice of a string
+  - `${parameter:offset:length}`
+- remove portion of string matching a pattern
+  - `${parameter#pattern}` or `${parameter##pattern}`
+- a search-and-replace operation
+  - `${parameter/pattern/string}`
+
+Case Conversion
+- using `declare` force a variable to always contain the desired format
+  - `declare -u upper`
+  - `declare -l lower`
+
+### Arithmetic Evaluation and Expansion
+`$((expression))`
+
+| Operator | Description        |
+| -------- | ------------------ |
+| +        | Addition           |
+| -        | Subtraction        |
+| *        | Multiplication     |
+| /        | Integer division   |
+| **       | Exponentiation     |
+| %        | Modulo (remainder) |
+
+### Assignment
+| Notation           | Description                    |
+| ------------------ | ------------------------------ |
+| parameter = value  | Simple assignment.             |
+| parameter += value | parameter = parameter + value. |
+| parameter++        | parameter = parameter + 1      |
+
+
+### Logic
+| Operator          | Description                      |
+| ----------------- | -------------------------------- |
+| <=                | Less than or equal to.           |
+| >=                | Greater than or equal to.        |
+| <                 | Less than.                       |
+| >                 | Greater than.                    |
+| ==                | Equal to.                        |
+| !=                | Not equal to.                    |
+| &&                | Logical AND.                     |
+| `||`              | Logical OR.                      |
+| expr1?expr2:expr3 | If expr1  then expr2; else expr3 |
+
