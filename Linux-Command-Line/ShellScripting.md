@@ -323,21 +323,21 @@ done
 
 ### Parameter Expansion
 
-Expansions to Manage Empty Variables
-- expansion with defaults to manage empty variables
-  - `${parameter:-default}`
-- expansion with defaults to manage empty variables and assign default value to parameter if used
-  - `${parameter:=default}`
-- exit with an error if parameter is unset
-  - `${parameter:?default}`
-- expand to default if parameter exists, else return nothing
-  - `${parameter:+default}`
+- Expansions to Manage Empty Variables
+  - expansion with defaults to manage empty variables
+    - `${parameter:-default}`
+  - expansion with defaults to manage empty variables and assign default value to parameter if used
+    - `${parameter:=default}`
+  - exit with an error if parameter is unset
+    - `${parameter:?default}`
+  - expand to default if parameter exists, else return nothing
+    - `${parameter:+default}`
 
-Expansions That Return Variable Names
+### Expansions That Return Variable Names
 - to return the names of variables
   - `{!prefix*}`
 
-String Operations
+### String Operations
 - expand into length of string contained in parameter
   - `${#parameter}`
 - getting a slice of a string
@@ -347,7 +347,7 @@ String Operations
 - a search-and-replace operation
   - `${parameter/pattern/string}`
 
-Case Conversion
+### Case Conversion
 - using `declare` force a variable to always contain the desired format
   - `declare -u upper`
   - `declare -l lower`
@@ -397,3 +397,28 @@ Limited to one dimension
 - sort an array : `($(for i in "${a[@]}"; do echo $i; done | sort))`
 - Associative arrays (string indexes): `array["string"]=value`
 
+### Troubleshooting
+
+- Syntactic Errors
+  - Missing Quotes
+  - Missing or Unexpected Tokens
+  - Unanticipated Expansions
+- Logical Errors
+  - Incorrect conditional expressions
+  - “Off by one” errors
+  - Unanticipated situations.
+
+### Defensive Programming
+- Important to verify assumptions when programming, like whether a directory exists before using `cd`
+
+### Verifying Input
+- A general rule of good programming is that if a program accepts input,  it must be able to deal with anything it receives.
+
+### Testing
+- To perform useful testing, it’s important to develop and apply good test cases.
+- This is done by carefully choosing input data or operating conditions that reflect edge and corner cases.
+
+### Debugging
+- find problem area by commenting out sections
+- use informative echo messages to trace the flow of program
+- examine values during execution using echo
