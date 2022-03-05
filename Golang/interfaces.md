@@ -1,6 +1,15 @@
 # Interfaces
-- Interfaces define behavior 
+- [Interfaces](#interfaces)
+	- [Basics](#basics)
+	- [Composing Interfaces](#composing-interfaces)
+	- [Type Conversion](#type-conversion)
+		- [The Empty Interface](#the-empty-interface)
+		- [Type Switches](#type-switches)
+	- [Implementing with Value vs Pointers](#implementing-with-value-vs-pointers)
+	- [Best Practices](#best-practices)
+
 ## Basics
+- Interfaces define behavior 
 ```go
 package main
 
@@ -54,6 +63,7 @@ func (ic *IntCounter) Increment() int {
 	return int(*ic)
 }
 ```
+
 ## Composing Interfaces
 ```go
 package main
@@ -109,6 +119,7 @@ func main() {
 	res.serve("Yemane")
 }
 ```
+
 ## Type Conversion
 ```go
 func main() {
@@ -121,6 +132,7 @@ func main() {
 	fmt.Println(rs)
 }
 ```
+
 ### The Empty Interface
 - interface with no methods
 - every type in Go implements the empty interface
@@ -150,6 +162,7 @@ func (b *Bartender) wait(name string) {
 	fmt.Println("Would you like a drink? ", name)
 }
 ```
+
 ### Type Switches
 ```go
 package main
@@ -171,9 +184,11 @@ func main() {
 	}
 }
 ```
+
 ## Implementing with Value vs Pointers
 - method set of `value` is all methods with value receivers
 - method set of `pointer` is all methods, regardless of receiver type
+- 
 ## Best Practices
 - Use many, small interfaces over large monolithic ones
 - Don't export interfaces for types that will be consumed
