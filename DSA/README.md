@@ -25,6 +25,8 @@
 - if an `entire sequence` must be validated
   - you can return `sequence index == sequence length`
 ## Binary Search Trees
+- can be solved through `recursion`
+- if using `recursion` to find solution, try to see if the space complexity can be optimized by `not stacking recursive function calls`
 ## Binary Trees
 ## Dynamic Programming
 ## Famous Algorithms
