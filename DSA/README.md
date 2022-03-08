@@ -28,6 +28,7 @@
 - can be solved through `recursion`
 - if using `recursion` to find solution, try to see if the space complexity can be optimized by `not stacking recursive function calls`
 ## Binary Trees
+- if you have to `travel to each leaf node`, and `keep track of of their order` then `recursive function calls are expected`
 ## Dynamic Programming
 ## Famous Algorithms
 ## Graphs
