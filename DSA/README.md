@@ -45,6 +45,7 @@ A greedy algorithm is any algorithm that follows the problem-solving heuristic o
 - The binary search algorithm works only with sorted arrays
   - if a problem involves a sorted array input, consider using the binary search algorithm
 ## Sorting
+- `Bubble sorting` is when you iterate over a collection, compare adjacent elements, and swap accordingly. Repeating the cycle until, no swaps occur.
 ## Stacks
 ## Strings
 ## Tries
