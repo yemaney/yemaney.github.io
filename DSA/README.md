@@ -42,6 +42,8 @@ A greedy algorithm is any algorithm that follows the problem-solving heuristic o
 ## Linked Lists
 ## Recursion
 ## Searching
+- The binary search algorithm works only with sorted arrays
+  - if a problem involves a sorted array input, consider using the binary search algorithm
 ## Sorting
 ## Stacks
 ## Strings
