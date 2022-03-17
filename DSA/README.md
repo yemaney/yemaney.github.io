@@ -15,6 +15,12 @@
   - [Stacks](#stacks)
   - [Strings](#strings)
   - [Tries](#tries)
+  - [Data Structures](#data-structures)
+    - [Arrays](#arrays-1)
+    - [Hash Tables](#hash-tables)
+    - [Linked Lists](#linked-lists-1)
+    - [Stacks and Queues](#stacks-and-queues)
+    - [Trees](#trees)
 ## Arrays
 - if `multiple elements in an array are being compared` together, 
   - you can `create a hash table that stores the elements that frequently accessed`
@@ -51,3 +57,73 @@ A greedy algorithm is any algorithm that follows the problem-solving heuristic o
 ## Stacks
 ## Strings
 ## Tries
+
+---
+## Data Structures
+### Arrays
+- a linear collection of values that are accessible using numbered indexes
+
+| Operation                          | complexity                    |
+| ---------------------------------- | ----------------------------- |
+| Accessing a value at given index   | O(1)                          |
+| Updating a value at a given index  | O(1)                          |
+| Inserting a value at the beginning | O(n)                          |
+| Inserting a value in the middle    | O(n)                          |
+| Inserting a value at the end       | `dynamic` O(1), `static` O(n) |
+| Removing a value at the beginning  | O(n)                          |
+| Removing a value in the middle     | O(n)                          |
+| Removing a value at the end        | O(1)                          |
+| Copying the array                  | O(n)                          |
+
+### Hash Tables
+
+| Operation                  | complexity |
+| -------------------------- | ---------- |
+| inserting a key/value pair | O(1)       |
+| Removing a key/value pair  | O(1)       |
+| Lookup a key/value pair    | O(1)       |
+
+### Linked Lists
+- nodes that hold a value along with a pointer to another node or null
+
+```
+# singly linked list
+0 -> 1 -> 2 -> 3 -> 4 -> 5 -> null
+    
+# double linked list
+null <-> 0 <-> 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> null
+```
+
+| Operation                          | Time Complexity         |
+| ---------------------------------- | ----------------------- |
+| Accessing the head                 | O(1)                    |
+| Accessing the tail                 | single-O(n) double-O(1) |
+| Accessing a middle node            | O(n)                    |
+| Inserting / Removing the head      | O(1)                    |
+| Inserting / Removing the tail      | O(n) to access + O(1)   |
+| Inserting / Removing a middle node | O(n) to access + O(1)   |
+| Searching for a value              | O(n)                    |
+
+### Stacks and Queues
+
+- `stack` An array like data structure whose elements follow the `LIFO` rule
+
+| Operation                                      | Time Complexity |
+| ---------------------------------------------- | --------------- |
+| Pushing an element onto the stack              | O(1)            |
+| Popping an elemnt off the stack                | O(1)            |
+| Peeking at the element on the top of the stack | O(1)            |
+| Search for an element in the stack             | O(n)            |
+
+- `queue` An array like data structure whose elements follow the `FIFO` rule
+
+| Operation                                        | Time Complexity |
+| ------------------------------------------------ | --------------- |
+| Enqueuing an element into the queue              | O(1)            |
+| Dequeuing an elemnt out of the queue             | O(1)            |
+| Peeking at the element at the front of the queue | O(1)            |
+| Search for an element in the queue               | O(n)            |
+
+### Trees
+- A data structure thar consists of nodes, each with some value and pointers in to child nodes, which recursively form `subtrees`
+
