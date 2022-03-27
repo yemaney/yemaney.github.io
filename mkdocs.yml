@@ -1,0 +1,52 @@
+site_name: Yemane Yohannes
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: black
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      primary: white
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  logo: assets/logo.svg
+  features:
+    - navigation.tracking
+    - navigation.expand
+    - toc.follow
+    - navigation.top
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yemaney
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/yemane-yohannes/
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - footnotes
+  - admonition
+  - pymdownx.details
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+nav:
+  - index.md
+copyright: Copyright &copy; 2022 - 2022 Yemane Yohannes
