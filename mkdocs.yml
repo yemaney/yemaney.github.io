@@ -49,4 +49,7 @@ markdown_extensions:
   - pymdownx.tilde
 nav:
   - index.md
+  - Articles:
+      - Python:
+          - articles/Python/Beginner.md
 copyright: Copyright &copy; 2022 - 2022 Yemane Yohannes
