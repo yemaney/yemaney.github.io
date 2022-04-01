@@ -407,3 +407,146 @@ finally block
 !!! Tip
 
     `except Exception:` can be used to catch every possible error that occurs. But it is better to catch explicit errors like `TypeError` so the conditions where the code breaks, is explicitly known.
+
+## Functions
+Functions are used to define a block of code that can be called at a later time. In python functions are first class objects, which gives them the following properties.
+
+1. Can be assigned to a variable or element of a data structure
+2. Can be passed in as an argument to function
+3. Can be return as a result of a function
+
+=== "Generic"
+
+    ``` py
+    def add(x, y):
+        """ returns sum of x and y"""
+        return 2 + y
+
+    result = add(2, 2)
+    print(result)
+    """
+    4
+    """
+    ```
+=== "lambda"
+
+    ``` py
+    f = lambda x: 2 * x
+
+    result = f(2)
+    print(result)
+    """
+    4
+    """
+    ```
+
+!!! info
+
+    The lambda function is pythons version of anonymous functions. They should generally be very simple. Most cases will not require one.
+
+### args and kwargs
+The `*` and `**` can be used to unpack iterables and dictionaries respectively, when they are passed as arguments for a python function.
+
+=== "args"
+
+    ``` py
+    def add(*args):
+        """ returns sum of x and y"""
+        for i in args:
+            print(i) # printing args to verify what's being passed
+            
+        return sum(args) # using built-in sum function
+
+    args = (1, 2, 3)
+    result = add(*args)
+    print("Total is", result)
+    """
+    1
+    2
+    3
+    Total is 6
+    """
+    ```
+=== "kwargs"
+
+    ``` py
+    def sentence_maker(greeting=None, adjective=None, punctuation="."):
+        sentence = f"{greeting} I am {adjective} today{punctuation}"
+        return sentence
+
+    kwargs = {"greeting": "Hi", "adjective": "great"}
+
+    sentence = sentence_maker(**kwargs)
+    print(sentence)
+    """
+    Hi I am great today.
+    """
+    ```
+### Closures and Decorators
+- A closure is a function that `lives inside another function`, and has access to the the variables of that `enclosing scope`.
+- A decorator is a function that `takes another function as an argument`, `perform some processing `with the decorated function, and `returns it or replace it` with anther function.
+
+
+=== "Closures"
+
+    ``` py
+    def countdown_from_100():
+        count = 100
+        
+        def countdown(new_value):
+            nonlocal count # accessing count variable from nonlocal scope
+            count -= new_value
+            return count
+        
+        return countdown
+
+    avg = countdown_from_100()
+    print(avg(10))
+    print(avg(11))
+    print(avg(12))
+    """
+    90
+    79
+    67
+    """
+    ```
+=== "Decorator"
+
+    ``` py
+    import functools
+    from time import perf_counter
+    from typing import Callable
+
+    def timer(func: Callable):
+
+        @functools.wraps(func)
+        def inner(*args, **kwargs):
+            print("Beginning operation")
+            t0 = perf_counter()
+            res = func(*args, **kwargs)
+            t1 = perf_counter()
+            print(f"Executed in {t1-t0} secs")
+            return res
+        
+        return inner
+
+    @timer
+    def add2(x: int):
+        print(f"Adding 2 to {x}")
+        return x + 2
+
+    res = add2(2)
+    print(res)
+    """
+    Beginning operation
+    Adding 2 to 2
+    Executed in 1.1799999999999311e-05 secs
+    4
+    """
+    ```
+
+!!! Tip
+
+    1. `nonlocal` allows the inner function to access the enclosing scope. Similarity `global` can be used to access the global scope.
+    2. `functools.wraps` makes sure the decorated function retains its metadata (eg. docstrings) after it has been decorated.
+    3. `perf_counter` is used for time the function call duration.
