@@ -418,7 +418,7 @@ Functions are used to define a block of code that can be called at a later time.
 === "Generic"
 
     ``` py
-    def add(x, y):
+    def add(x: int, y: int) -> int:
         """ returns sum of x and y"""
         return 2 + y
 
@@ -493,7 +493,7 @@ The `*` and `**` can be used to unpack iterables and dictionaries respectively, 
     def countdown_from_100():
         count = 100
         
-        def countdown(new_value):
+        def countdown(new_value: int):
             nonlocal count # accessing count variable from nonlocal scope
             count -= new_value
             return count
@@ -550,3 +550,106 @@ The `*` and `**` can be used to unpack iterables and dictionaries respectively, 
     1. `nonlocal` allows the inner function to access the enclosing scope. Similarity `global` can be used to access the global scope.
     2. `functools.wraps` makes sure the decorated function retains its metadata (eg. docstrings) after it has been decorated.
     3. `perf_counter` is used for time the function call duration.
+
+## Type Hints
+Python is a dynamically typed language, so variable types aren't declared as they can change over the course of the program lifetime.
+
+Python allows the use of type hints. `Type hints` don't affect how the interpreter runs the program.
+
+1.  Helps type checkers give warnings when you pass an object of a type not expected
+2.  Helps IDE's autocomplete, as they can suggest type appropriate methods
+3.  Improves the documentation of the code as the intent becomes more clear.
+
+=== "Basic"
+
+    ``` py
+    def add(x: int, y: int) -> int: # function takes two arguments of type int
+        return x + y                # and returns an int
+
+    res1 = add(0, 1)
+    res2 = add(0, 1.0)      # IDE's will red-underline 1.0 as it is a float
+    print(res1, res2)       # program works as type hints don't affect interpreter
+    """
+    1 1.00
+    """
+    ```
+=== "Multiple Types"
+
+    ``` py
+    # data expected to be a list of int or str
+    def listFunction(data: list[str | int]) -> None:
+        for element in data:
+            print(type(element))
+    
+        return None
+        
+    data1 = [1, "hello"]
+    listFunction(data)
+    """
+    <class 'int'>
+    <class 'str'>
+    """
+    ```
+=== "Callable (Functions)"
+
+    ``` py
+    from typing import Callable
+
+    # Creating type hints for two possible functions
+    addInts = Callable[[int, int], int]
+    addFloats = Callable[[float, float], float]
+
+    # Creating two functions that follow the type hints
+    def addInt(x: int, y: int) -> int: 
+        return x + y 
+
+    def addFloat(x: float, y: float) -> float:
+        return x + y
+
+    # define a function that takes another function as an input
+    def handler(func: addInts) -> int:
+        x, y = 0, 1
+        return func(x, y)
+
+    result1 = handler(addInt)
+    result2 = handler(addFloat) # addFloat will be underlined since it is the wrong type
+
+    print(result1, result2)     # program works as type hints don't affect interpreter
+    """
+    1 1
+    """
+    ```
+=== "Classes"
+
+    ``` py
+    from typing import Protocol
+
+    class Worker(Protocol): # define protocol
+        ...
+        def run(self):
+            ... # ... is a placeholder for behavior concrete class will implement 
+            
+
+    class Connecter: # Create a class that follows the protocol
+        
+        def run(self):
+            print("Running...")
+            
+            
+    def workerFunction(worker: Worker) -> None: # type hint using the protocol
+        worker.run()
+        return None
+
+    conn = Connecter()
+    workerFunction(conn)
+    """
+    Running...
+    """
+    ```
+
+!!! note
+
+    1. The `list[str | int]` syntax is supported natively starting `python3.10`. In previous version you can either
+        * `from __future__ import annotations`
+        * `from typing import List`
+    2. `Protocols` is one way to define implicit interfaces. If you want to create explicit interfaces use `abc.ABC`
