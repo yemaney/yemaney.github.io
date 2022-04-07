@@ -52,4 +52,5 @@ nav:
   - Articles:
       - Python:
           - articles/Python/Beginner.md
+          - articles/Python/Intermediate.md
 copyright: Copyright &copy; 2022 - 2022 Yemane Yohannes
