@@ -197,3 +197,75 @@ All data in python is represented by objects or by relations between objects<sup
 !!! note
 
     There are many special methods, but you shouldn't implement them if they are not needed. In general only use methods that make sense within the context of what your object is and how it people will expect to behave. For example, an `__add__` method may make sense for a vector class, but would not be appropriate for a flower class.
+
+## Interfaces
+### Abstract Base Classes
+
+!!! abstract
+
+    Abstract Base Classes (ABC) is a module in the standard python library that is used to create formal interfaces. Interfaces are defined by inheriting from `ABC`. Then classes meant to observe the interface rules, are defined by inheriting from the interface. The `abstractmethod` decorator can be used to flag methods you expect to be implemented in the real classes. If the decorated method is not implemented, then an error occurs.
+
+=== "Implementing ABC"
+
+    ``` py
+    from abc import ABC, abstractmethod
+
+
+    class Connector(ABC):
+
+        @abstractmethod
+        def connect(self): # defining a method our interface expects
+            pass
+
+
+    class SQLConnector(Connector):
+
+        # implementing the method expected by the interface with inherit from
+        def connect(self):
+            print("connecting to sql database...")
+
+
+    sqlc = SQLConnector()
+    sqlc.connect()
+    """
+    connecting to sql database...
+    """
+    ```
+
+=== "Failing To Implement ABC"
+
+    ``` py
+    from abc import ABC, abstractmethod
+
+
+    class Connector(ABC):
+
+        @abstractmethod
+        def connect(self):
+            pass
+
+
+    class SQLConnector(Connector):
+        pass # Not implementing the abstract method
+
+
+    sqlc = SQLConnector() # IDE's will red underline
+    """
+    Traceback (most recent call last):
+    File "c:\Users\yeman_s1h20q2\Yemane\yemaney.github.io\main.py", line 14, in <module>
+        sqlc = SQLConnector()
+    TypeError: Can't instantiate abstract class SQLConnector with abstract method connect
+    """
+    ```
+
+
+!!! note
+
+    Abstract base classes may seem very similar to Protocols<sup>[1](https://yemaney.github.io/articles/Python/Beginner/#type-hints)</sup> used for type hinting classes. The difference is that ABC's can the structure and behavior of classes that try to use it.
+
+    Available decorators are not restricted to just defining regular methods. The available options that can be imported from abc.
+    
+    1. abstractmethod 
+    2. abstractclassmethod
+    3. abstractstaticmethod
+    4. abstractproperty
