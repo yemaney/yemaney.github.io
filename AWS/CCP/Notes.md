@@ -5,6 +5,8 @@
   - [Evolution of Computing](#evolution-of-computing)
   - [Types of Cloud Computing](#types-of-cloud-computing)
   - [Cloud Computing Deployment Models](#cloud-computing-deployment-models)
+- [The Benefits Of The Cloud](#the-benefits-of-the-cloud)
+  - [Seven Advantages to Cloud](#seven-advantages-to-cloud)
 
 # Cloud Concepts
 
@@ -72,3 +74,14 @@
 - On Premise: Everything built on company's data centers
 - Hybrid: Both on Cloud and On Premise being used
 - Cross Cloud: Using more than one CSP
+
+# The Benefits Of The Cloud
+
+## Seven Advantages to Cloud
+1. `Cost-Effective`: Pay as you go with thousands of customers sharing the cost of the resources
+2. `Global`: Launch workloads anywhere in the world
+3. `Secure`: Cloud provider takes care of physical security
+4. `Reliable`: Data backup, disaster recovery, data replication, fault tolerance
+5. `Scalable`: Increase or decrease resources based on demand
+6. `Elastic`: Automate scaling during spikes and drop in demand
+7. `Current`: Underlying hardware and software are managed without interruption to you
