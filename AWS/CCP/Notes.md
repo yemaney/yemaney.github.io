@@ -7,6 +7,12 @@
   - [Cloud Computing Deployment Models](#cloud-computing-deployment-models)
 - [The Benefits Of The Cloud](#the-benefits-of-the-cloud)
   - [Seven Advantages to Cloud](#seven-advantages-to-cloud)
+- [AWS Global Infrastructure](#aws-global-infrastructure)
+  - [Regions](#regions)
+  - [Availability Zones](#availability-zones)
+  - [Fault Tolerance](#fault-tolerance)
+  - [AWS Global Network](#aws-global-network)
+  - [Points Of Presence (PoP)](#points-of-presence-pop)
 
 # Cloud Concepts
 
@@ -85,3 +91,47 @@
 5. `Scalable`: Increase or decrease resources based on demand
 6. `Elastic`: Automate scaling during spikes and drop in demand
 7. `Current`: Underlying hardware and software are managed without interruption to you
+
+# AWS Global Infrastructure
+
+## Regions
+A geographically distinct location which has multiple data-centers (AZs).
+
+- Each region has at least two availability zones
+- not all services are available in all region
+
+## Availability Zones
+A physical location made up of one or more data centers.
+
+The use of AZ's give customers the ability to operate production applications and databases that are more:
+- Highly available
+- Fault tolerant
+- Scalable
+
+A subnet is associated with an availability zone.
+- Launch AWS resource into a specific subnet to launch the resource into a specific AZ
+
+## Fault Tolerance
+`Fault Domain`: A section of a network that is vulnerable to damage if critical device or system fails.
+- if a failure occurs, it will not cascade outside that domain
+
+`Fault Level`: A collection of fault domains
+
+If an application is partitioned across AZs, companies are better protected from issues such as power outages, storms, etc.
+
+## AWS Global Network
+The AWS Global Network represents the interconnections between AWS Global Infrastructure.
+- `Edge Locations` can act as on and off ramps to the AGN
+  - `AWS Global Accelerator` and `AWS S3 Transfer Acceleration` use edge locations to quickly reach AWS resources in other regions by traversing the AGN
+  - Amazon CloudFront (CDN) uses edge locations to provide edge storage and compute near the end user
+  - `VPC Endpoints` ensure your resources stay within the AWS Network and do not traverse over the public cloud
+
+## Points Of Presence (PoP)
+Intermediate locations between AWS Region and the end user.
+  - For AWS this is a data center utilized for content delivery or faster upload
+  - `Edge locations` are data centers that hold caches of the most popular files, so that delivery of distance to the end users are reduced
+  - `Regional Edge Cache` are data centers that hold much larger caches of less-popular files to reduce full round trip and cost of transfer fees
+  - `AWS CloudFront` is a Content Delivery Network (CDN) service that:
+    - routes requests to the nearest edge location cache
+    - allows to choose an origin to be the source of cache
+    - caches the contents of what origin would be returned to various edge locations
