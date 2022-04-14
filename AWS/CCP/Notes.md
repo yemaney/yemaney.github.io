@@ -13,6 +13,22 @@
   - [Fault Tolerance](#fault-tolerance)
   - [AWS Global Network](#aws-global-network)
   - [Points Of Presence (PoP)](#points-of-presence-pop)
+  - [AWS Direct Connect](#aws-direct-connect)
+  - [Local Zones](#local-zones)
+  - [Wavelength Zones](#wavelength-zones)
+  - [Data Residency](#data-residency)
+  - [Gov Cloud](#gov-cloud)
+  - [AWS China](#aws-china)
+  - [AWS Ground Station](#aws-ground-station)
+- [Cloud Architecture](#cloud-architecture)
+  - [Cloud Architecture Terminologies](#cloud-architecture-terminologies)
+  - [High Availability](#high-availability)
+  - [High Scalability](#high-scalability)
+  - [High Elasticity](#high-elasticity)
+  - [Fault Tolerance](#fault-tolerance-1)
+  - [High Durability](#high-durability)
+  - [Business Continuity Plan (BCP)](#business-continuity-plan-bcp)
+  - [Disaster Recovery Options](#disaster-recovery-options)
 
 # Cloud Concepts
 
@@ -135,3 +151,122 @@ Intermediate locations between AWS Region and the end user.
     - routes requests to the nearest edge location cache
     - allows to choose an origin to be the source of cache
     - caches the contents of what origin would be returned to various edge locations
+
+- `Tier 1 network`: is a network that can reach every other network on the internet without purchasing IP transit or paying for peering
+  - aws availability zones are all redundantly connected to multiple tier-1 transit providers
+
+## AWS Direct Connect
+AWS Direct Connect is a private/dedicated connection between an on-prem data center and AWS.
+- Two very-fast network connection options
+  - lower 50-500MBps,  higher 1-10GBps
+- Helps reduce network costs and increase bandwidth throughput
+- Direct Connect Locations are trusted third party data centers that establish the connection
+
+## Local Zones
+Data centers located close to densely populated areas to provide single-digit millisecond low latency performance
+- used to support highly-demanding applications sensitive to latency
+
+## Wavelength Zones
+- Allow for edge-computing on 5G networks, by partnering with telecoms
+- ultra low latency, as close as possible to user
+- create subnets tied to a wavelength zone, to be able to launch virtual machines to the edge of the targeted networks
+
+## Data Residency
+The physical or geographical location of where an organization or cloud resources reside.
+
+- `Compliance Boundaries`: A regulatory compliance that describes where data and cloud resources area allowed to reside
+- `Data Sovereignty`: Legal authority that can be asserted over data because its physical location is within the jurisdictional boundaries
+
+For workloads that need to meet compliance boundaries strictly.
+- `AWS Config`: 
+  - policy as code service
+  - create rules to continuously check aws resource configuration
+- `IAM Polices`:
+  - can be written to explicitly deny access to specific aws regions
+- `AWS Outposts`:
+  - physical rack of servers that you can put your data in
+
+## Gov Cloud
+Regions that allow customers to host sensitive and regulated workloads
+- currently only in the US
+
+## AWS China
+AWS cloud offering in mainland china. Intentionally isolated from AWS global.
+
+## AWS Ground Station
+Fully managed service that lets you control satellite communications
+
+# Cloud Architecture
+
+## Cloud Architecture Terminologies
+- `Availability`: Ability to ensure service remains available
+- `Scalability`: Ability to grow and unimpeded
+- `Elasticity`: Ability automatically to shrink and grow to meet the demand
+- `Fault Tolerance`: Ability to prevent a failure
+- `Disaster Recovery`: Ability to recover from a failure
+
+## High Availability
+Ensure service remains available
+- no single point of failure
+
+Can be achieved by running workloads across multiple availability zones.
+
+`Elastic Load Balancer`:
+- A load balancer allows you to evenly distribute traffic to multiple servers in one or more data center.
+- routes traffic towards health data centers and servers
+
+## High Scalability
+Ability to increase your capacity based on the increasing demand of traffic, memory and computing power
+
+- `Vertical Scaling` (Scaling Up): Upgrading to bigger server
+- `Horizontal Scaling` (Scaling Out): Add more servers of the same size
+
+## High Elasticity
+Ability to `automatically` increase your capacity based on the increasing demand of traffic, memory and computing power
+
+- relies on horizontal scaling
+- Scaling out (add more servers of same size)
+- Scaling In (remove servers of same size)
+
+`Auto Scaling Groups` (ASG)
+- AWS feature that will automatically add or remove servers based on scaling rules you define
+
+## Fault Tolerance
+Ability for your service to ensure there is no single point of failure.
+
+- `Fail-over`: plans to shift traffic to a redundant system in case the primary system fails
+
+`RDS Multi-AZ`:
+- run duplicate standby database in another availability zone in case the primary one fails
+
+## High Durability
+Ability to recover from a disaster and to prevent data loss during recovery
+
+`CloudEndure Disaster Recovery`:
+- Continuously replicates your machines into a low-cost staging area in your target aws account and preferred region enabling fast and reliable recovery.
+
+## Business Continuity Plan (BCP)
+A document that outlines how a business will continue to operate during an unplanned disruption in services.
+
+- `Recover Point Objective` (RPO)
+  - maximum acceptable amount of data loss after an unplanned data-loss incident
+  - how much data are you willing to lose
+- `Recovery Time Objective` (RTO)
+  - maximum amount of time your business can tolerate without incurring a significant financial loss
+  - how much time are you willing to go down
+
+## Disaster Recovery Options
+Coldest to Warmest
+
+- `Backup & Restore`
+  - rpo/rto hours
+  - back up your data and restore it to new infrastructure
+- `Pilot Light`
+  - rpo/rto 10 mins
+  - data is replicated to another region with minimal services running
+- `Warm Standby`
+  - rpo/rto
+  - scaled down copy of your infrastructure running ready to scale up
+- `Multi-site Active`
+  - rpo/rto
+  - scaled up copy of your infrastructure in another region
