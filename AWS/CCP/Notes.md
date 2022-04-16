@@ -29,6 +29,19 @@
   - [High Durability](#high-durability)
   - [Business Continuity Plan (BCP)](#business-continuity-plan-bcp)
   - [Disaster Recovery Options](#disaster-recovery-options)
+- [Management and Development Tools](#management-and-development-tools)
+  - [AWS API](#aws-api)
+  - [AWS Management Console](#aws-management-console)
+  - [AWS Tools for PowerShell](#aws-tools-for-powershell)
+  - [Amazon Resource Name (ARN)](#amazon-resource-name-arn)
+  - [AWS Command Line Interface (CLI)](#aws-command-line-interface-cli)
+  - [AWS Software Development Kit (SDK)](#aws-software-development-kit-sdk)
+  - [AWS CLoudShell](#aws-cloudshell)
+  - [Infrastructure as Code (IaC)](#infrastructure-as-code-iac)
+  - [AWS CloudFormation](#aws-cloudformation)
+  - [AWS Cloud Development Kit](#aws-cloud-development-kit)
+  - [AWS Toolkit for VSCode](#aws-toolkit-for-vscode)
+  - [Access Keys](#access-keys)
 
 # Cloud Concepts
 
@@ -270,3 +283,62 @@ Coldest to Warmest
 - `Multi-site Active`
   - rpo/rto
   - scaled up copy of your infrastructure in another region
+
+# Management and Development Tools
+
+## AWS API
+Each aws service has its own service endpoint which you can send a request to.
+- The api endpoints are usually accessed through the cli, sdk, or console
+
+## AWS Management Console
+A web based unified console.
+- build, manage, and monitor everything
+- point and click (clickops)
+
+## AWS Tools for PowerShell
+Lets you interact with the aws api via powershell cmdlets
+- Powershell is A task automation and configuration management framework.
+
+## Amazon Resource Name (ARN)
+Uniquely identify aws resources.
+
+## AWS Command Line Interface (CLI)
+Allows users to programmatically interact with the aws api via entering commands into a shell.
+
+## AWS Software Development Kit (SDK)
+Collection of software development tools in one installable package.
+- used to programmatically create, modify, delete, or interact ith aws resources.
+
+## AWS CLoudShell
+Browser based shell built into the aws management console.
+- free, scoped per region, same credentials as logged in user
+
+## Infrastructure as Code (IaC)
+Configuration script to automate creating, updating, or destroying cloud infrastructure.
+- a blueprint of your cloud infrastructure
+
+AWS CloudFormation - JSON or YAML
+
+AWS Cloud Development Kit - Code
+
+## AWS CloudFormation
+Allows you to write IaC as either JSON or YAML.
+- simple, but can lead to large files
+
+## AWS Cloud Development Kit
+Allows you to use a programming language to write IaC.
+- generate CloudFormation templates as an output
+- comes with its own cli
+- cdk pipelines to quickly set up ci/cd
+- has a testing framework
+
+AWS SDK looks similar, but the key difference is CDK ensures Idempotent of your Infrastructure.
+- cdk wont create new resources if it hasn't been updated
+
+## AWS Toolkit for VSCode
+Open source for VSCode to create, debug, deploy aws resources.
+- explore aws resources and stacks
+- helps create SAM applications
+
+## Access Keys
+A key and secret required to have programmatic access to aws resources when interacting with the aws api outside of the management console.
