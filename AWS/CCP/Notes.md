@@ -44,6 +44,11 @@
   - [Access Keys](#access-keys)
 - [Shared Responsibility Model](#shared-responsibility-model)
   - [AWS Shared Responsibility Model](#aws-shared-responsibility-model)
+- [Compute](#compute)
+  - [VM's, Container, and Serverless](#vms-container-and-serverless)
+  - [High PErformance Computing (HPC)](#high-performance-computing-hpc)
+  - [Edge and Hybrid Computing](#edge-and-hybrid-computing)
+  - [Cost and Capacity Management](#cost-and-capacity-management)
 
 # Cloud Concepts
 
@@ -357,3 +362,90 @@ AWS is responsible for security of the cloud.
 - hardware
 - operation of managed services
 - global infrastructure
+
+# Compute
+
+## VM's, Container, and Serverless
+
+Virtual Machines
+- `Elastic Compute Cloud (EC2)`
+  - allows you to launch a virtual machine in the cloud.
+  - a virtual machine is an emulation of a physical computer using software
+  - `Amazon Machine Image (AMI)`
+    - a predefined configuration for a virtual machine
+- `Amazon LightSail`
+  - managed virtual server services
+  - friendlier version of EC2
+
+Containers
+- `Elastic Container Service (ECS)`
+  - container orchestration service
+  - when you need docker as a service
+- `Elastic Container Registry (ECR)`
+  - repository for container images
+- `ECS Fargate`
+  - serverless container orchestration service
+  - same as ECS, but aws manages the server, pay on demand
+- `Elastic Kubernetes Service (EKS)`
+  - fully managed kubernetes service
+
+Serverless
+- `AWS Lambda`
+  - serverless functions service
+  - fully managed by aws, customer only uploads code and configurations
+  - pay based on runtime
+
+## High PErformance Computing (HPC)
+USually for machine learning workloads
+
+
+`AWS ParallelCluster`
+- cluster management tool
+- make it easier to deploy and manage high performance computing clusters on aws
+
+## Edge and Hybrid Computing
+`Edge Computing`
+- pushing your computing workloads outside of your network to run closer to destination location
+
+`Hybrid Computing`
+- running workloads on both on-premise data center and aws virtual private cloud (VPC)
+
+`AWS Outposts`
+- physical rack of servers that can be put in your data centers
+- allow to user aws api and service in your data center
+
+`AWS Wavelength`
+- build and launch application in a telecom data center
+- ultra low latency
+- closest as possible to end user
+
+`VMWare Cloud on AWS`
+- manage on-premise virtual machines using VMWare as EC2 instances
+
+`AWS Local zones`
+- edge data centers located outside of an aws region
+- when you need faster computing, storage, and databases in populated areas outside of aws region
+
+## Cost and Capacity Management
+
+`EC2 Spot Instances, Reserved Instances, and Savings Plan`
+- save on computing by paying upfront, committing to yearly contract or by being flexible about availability and interruption to computing service
+
+`AWS Batch`
+- plans, schedules, and executes batch computing workloads
+- can utilize spot instances to save money
+
+`AWS Compute Optimizer`
+- uses machine learning to analyze usage
+- suggests how to reduce costs and improve performance
+
+`EC2 Autoscaling Groups (ASG)`
+- automatically add or remove EC2 servers based on current traffic
+
+`Elastic Load Balancer (ELB)`
+- distribute traffic to multiple machines
+- re-route traffic from unhealthy instances to healthy instances or different availability zones
+
+`AWS Elastic Beanstalk (EB)`
+- for easily deploying web applications
+- PaaS
