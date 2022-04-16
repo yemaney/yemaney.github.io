@@ -42,6 +42,8 @@
   - [AWS Cloud Development Kit](#aws-cloud-development-kit)
   - [AWS Toolkit for VSCode](#aws-toolkit-for-vscode)
   - [Access Keys](#access-keys)
+- [Shared Responsibility Model](#shared-responsibility-model)
+  - [AWS Shared Responsibility Model](#aws-shared-responsibility-model)
 
 # Cloud Concepts
 
@@ -342,3 +344,16 @@ Open source for VSCode to create, debug, deploy aws resources.
 
 ## Access Keys
 A key and secret required to have programmatic access to aws resources when interacting with the aws api outside of the management console.
+
+# Shared Responsibility Model
+A cloud security framework that defines the security obligations of the customer versus the cloud service provider (csp).
+
+## AWS Shared Responsibility Model
+Customer is responsible for security in the cloud.
+- data
+- configuration
+
+AWS is responsible for security of the cloud.
+- hardware
+- operation of managed services
+- global infrastructure
