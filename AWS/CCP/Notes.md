@@ -49,6 +49,11 @@
   - [High PErformance Computing (HPC)](#high-performance-computing-hpc)
   - [Edge and Hybrid Computing](#edge-and-hybrid-computing)
   - [Cost and Capacity Management](#cost-and-capacity-management)
+- [Storage](#storage)
+  - [Types of Storage](#types-of-storage)
+  - [S3 Storage  Classes](#s3-storage--classes)
+  - [AWS Snow Family](#aws-snow-family)
+  - [Storage Services](#storage-services)
 
 # Cloud Concepts
 
@@ -449,3 +454,88 @@ USually for machine learning workloads
 `AWS Elastic Beanstalk (EB)`
 - for easily deploying web applications
 - PaaS
+
+# Storage
+
+## Types of Storage
+`Elastic Block Storage (EBS)`
+- when you need a virtual hard drive attached to a vm
+- only a single write volume
+
+`Elastic File Storage (EFS)`
+- when you need a file-share where multiple vms need to access the same drive
+- multiple connections via network share
+
+`Simple Storage Service (S3)`
+- multiple reads and writes
+- max object size 5TB, unlimited numbe rof objects
+
+## S3 Storage  Classes
+
+`S3 Standard`
+- fast
+- highly available and durable
+- replicated across 3 AZ's
+
+`S3 Intelligent Tier`
+- use ML to analyze object usage and determine the appropriate storage class
+
+`S3 Standard-IA (Infrequent Access)`
+- Cheaper if you access files less than once a month
+
+`S3 One-Zone-IA`
+- objects only exist in one AZ
+
+`S3 Glacier`
+- for long term cold storage
+- retrieval can take minutes to hours
+- very cheap
+
+`S3 Glacier Deep Archive`
+- lowest cost storage class
+- data retrieval 12 hours
+
+## AWS Snow Family
+Storage and compute devices used to physically move data in or out the cloud when moving data over the internet is to slow, difficult, or costly.
+
+`Snowcone`
+- comes in two sizes: 8TB, 14TB
+
+`Snowball Edge`
+- comes in two types
+  - storage optimized
+    - 80TB
+  - compute optimized
+    - 39.5 TB
+
+`Snowmobile`
+- 100PB
+
+## Storage Services
+
+- `S3 (Simple Storage service)`
+  - object storage service
+  - industry-leading scalability, data availability, security, and performance
+- `S3 Glacier`
+  - low cost storage fir archiving and long-term backup
+  - longer data retrieval wait time
+- `Elastic Block Storage (EBS)`
+  - virtual hard drive you attach to EC2 instances
+- Elastic File Storage (EFS)
+  - file storage mountable ot multiple EC2 instances at the same time
+- `Storage Gateway`
+  - hybrid cloud storage with local caching
+  - expand in-premise storage capacity into the cloud
+- `File Gateway`
+  - extend local storage to S3
+- `Volume Gateway`
+  - caches local drives to S3, so you have a continuous back up of local files in the cloud
+- `Tape Gateway`
+  - stores files onto virtual tapes for backing up on very cost effective long term storage
+- `AWS Snowfamily`
+  - storage devices used to physically migrate large amounts of data to the cloud
+- `AWS Backup`
+  - fully managed backup service
+- `CloudEndure Disaster Recovery`
+  - continuously replicates your machines into a low-cost staging area in your target aws account and preferred region
+  - enabling ast and reliable recovery in case of failures
