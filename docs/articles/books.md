@@ -27,6 +27,6 @@ This page is dedicated to highlighting some great books I have come across and w
 
     Learning how to, move through the command line, search using path expansions, use pipes and filters, edit and search files, and make simple bash scripts are skills that can make any developer more productive.
 
-    My favorite part is learning how everything is a file in the unix system, which enables the functionalities such as pipes and filters4
+    My favorite part is learning how everything is a file in the unix system, which enables the functionalities such as pipes and filters.
     
     No previous knowledge required, only a terminal to practice with the book.
