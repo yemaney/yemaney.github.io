@@ -57,6 +57,11 @@
 - [Networking](#networking)
   - [Cloud-Native Networking Services](#cloud-native-networking-services)
   - [Enterprise/Hybrid Networking Services](#enterprisehybrid-networking-services)
+- [Databases](#databases)
+  - [Data Warehouse](#data-warehouse)
+  - [NoSQL Database Services](#nosql-database-services)
+  - [Relational Database Services](#relational-database-services)
+  - [Other Database Services](#other-database-services)
 
 # Cloud Concepts
 
@@ -577,3 +582,56 @@ Storage and compute devices used to physically move data in or out the cloud whe
   - client vpn: user laptop to aws
 - `PrivateLinks (VPC Interface Endpoints)`
   - keeps traffic within the aws network and not traverse the internet to keep traffic secure
+
+# Databases
+
+## Data Warehouse
+A relational database designed for `analytic workloads`.
+- generally perform aggregation, such as grouping
+- optimized around columns since they need to aggregate column data
+- designed to be HOT, return results from queries very fast
+- infrequently accessed
+- consume data from a relational database on a regular basis
+
+## NoSQL Database Services
+- `DynamoDB`
+  - serverless, NoSQL, key/value, and document database
+  - designed to scale to billions of records
+  - guaranteed consistent data returns within a second
+- `DocumentDB`
+  - NosQL document database that is MongoDB compatible
+- `Amazon Keyspaces`
+  - fully managed apache cassandra database
+
+## Relational Database Services
+
+- `Relational Database Service (RDS)`
+  - supports common sql engines
+    - mysql, mariadb, postgres, oracle, microsoft sql server
+- `Aurora`
+  - fully managed, of either MySQL or PostgreSQL
+- `Aurora Serverless`
+  - serverless on demand version of aurora
+  - when you want most of aurora functionality but can trade to have cold starts
+- `RDS on VMWare`
+  - deploy rds managed databases to on premise data center
+
+## Other Database Services
+
+- `Redshift`
+  - petabyte size data warehouse
+- `ElastiCache`
+  - managed database of in memory and caching open-source
+  - when you need to improve the performance of applications by adding a caching layer in front of the web server or database
+- `Neptune`
+  - graph database
+  - when you need to understand the connections between data
+- `Amazon Timestreams`
+  - fully managed time series database
+  - when you need to measure how things change over time
+- `Amazon Quantum Ledger`
+  - fully managed ledger database that provides transparent, immutable, and cryptographically variable transaction logs
+- `Database Migration Service (DMS)`
+  - on-premise database to aws
+  - from two databases using different sql engines
+  - from sql to nosql
