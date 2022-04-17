@@ -54,6 +54,9 @@
   - [S3 Storage  Classes](#s3-storage--classes)
   - [AWS Snow Family](#aws-snow-family)
   - [Storage Services](#storage-services)
+- [Networking](#networking)
+  - [Cloud-Native Networking Services](#cloud-native-networking-services)
+  - [Enterprise/Hybrid Networking Services](#enterprisehybrid-networking-services)
 
 # Cloud Concepts
 
@@ -539,3 +542,38 @@ Storage and compute devices used to physically move data in or out the cloud whe
 - `CloudEndure Disaster Recovery`
   - continuously replicates your machines into a low-cost staging area in your target aws account and preferred region
   - enabling ast and reliable recovery in case of failures
+
+# Networking
+
+## Cloud-Native Networking Services
+
+- `Region`
+  - geographical location of your network
+- `Availability Zone (AZ)`
+  - data center containing aws resources
+- `Virtual Private Cloud (VPC)`
+  - isolated section of aws cloud where you can launch aws resources
+- `Internet Gateway`
+  - enables access to the internet for you VPC
+- `Route Tables`
+  - determines where network traffic from your subnets are directed
+- `Network Access Control List (NACL)`
+  - act as a firewall at the subnet level
+  - create Allow and Deny rules.
+- `Security Groups`
+  - act as a firewall at the instance level
+  - only Allow rules.
+- `Subnets`
+  - partition of an IP network intro multiple, smaller network segments
+  - Public subnets are generally used for placing resources which are accessible on the internet
+  - Private subnets are used when you need resources to be more secured and only accessible through tightly filtered traffic into the subnet
+
+## Enterprise/Hybrid Networking Services
+- `Direct Connect`
+  - dedicated gigabit network connection from you premises location to aws
+- `AWS Virtual Private Network (VPN)`
+  - establish secure connection to aws network
+  - site-to-site: on-prem to aws
+  - client vpn: user laptop to aws
+- `PrivateLinks (VPC Interface Endpoints)`
+  - keeps traffic within the aws network and not traverse the internet to keep traffic secure
