@@ -6,7 +6,7 @@ A list is an **ordered and mutable** sequence of, usually homogenous, objects. I
 === "Literal"
 
     ``` py
-    list1= [0, 1, 2, 3, 4]
+    list1 = [0, 1, 2, 3, 4]
 
     print(list1)
     """
@@ -93,7 +93,6 @@ Tuple unpacking works with any iterable object,  the star symbol `*` can be used
 
     ``` py
     a, b, *rest = range(5)
-    a, b, rest
 
     print(a)
     print(b)
@@ -163,8 +162,25 @@ a hashable type, but the values can be anything.
     {'two': 'Hoenn', 'one': 'Kanto', 'three': 'Unova'}
     """
     ```
+=== "Accessing Elements"
+
+    ``` py
+    nums = {'one': 1, 'two': 2, 'three': 3}
+
+    # using dictionary['key'] notation to access value in dictionary
+    print(f"key one maps to : {nums['one']}")
+    """
+    key one maps to : 1
+    """
+    ```
+!!! Tip
+
+    The `dictionary['key']` notation can be used to access values in dictionary. But will result in a `KeyError` if the key doesn't actually exist.
+
+    - use the `dictionary.get(key, default)` to avoiding running into this error. If the key doesn't exist, python will return the default value. If no default value is provided, python will return `None`.
+
 ### Sets
-A set is a collection of unique elements. Attempting to add an element to a set, will result in no change.
+A set is a collection of unique elements. Attempting to add an element that already exists inside the set, will result in no change.
 === "Literal"
 
     ``` py
@@ -207,6 +223,8 @@ A set is a collection of unique elements. Attempting to add an element to a set,
     {0, 1, 2}
     """
     ```
+
+---
 
 !!! Tip
 
