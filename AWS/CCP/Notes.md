@@ -68,6 +68,14 @@
   - [Instance Type](#instance-type)
   - [Dedicated Host vs Dedicated Instance](#dedicated-host-vs-dedicated-instance)
   - [Elastic IP](#elastic-ip)
+- [EC2 Pricing Model](#ec2-pricing-model)
+  - [Reserved Instances](#reserved-instances)
+  - [Reserved Instances (RI)](#reserved-instances-ri)
+  - [REgional and Zonal RI](#regional-and-zonal-ri)
+  - [RI Limits](#ri-limits)
+  - [Capacity Reservations](#capacity-reservations)
+  - [Standard vs Convertible RI](#standard-vs-convertible-ri)
+  - [Savings Plan](#savings-plan)
 
 # Cloud Concepts
 
@@ -694,3 +702,102 @@ A particular instance size and instance family
 
 ## Elastic IP
 A way to configure static IP address for virtual machines.
+
+# EC2 Pricing Model
+
+- `on-Demand`
+  - least commitment
+  - low cost and flexible
+  - pay per hour
+  - short term, unpredictable workloads
+  - cannot be interrupted
+- `Reserved`
+  - best long term saving, upt to 75%
+  - commit to 1 or 3 years
+  - can resell unused reserved instances
+  - the greater upfront the great the savings
+- `Spot`
+  - biggest savings, up to 90%
+  - request spare computing capacity
+  - flexible, can handle interruptions
+- `Dedicated`
+  - most costly
+  - can be on demand or reserved (up to 75%)
+
+## Reserved Instances
+Designed for applications that have a steady-state, predictable usage, or require reserved capacity.
+
+`Class` : the less flexible the greater the savings
+- Standard
+  - up 75% reduced pricing compared to on-demand
+  - can modify ri attributes
+- Convertible
+  - up to 54% reduced pricing compared to on-demand
+  - can exchange ri attributes
+
+`Payment Options`:The greater upfront the greater the savings
+- All upfront
+- Partial upfront
+- No upfront
+
+## Reserved Instances (RI)
+Also known as instance attributes. 
+
+- `instance type`
+  - instance family + instance size
+- `region`
+- `tenancy`
+  - whether your instance runs on shared or single tenant hardware
+- `platform`
+  - the operating system of the machine
+
+## REgional and Zonal RI
+When you purchase a RI, you determine the scope of the reserved instance. The scope does not affect price.
+
+`Regional RI`: Purchase for a region
+- does no reserve capacity
+- discount applies to instances in any AZ in the region
+- discount can apply to instance within the instance family
+- can purchase regional ri
+
+`Zonal RI`: Purchase fo an availability zone
+- reserves capacity in the specified availability zone
+- discount only applies to instance in the selected AZ
+- no instance size instance size flexibility
+- can't purchase zonal ri
+
+## RI Limits
+Per-month you can purchase
+- 20 regional reserved instances per region
+  - cannot be used to exceed on-demand instance limit (20)
+- 20 zonal reserved instances per AZ
+  - can exceed on-demand instance limit
+
+## Capacity Reservations
+Request a reservation of a specific EC2 instance type or family.
+
+## Standard vs Convertible RI
+- `Standard` 
+  - can be modified
+  - changed az within same region, scope from zonal to regional, instance size, network
+- `Convertible`
+    - can be exchanged for another convertible ri with new ri attributes including
+      - instance family, instance type, platform, scope, tenancy
+
+## Savings Plan
+Offers similar discounts as reserved instances but simplifies the purchasing process.
+- two different terms ( 1 year or 3 years)
+- `payment options`
+  - all upfront
+  - partial upfront
+  - no upfront
+- `Types`
+  - `compute`
+    - most flexibility, reduce cost by up to 66%
+    - automatically applies to EC2, fargate, and lambda services regardless of instance family, size, AZ, region, OS, or tenancy.
+  - `EC2 Instances`
+    - lowest prices, 72% savings
+    - commitment to usage of instance families in a region
+    - automatically reduces your cost on the selected instance family in that region regardless of AZ, size, OS or tenancy
+  - `SageMaker`
+    - helps reduce sagemaker costs by up to 64%
