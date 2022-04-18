@@ -62,6 +62,12 @@
   - [NoSQL Database Services](#nosql-database-services)
   - [Relational Database Services](#relational-database-services)
   - [Other Database Services](#other-database-services)
+- [Elastic Compute Cloud (EC2)](#elastic-compute-cloud-ec2)
+  - [Introduction to EC2](#introduction-to-ec2)
+  - [Instance Families](#instance-families)
+  - [Instance Type](#instance-type)
+  - [Dedicated Host vs Dedicated Instance](#dedicated-host-vs-dedicated-instance)
+  - [Elastic IP](#elastic-ip)
 
 # Cloud Concepts
 
@@ -635,3 +641,56 @@ A relational database designed for `analytic workloads`.
   - on-premise database to aws
   - from two databases using different sql engines
   - from sql to nosql
+
+# Elastic Compute Cloud (EC2)
+
+## Introduction to EC2
+A highly configurable virtual machine.
+
+Steps
+- choose os
+- choose instance type
+- add storage (EBS, EFS)
+- configure instance
+  - Security Groups, Key Pairs, UserData, IAM Roles, Placement Groups
+
+## Instance Families
+Different combinations of cpu, memory, storage, and network capacity.
+- allows you to choose the appropriate combination of capacity to meet your applications unique requirements
+
+
+Family Names
+- `General Purpose`
+  - balance of compute, memory, and network resources
+  - web servers and code repositories
+- `Compute optimized`
+  - high performance processor
+  - scientific modeling, gaming servers
+- `Memory Optimized`
+  - fast performance for workloads that process large data sets in memory
+  - real time big data analytics, in-memory caches
+- `Accelerated Optimized`
+  - hardware accelerators or co-processors
+  - machine learning, computational finance
+- `Storage Optimized`
+  - high sequential read and write access to very large data sets on local storage
+  - NoSQL, data warehousing
+
+## Instance Type
+A particular instance size and instance family
+
+- EC2 Instance Sizes generally double in price and key attributes
+
+## Dedicated Host vs Dedicated Instance
+- `Dedicated Host`
+  - physical server isolation
+  - socket, cores, host ID visibility
+  - more expensive
+- `Dedicated Instance`
+  - instance isolation via virtualization
+  - virtual server always lives on the same part of the physical server
+- `Default`
+  - vm instance lives in a specific part of physical server until a reboot
+
+## Elastic IP
+A way to configure static IP address for virtual machines.
