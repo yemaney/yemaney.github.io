@@ -76,6 +76,20 @@
   - [Capacity Reservations](#capacity-reservations)
   - [Standard vs Convertible RI](#standard-vs-convertible-ri)
   - [Savings Plan](#savings-plan)
+- [Identity](#identity)
+  - [Zero-Trust Model](#zero-trust-model)
+  - [Zero-Trust Model on AWS](#zero-trust-model-on-aws)
+  - [Directory Service](#directory-service)
+  - [Identity Providers (IdP)](#identity-providers-idp)
+  - [Single Sign On](#single-sign-on)
+  - [Lightweight Directory Access Protocol (LDAP)](#lightweight-directory-access-protocol-ldap)
+  - [Multi-Factor Authentication](#multi-factor-authentication)
+  - [Security Keys](#security-keys)
+  - [AWS Identity and Access Management (IAM)](#aws-identity-and-access-management-iam)
+  - [Anatomy of an IAM Policy](#anatomy-of-an-iam-policy)
+  - [Principle of Least Privilege (PoLP)](#principle-of-least-privilege-polp)
+  - [AWS Account Root User](#aws-account-root-user)
+  - [AWS SSO](#aws-sso)
 
 # Cloud Concepts
 
@@ -801,3 +815,146 @@ Offers similar discounts as reserved instances but simplifies the purchasing pro
     - automatically reduces your cost on the selected instance family in that region regardless of AZ, size, OS or tenancy
   - `SageMaker`
     - helps reduce sagemaker costs by up to 64%
+
+# Identity
+
+## Zero-Trust Model
+`trust no one, verify everything`
+
+In the zero trust model, identity becomes the primary security perimeter.
+- first line of defense
+
+Network Centric - focused on VPN's and firewalls
+Identity Centric - persons scope of access limited by there identity
+
+## Zero-Trust Model on AWS
+Identity and Access Management (IAM)
+- `IAM Polices`: set of permissions detailing a users access to services
+- `Permission Boundaries`: what permission someone should not have
+- `Service Control Polices`: Organization-wide permissions
+- `IAM Policy Conditions`: more fine grain control of policy
+
+AWS does not have ready-to-use identity controls that are intelligent, which is why AWS is considered to not have a true Zero Trust offering for customers, and third-party services need to be used.
+
+A collection of AWS Services can be setup to intelligent-ish detection of identity concerns but requires expert knowledge
+- `AWS CloudTrail`: track all API Calls
+- `Amazon GuardDuty`: detect suspicious activity based on CloudTrail and other logs
+- `Amazon Detective`: investigate and quickly identify security issues, an ingest data from GuardDuty
+
+Third Party Services:
+- Azure Active Directory (Azure AD)
+- Google BeyondCorp
+- JumpCloud
+
+## Directory Service
+A directory service maps the names of network resources to their network addresses.
+- shared information infrastructure for locating, managing, administering, and organizing resources
+  - volumes, folders, files, users, groups...
+
+A directory server is a server that provides a directory service.
+- each resource on the network is considered an object by the directory server
+- information about a particular resource is stored as a collection of attributes associated with that resource or object
+
+## Identity Providers (IdP)
+A system that creates, maintains, and manages information for principals and also provides authentication services to applications within a federated or distributed network.
+- A trusted provider of your user identity that lets you use to authenticate to access other services
+- Federated identity is a method of linking a user's identity across multiple separate identity management systems​
+
+- `OpenID`
+  - open standard and decentralized `authentication` protocol
+  - allows you to login into different social media platforms using a google or facebook account
+  - *who you are*
+- `OAuth2.0`
+  - uses `authorization` tokens to prove an identity between consumers and a service provider
+  - *grant access to functionality*
+- `Security Assertion Markup Language (SAML)`
+  - open standard for authentication and authorization between an identity provider and a service provider
+  - *single-sign-on*
+
+## Single Sign On
+An authentication scheme that allows a user to log in with a single ID and password to different systems and software
+
+## Lightweight Directory Access Protocol (LDAP)
+An open, vender-neutral, industry standard application protocol for accessing and maintaining distributed directory information services over an internet protocol (IP)
+- provide a central place to store usernames and passwords
+- enables same-sign-on
+  - allows the same userID and password to be used for multiple applications, but they have to enter it in every time they want to login.​
+
+Why use LDAP when SSO is more convenient?​
+- Most SSO systems are using LDAP.​
+- LDAP was not designed natively to work with web applications.​
+- Some systems only support integration with LDAP and not SSO​
+
+## Multi-Factor Authentication
+A security control where after you fill in your username and password, you have to use a second device such as a phone to confirm that it's you logging in.
+
+## Security Keys
+A secondary device that can be used during multi-factor authentication. Resembling a memory stick with a button, that when pressed will autofill a security token.
+
+## AWS Identity and Access Management (IAM)
+Allows you to create and manages AWS users and groups, and use permissions to allow and deny their access to AWS resources.
+
+- `IAM policies`
+  - document that grant permissions for a specific user, group, or role to access services
+  - attached to IAM identities
+- `IAM Permission`
+  - the API actions that can or cannot be performed
+  - represented in the IAM policy document
+- `IAM Users`
+  - End users who interact with aws resources
+- `IAM Groups`
+  - Group of users that share same permissions
+- `IAM Roles`
+  - grant aws resources permissions to specific aws API actions
+  - associate policies to a role and the assign it to an aws resource
+
+## Anatomy of an IAM Policy
+IAM Policies are written in JSON, and contain the permissions which determine what API actions are allowed or denied.
+
+- `Version of policy language`
+  - 2012-10-17 is the latest version
+- `Statement Container`
+  - for policy element, allowed to have multiple
+- `Sid`
+  - a way to label your statements
+- `Effect`
+  - whether the policy will Allow or Deny
+- `Action`
+  - list of actions that the policy allows or denies
+- `Principal`
+  - account, user, or role which would like to allow or deny access
+- `resource`
+  - the resource to which the actions apply
+- `condition`
+  - circumstances under which the policy grants permission
+
+## Principle of Least Privilege (PoLP)
+Computer security concept of providing a usr, role, or application the least amount of permissions to perform an operation or action
+
+- `Just-Enough-Access (JEA)`
+  - permitting only the exact actions for the identity to perform its task
+- `Just-In-Time (JIT)`
+  - permitting smallest length of duration an identity can  use permissions
+
+## AWS Account Root User
+- `AWS Account`
+  - the account which holds all your aws resources
+- `Root User`
+  - special account that cannot be deleted
+- `User`
+  - a user for common tasks that are assigned permissions
+
+Root Users can:
+- change account settings
+- close aws account
+- change or cancel aws support plan
+
+## AWS SSO
+AWS Single Sign-On (AWS SSO) is where you create or connect, your workforce identities in AWS once and manage access centrally across your AWS organization.
+
+Choose your Identity Source
+- AWS SSO, Active Directory, SAML 2.0 IdP
+Managed User Permissions Centrally
+- AWS Account, AWS Applications, SAML Applications
+
+Uses get Single Click Access
