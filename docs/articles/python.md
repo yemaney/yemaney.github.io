@@ -1,4 +1,4 @@
-![Python](https://raw.githubusercontent.com/yemaney/yemaney/f0071525ffde9a05bc92b59e1a3a567cfce20591/icons/python.svg){ align=left }
+![Python](./../assets/python.svg){ align=left }
 
 !!! Example "objective"
 
