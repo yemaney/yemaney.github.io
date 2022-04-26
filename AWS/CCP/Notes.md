@@ -90,6 +90,14 @@
   - [Principle of Least Privilege (PoLP)](#principle-of-least-privilege-polp)
   - [AWS Account Root User](#aws-account-root-user)
   - [AWS SSO](#aws-sso)
+- [Application Integration](#application-integration)
+  - [Queueing and Simple Queue Service (SQS)](#queueing-and-simple-queue-service-sqs)
+  - [Streaming and Kinesis](#streaming-and-kinesis)
+  - [Pub-Sub and SNS](#pub-sub-and-sns)
+  - [API Gateway](#api-gateway)
+  - [State Machines](#state-machines)
+  - [Event Bus](#event-bus)
+  - [Other Application Integration Services](#other-application-integration-services)
 
 # Cloud Concepts
 
@@ -958,3 +966,73 @@ Managed User Permissions Centrally
 - AWS Account, AWS Applications, SAML Applications
 
 Uses get Single Click Access
+
+# Application Integration
+The process of letting two independent applications to communicate and work with each other.
+- commonly facilitated by an intermediate system
+
+## Queueing and Simple Queue Service (SQS)
+
+- Simple Queue Service (SQS)
+  - Used to provide asynchronous communication and decouple processes via messages/events.
+  - delete messages once they are consumed
+  - not real time
+  - have to pull
+  - simple communication
+  - fully managed queuing service that enables you to decouple and scale microservice's, distributed systems, and serverless applications
+
+## Streaming and Kinesis
+
+- Amazon Kinesis
+  - events live in the stream for long periods of time, so complex operations can be applied
+  - real time
+  - fully managed solution for collecting, processing, and analyzing streaming data in the cloud
+
+## Pub-Sub and SNS
+Publish-Subscribe pattern commonly implemented in messaging systems.
+
+- Simple Notification Service (SNS)
+- Publishers send their messages to an event bus
+- event bus categorizes the messages into groups
+- receivers subscribe to the groups
+- messages are sent to subscribers
+
+## API Gateway
+
+- Amazon API Gateway is a solution for creating secure APIs in your cloud environment at any scale.
+  - A program that sits between a single-entry point and multiple backends.
+  - Allows for throttling, logging, routing logic or formatting of the request and responses
+  - Create APIs that act as a front door for applications to access data, business logic, or functionality from back-end services.
+
+## State Machines
+An abstract model which decides how one state moves to another based on a series of conditions.
+
+- AWS Step Functions
+  - coordinate multiple aws services into a serverless workflow
+  - a graphical console to visualize the components of your application as a series of steps
+  - automatically triggers and tracks each step, and retries when there are errors, so your application executes in order and as expected
+  - logs the state of each step, so when things go wrong you can diagnose and debug problem quickly
+
+## Event Bus
+Receives events from a source and routes events to a target based on rules.
+
+- EventBridge
+  - serverless event bus service that is used for application integration by streaming real-time data to you applications
+  - types
+    - default event bus for every account
+    - custom event bus, scoped to multiple accounts or other aws accounts
+    - SaaS event bus, scoped to third party SaaS providers
+  - producers: aws services that emit events
+  - partner sources: third party apps that can emit events
+  - rules: define what event to capture and pass to targets
+  - targets: aws services that consume events
+  - events: data emitted by services, JSON objects
+
+## Other Application Integration Services
+- Amazon MQ
+  -  is a managed message broker service that uses Apache ActiveMQ
+-  Managed Kafka Service (MSK) 
+   -  fully managed Apache Kafka service
+   -  for building real-time streaming data pipelines and applications. Similar to Kinesis but more robust
+-  AppSync 
+   -  fully managed GraphQL service
