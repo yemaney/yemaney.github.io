@@ -98,6 +98,12 @@
   - [State Machines](#state-machines)
   - [Event Bus](#event-bus)
   - [Other Application Integration Services](#other-application-integration-services)
+- [Containers](#containers)
+  - [VM's vs Containers](#vms-vs-containers)
+  - [Micro-services](#micro-services)
+  - [Kubernetes (K8's)](#kubernetes-k8s)
+  - [Docker](#docker)
+  - [Container Services](#container-services)
 
 # Cloud Concepts
 
@@ -1036,3 +1042,75 @@ Receives events from a source and routes events to a target based on rules.
    -  for building real-time streaming data pipelines and applications. Similar to Kinesis but more robust
 -  AppSync 
    -  fully managed GraphQL service
+
+# Containers
+
+## VM's vs Containers
+VMS do not make the best use of space. 
+- apps are not isolated which could cause config conflicts, security problems, or resource hogging
+
+Containers allow you to run multiple apps which are virtually isolated from each other
+- configure os and dependencies per container
+
+## Micro-services
+- `Monolithic architecture`
+  - one app which is responsible for everything
+  - functionality is tightly coupled
+- `Micro-services architecture`
+  - multiple apps, each responsible for one thing
+  - functionality is isolated and stateless
+
+## Kubernetes (K8's)
+Open source container orchestration system for automating deployment, scaling, and management of containers.
+- advantage of kubernetes over docker is the ability to run containers distributed across multiple VM's
+- ideally for micro-service architectures where a company has `tens to hundreds of services` they need to manage
+- a unique component of kuberneetes are `pods`
+  - a pod is a group of one or more containers with shared storage, network resources, and other shared settings
+
+## Docker
+PaaS product that use OS-level virtualization to deliver software in packages called containers.
+- `dokcer cli`: cli commands to download, upload, build, run, and debug containers
+- `dockerfile`: a configuration file on how to provision a container
+- `docker compose`: tool and configuration file when working with multiple containers
+- `docker swarm`: orchestration tool for managing deployed multi-container architectures
+- `dockerhub`: public online repository for containers published by the community for download
+- `The Open Container Initiative (OCI)`:  an open governance structure for creating open industry standards around container formats and runtime.
+
+Podman, Buildah and Skopeo
+- `podman`: is a container engine that is OCI-compliant and is a deopin replacement for docker
+  - daemon-less, allows you to create pods like K8
+- `buildah`: is a tool used to build OCI images
+- `Skopeo`: tool for moving container images between different types of container storages
+
+## Container Services
+
+Primary Services:
+- `Elastic Container Service (ECS)`
+  - no cold starts
+  - self managed EC2
+- `AWS Fargate`
+  - more robust than lambda
+  - scale to zero cost
+  - aws managed EC2
+- `Elastic Kubernetes Service (EKS)`
+  - open source, avoid vendor lock-in
+- `AWS Lambda`
+  - only think about code
+  - short running tasks
+  - can deploy custom containers
+
+Provisioning and Deployment
+- `Elastic Beanstalk (EB)`
+  - ECS on training wheels, PaaS
+- `App Runner`
+  - PaaS specifically for containers
+- `AWS Copilot CLI`
+  - build, release, and operate production ready containerized applications on aws app runner, ECS, and aws Fargate
+
+Supporting Services
+- `Elastic Container Registry (ECR)`
+  - repos for your docer images
+- `X-Ray`
+  - analyze and debug between micro-services
+- `Step Functions`
+  - stitch together lambdas and ECS tasks
