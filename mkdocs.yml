@@ -50,8 +50,6 @@ markdown_extensions:
 nav:
   - index.md
   - Articles:
-      - Python:
-          - articles/Python/Beginner.md
-          - articles/Python/Intermediate.md
+    - articles/python.md
   - articles/books.md 
 copyright: Copyright &copy; 2022 - 2022 Yemane Yohannes
