@@ -115,6 +115,7 @@
 - [Provisioning](#provisioning)
   - [Provisioning Services](#provisioning-services)
   - [AWS Elastic Beanstalk](#aws-elastic-beanstalk)
+- [Serverless Services](#serverless-services)
 
 # Cloud Concepts
 
@@ -1247,4 +1248,30 @@ PaaS allowing customer to develop, run, and manage applications without the comp
   - In-Place and Blue/Green deployment methodologies
   - Security (Rotates passwords)
   - Can run Dockerized environments
+
+# Serverless Services
+Serverless architecture generally describes fully managed cloud services.
+
+A serverless service could have all or most of the following characteristics:
+- Highly elastic and scalable
+- Highly available
+- Highly durable
+- Secure by default
+
+Abstracts away the underlying infrastructure and are billed based on the execution of your business task.
+
+Serverless can Scale-to-Zero meaning when not in use the serverless resources cost nothing.
+
+- `DynamoDB` 
+  - is a serverless NoSQL key/value and document database
+- `Simple Storage Service (S3) `
+  - is a serverless object storage service.
+- `ECS Fargate `
+  - is serverless orchestration container service.
+- `AWS Lambda`
+  - is a serverless functions service. 
+- `Step Functions `
+  - is a state machine service
+- `Aurora Serverless`
+  - is the serverless on-demand version of Aurora.
 
