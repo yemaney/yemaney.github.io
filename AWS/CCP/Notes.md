@@ -116,6 +116,7 @@
   - [Provisioning Services](#provisioning-services)
   - [AWS Elastic Beanstalk](#aws-elastic-beanstalk)
 - [Serverless Services](#serverless-services)
+- [Windows on AWS](#windows-on-aws)
 
 # Cloud Concepts
 
@@ -1275,3 +1276,19 @@ Serverless can Scale-to-Zero meaning when not in use the serverless resources co
 - `Aurora Serverless`
   - is the serverless on-demand version of Aurora.
 
+# Windows on AWS
+
+- `Windows Servers on EC2`
+- `SQL Server on RDS`
+- `AWS Directory Service `
+  - lets you run Microsoft Active Directory (AD) as a managed service​
+- `AWS License Manager `
+  - makes it easier to manage your software licenses from software vendors such as Microsoft.​
+- `Amazon FSx for Windows File Server `
+  - is a fully managed scalable storage built for Windows.​
+- `AWS Software Development Kit (SDK)`
+  - has .NET support
+- `Amazon WorkSpaces `
+  - allows you to run a Windows virtual desktop
+- `AWS Migration Acceleration Program (MAP)`
+  - migration methodology from moving large enterprise
