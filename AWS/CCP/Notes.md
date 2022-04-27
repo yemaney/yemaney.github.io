@@ -104,6 +104,14 @@
   - [Kubernetes (K8's)](#kubernetes-k8s)
   - [Docker](#docker)
   - [Container Services](#container-services)
+- [Governance](#governance)
+  - [Organizations and Accounts](#organizations-and-accounts)
+  - [AWS Control Tower](#aws-control-tower)
+  - [AWS Config](#aws-config)
+  - [AWS Quick Starts](#aws-quick-starts)
+  - [Tagging](#tagging)
+  - [Resource Groups](#resource-groups)
+  - [Business Centric Services](#business-centric-services)
 
 # Cloud Concepts
 
@@ -1114,3 +1122,88 @@ Supporting Services
   - analyze and debug between micro-services
 - `Step Functions`
   - stitch together lambdas and ECS tasks
+
+# Governance
+
+## Organizations and Accounts
+
+- `Organizations`
+  - allow the creation of new aws accounts, centrally managed billing, control access, compliance, security, and shared resources across your aws accounts
+- `Root Account User`
+  - a single sign-in identity that has complete access to all aws services and resources in an account
+- `Organization Units`
+  - a group of aws accounts within an organization which can also contain other organization units, creating a hierarchy
+- `Service Control Policy`
+  - control over the allowed permission for all accounts within an organization
+
+
+Key Points
+- more than one account managed through a single account using Organizations
+- setup consolidated billing where 1 account pays the AWS bill for all
+- create isolated AWS accounts for different teams under the payer account - and place them inside Organizational Units (OU)
+  - allows you to set customized permission boundaries on the accounts using Service Control Policies (SCPs)
+
+## AWS Control Tower
+Helps enterprises quickly set-up a secure, aws multi-account.
+
+- `Landing Zones`
+  - baseline environment following best practice to quickly start production ready workloads
+- `Account Factory`
+  - automates provisioning of new accounts in your organization
+  - standardize the provisioning of new accounts with pre-approved account configurations
+- `Guardrails`
+  - pre-packaged governance rules for security, operations, and compliance that can be applied to enter-prise wide or to specific groups
+
+## AWS Config
+Compliance as Code (CaC) framework that allows us to manage change in aws accounts on a per region basis
+- change management is a formal process to
+  - monitor changes
+  - enforce changes
+  - remediate changes
+
+`AWS Config`
+- ensure a resource is configured a certain way
+- keep track of configuration changes
+- list of all resources in a region
+
+## AWS Quick Starts
+Prebuilt templates by aws and aws partners to help deploy stacks
+- reference architecture for deployment
+- aws cloudformation templates that automate and configure the deployment
+- a deployment and implementation guide
+
+## Tagging
+A key and value pair that you can assign to aws resources. Can be used to organize resources:
+- resource management
+- cost management
+- operations management
+- security
+- governance and regulatory compliance
+
+## Resource Groups
+A collection of resources that share one or more tags
+- Helps you organize and consolidate information based on your project and the resources that you use.
+- Resource Groups can display details about a group of resource based on
+  - Metrics
+  - Alarms 
+  - Configuration Settings
+
+Resource Groups appears in the Global Console Header and Under Systems Manager
+
+## Business Centric Services
+-` Amazon Connect`
+  - virtual call center
+- `WorkSpaces`
+  - virtual remote desktop service
+- `WorkDocs`
+  - shared collaboration service
+- `Chime`
+  - platform for online meetings
+- `WorkMail` 
+  - - Managed business email, contacts, and calendar service with support for existing desktop and mobile email client applications
+- `Pinpoint`
+  - Marketing campaign management system you can use for sending targeted email, SMS, push notifications, and voice messages.
+- `Simple Email Service`
+  - email sending service designed fro marketers and application developers to send marketing, notifications, and emails.
+- `QuickSight`
+  -  A Business Intelligence (BI) service. Connect multiple datasource and quickly visualize data in the form of graphs
