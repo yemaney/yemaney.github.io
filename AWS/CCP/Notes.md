@@ -112,6 +112,9 @@
   - [Tagging](#tagging)
   - [Resource Groups](#resource-groups)
   - [Business Centric Services](#business-centric-services)
+- [Provisioning](#provisioning)
+  - [Provisioning Services](#provisioning-services)
+  - [AWS Elastic Beanstalk](#aws-elastic-beanstalk)
 
 # Cloud Concepts
 
@@ -1207,3 +1210,41 @@ Resource Groups appears in the Global Console Header and Under Systems Manager
   - email sending service designed fro marketers and application developers to send marketing, notifications, and emails.
 - `QuickSight`
   -  A Business Intelligence (BI) service. Connect multiple datasource and quickly visualize data in the form of graphs
+
+# Provisioning
+The allocation or creation of resources and services to a customer.
+
+## Provisioning Services
+- `Elastic Beanstalk `
+  -  an easy-to-use service for deploying and scaling web applications
+- `OpWorks` 
+  - configuration management service that provides managed instances of Chef and Puppet
+- `CloudFormation` 
+  - lets you deploy your cloud resources using infrastructure-as-code with JSON and YAML templates
+- `AWS QuickStarts `
+  - pre-made packages that can launch and configure your AWS compute, network, storage, and other services
+- `AWS Marketplace `
+  - a digital catalogue containing thousands of software listings
+- `AWS Amplify `
+  - is a mobile and web application framework, that will provision multiple AWS services as your backend.​
+- `AWS App Runner `
+  - a fully managed service that makes it easy for developers to quickly deploy containerized web applications and APIs
+- `AWS Copilot` 
+  - AWS Copilot is a command-line interface (CLI) that enables customers to quickly launch and easily manage containerized applications on AWS
+- `AWS CodeStar` 
+  - provides a unified user interface, enabling you to easily manage your software development activities in one place
+- `AWS Cloud Development Kit (CDK)`
+  - an Infrastructure as Code (IaC) tool.
+
+## AWS Elastic Beanstalk
+PaaS allowing customer to develop, run, and manage applications without the complexity of building and maintaining the infrastructure
+-  powered by a `CloudFormation` template and setups
+  - Elastic Load Balancer
+  - Autoscaling Groups
+  - RDS Database
+  - EC2 Instance preconfigured (or custom ) platforms
+  - Monitoring (CloudWatch, SNS)
+  - In-Place and Blue/Green deployment methodologies
+  - Security (Rotates passwords)
+  - Can run Dockerized environments
+
