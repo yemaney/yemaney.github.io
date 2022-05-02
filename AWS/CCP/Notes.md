@@ -117,6 +117,10 @@
   - [AWS Elastic Beanstalk](#aws-elastic-beanstalk)
 - [Serverless Services](#serverless-services)
 - [Windows on AWS](#windows-on-aws)
+- [Logging](#logging)
+  - [Anatomy of an Alarm](#anatomy-of-an-alarm)
+  - [CloudWatch Logs — Log Streams](#cloudwatch-logs--log-streams)
+  - [Log Insights](#log-insights)
 
 # Cloud Concepts
 
@@ -1292,3 +1296,48 @@ Serverless can Scale-to-Zero meaning when not in use the serverless resources co
   - allows you to run a Windows virtual desktop
 - `AWS Migration Acceleration Program (MAP)`
   - migration methodology from moving large enterprise
+
+# Logging
+- `CloudTrail`
+  - logs all api calls between various aws services
+  - used to answer questions of who created/launched/configured a 
+    - `Where` : Source IP Address
+    - `When` : EventTime
+    - `Who` : User, UserAgent
+    - `What` : Region, Resource, Actionresources
+  - Trails are output to S3 and do not have GUI like Event History. To analyze a Trail you’d have to use Amazon Athena.
+- `CloudWatch`
+  - a collection of multiple resources
+  - `logs`: performance data about aws services
+  - `metrics`: time-ordered set of data points for monitoring purposes
+    - It's a variable that is monitored over time.
+  - `events`: trigger an event based ona  condition
+  - `alarms`: trigger notifications based on metrics
+    - Metric Alarm States
+    - `OK` The metric or expression is within the defined threshold
+    - `ALARM` The metric or expression is outside of the defined threshold
+    - `INSUFFICIENT_DATA`
+  - `dashboard`: visualize metrics
+- `AWS X-Ray`
+  - distributed tracing system
+  - see how data moves from one app to another, how long it takes to moves, and if failed to move forward
+
+## Anatomy of an Alarm
+- `threshold condition` : defines when a data point is breached
+- `evaluation periods` : number of previous periods
+- `data point` : metrics measurement at a given time period
+- `metric` : data that is being measured
+- `period` : how often alarm is evaluated
+- `networkin` : volume of incoming network traffic
+- `datapoints` to alarm : "1 data point is breached in an evaluation period going back 4 periods."
+
+## CloudWatch Logs — Log Streams
+- `log stream` :  represents a sequence of events from an application or instance being monitored.
+
+- `log Events` : a single event in a log file. Log events can be seen within a Log Stream.
+
+## Log Insights
+Enables you interactively search and analyze cloudwatch data
+- more robust filtering than log streams
+- less burdensome than having to export logs to s3 an analyze them with athena
+- has it's own language `Query Syntax`
