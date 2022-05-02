@@ -124,6 +124,14 @@
 - [ML and AI and Big Data](#ml-and-ai-and-big-data)
   - [AI and ML Services](#ai-and-ml-services)
   - [Big Data and Analytics Services](#big-data-and-analytics-services)
+- [AWS Well-Architected Framework](#aws-well-architected-framework)
+  - [General Design Principles](#general-design-principles)
+  - [Anatomy of a Pillar](#anatomy-of-a-pillar)
+  - [Operational Excellence](#operational-excellence)
+  - [Security](#security)
+  - [Reliability](#reliability)
+  - [Performance Efficiency](#performance-efficiency)
+  - [Cost Optimization](#cost-optimization)
 
 # Cloud Concepts
 
@@ -1410,4 +1418,103 @@ Enables you interactively search and analyze cloudwatch data
    - centralized, curated, and secured repository that stores all your data
 - `data exchange`
   - catalog of third-party datasets. You can download for free
+
+# AWS Well-Architected Framework
+A whitepaper created by awws to help customers build using best practices.
+
+The framework is divided into 5 6 sections called pillars
+- `Operational Excellence` : run and monitor systems
+- `Security` : protect data and systems, mitigate risk
+- `Reliability` : mitigate and recover from disruptions
+- `Performance Efficiency` : use compute resources effectively
+- `Cost Optimization` : get lowest price
+
+General definitions
+- `Component` : code, configuration, and aws resource against a requirement
+- `Workload` : a set of components that work together to deliver business value
+- `Milestones` : key changes of your architecture through product life cycle
+- `Architecture` : how components work together in a workload
+- `Technology Portfolio` : a collection of workloads required for the business to operate
+
+## General Design Principles
+- `Stop guessing your capacity needs`
+  - cloud computing lets you use as little or as much depending on demand
+- `Test systems at production scale`
+  - clone production env to testing, teardown when testing not in use to save money
+- `Automate to make architectural experimentation easier`
+  - cloudformation, changesets stackupdate, and drift detection
+- `Allow for evolutionary architectures`
+  - ci/cd
+- `Drive architecture using data`
+  - cloudwatch, cloud trail
+- `Improve through game days`
+  - simulate traffic on production or purposely kill ec2 to test recovery
+
+## Anatomy of a Pillar
+- `Design principles`
+  - a list of principles that need to be considered during implementation
+- `Definition`
+  - overview of the best practice categories
+- `Best Practices`
+  - detailed information about each best practice with aws services
+- `Resources`
+  - additional documentation, whitepapers, and videos to implement this pillar
+
+## Operational Excellence
+- `Perform operations as code`
+  - eg. infrastructure as code
+- `Make frequent, small, reversible changes`
+  - design workloads to allow components to be updated regularly
+  - eg. ci/cd
+- `Refine operations procedures frequently`
+  - look for continuous opportunities to improve your operations
+  - eg. simulate traffic or event failure on your production workloads
+- `Anticipate failure`
+  - write test code, kill servers to rest recovery
+- `Learn from all operational failures`
+
+## Security
+- `Implement a strong identity foundation`
+  - Principle of least privilege
+- `Enable traceability`
+  - monitor alert and audit actions, integrate log and metric collection, automate investigation and remediation
+- `Apply security at all layers`
+  - eg. Edge Network, VPC, Load Balancing Instances, OS, Application Code
+- `Automate security best practices`
+- `Protect data in transit and at rest`
+- `Keep people away from data`
+- `Prepare for security events`
+
+## Reliability
+- `Automatically recovver from failure`
+  - monitor kpi's and trigger automation when a threshold is breached
+- `Test recovery procedures`
+  - test how workload fails, validate recovery procedures
+- `Scale horizontally to increase availability`
+  - replace one large resource with multiple small resources to reduce impact of a single failure
+- `Stop guessing capacity`
+- `Manage change in automation`
+  - make changes via infrastructure as code
+
+## Performance Efficiency
+- `Democratize advanced technologies`
+  - Take advantage of advanced technology specialized and optimized for your use-case with on-demand cloud services.
+- `Go global in minutes`
+- `Use serverless architectures`
+  -  Removes the operational burden of managing physical servers, and can lower transactional costs
+- `Experiment more often`
+- `Consider mechanical sympathy`
+  - Understand how cloud services are consumed and always use the technology approach that aligns best with your workload goals
+
+## Cost Optimization
+- `Implement cloud financial management`
+- `Adopt a consumption model`
+  - Pay only for the computing resources that you require
+- `Measure overall efficiency`
+  - Measure the business output of the workload and the costs associated with delivering it. Use this measure to know the gains you make from increasing output and reducing costs.
+- `Stop spending money on undifferentiated heavy lifting`
+  - AWS does the heavy lifting of data center operations
+- `Analyze and attribute expenditure`
+  - accurately identify the usage and cost of systems, transparent attribution of IT costs to individual workload owners.
+  - measure return on investment (ROI) and gives workload owners an opportunity to optimize their resources and reduce costs.
 
