@@ -121,6 +121,9 @@
   - [Anatomy of an Alarm](#anatomy-of-an-alarm)
   - [CloudWatch Logs — Log Streams](#cloudwatch-logs--log-streams)
   - [Log Insights](#log-insights)
+- [ML and AI and Big Data](#ml-and-ai-and-big-data)
+  - [AI and ML Services](#ai-and-ml-services)
+  - [Big Data and Analytics Services](#big-data-and-analytics-services)
 
 # Cloud Concepts
 
@@ -1341,3 +1344,70 @@ Enables you interactively search and analyze cloudwatch data
 - more robust filtering than log streams
 - less burdensome than having to export logs to s3 an analyze them with athena
 - has it's own language `Query Syntax`
+
+# ML and AI and Big Data
+## AI and ML Services
+- `amazon codeguru`
+  - machine-learning code analysis services, performs code-reviews and will suggest changes to improve quality and performance
+- `amazon lex`
+  - build text and voice chatbots
+- `amazon personalize`
+  - real-time recommendations service
+- `amazon polly`
+  - text-to-speach service
+- `amazon rekogition`
+  - image and video recognition service, analyze images and videos to detect and label objects
+- `amazon transcribe`
+  - speech to text service
+- `amazon textract`
+  - extract data from scanned documents
+- `amazon translate`
+- `amazon comprehend`
+  - nlp service
+- `amazon forecast`
+  - time series forecasting service
+- `aws deep learning ami's`
+  - ec2 instances pre-installed with popular deep learning frameworks
+- `aws deep learning containers`
+  - docker images pre-installed with popular deep learning frameworks
+- `amazon fraud detector `
+  - fraud detection service
+- `amazon kendra`
+  - search engine
+- `amazon sagemaker`
+  - build ml solutions end to end
+
+## Big Data and Analytics Services
+
+- `athena`
+  - serverless query service
+  - takes csv and json files and temporarily loads them into sql tables
+- `opensearch`
+  - full-text search engine
+- `elastic map reduce (EMR)`
+  - data processing and analysis
+  - transform unstructured data into structured data on the fly
+- `kinesis data streams`
+  - ream time streaming data service
+- `kinesis firehose`
+  - simpler version of data streams
+- `kinesis data analytics`
+  - run queries against data that is flowing real time
+- `kinesis video streams`
+  - analyze or process real-time video streams
+- `managed kafka service (MSK)`
+  -  real-time streaming data pipelines
+  -  more robust version of kinesis
+-  `redshift`
+   -  petabyte sized data warehouse
+-  `quicksight`
+   -  bi tool to build dashboards
+-  `data pipelines`
+   -  reliably move data between compute and storage services
+-  `glue`
+   -  ETL service
+-  `lake formation`
+   - centralized, curated, and secured repository that stores all your data
+- `data exchange`
+  - catalog of third-party datasets. You can download for free
+
