@@ -132,6 +132,13 @@
   - [Reliability](#reliability)
   - [Performance Efficiency](#performance-efficiency)
   - [Cost Optimization](#cost-optimization)
+- [TCO and Migration](#tco-and-migration)
+  - [Total Cost of Ownership (TCO)](#total-cost-of-ownership-tco)
+  - [Capital Expenditure (CAPEX) vs Operational Expenditure (OPEX)](#capital-expenditure-capex-vs-operational-expenditure-opex)
+  - [AWS Pricing Calculator](#aws-pricing-calculator)
+  - [Migration Evaluator](#migration-evaluator)
+  - [VM Import / Export](#vm-import--export)
+  - [Database Migration Service (DMS)](#database-migration-service-dms)
 
 # Cloud Concepts
 
@@ -1518,3 +1525,39 @@ General definitions
   - accurately identify the usage and cost of systems, transparent attribution of IT costs to individual workload owners.
   - measure return on investment (ROI) and gives workload owners an opportunity to optimize their resources and reduce costs.
 
+# TCO and Migration
+
+## Total Cost of Ownership (TCO)
+Financial estimate intended to help buyers and owners determine the direct and indirect costs of a product or service.
+- useful when your company is looking to migrate from on=premise to cloud
+
+## Capital Expenditure (CAPEX) vs Operational Expenditure (OPEX)
+- `CAPEX`
+  - spending money on physical infrastructure
+  - deducting that expense from your tax bill
+  - eg. servers, storage, networking
+- `OPEX`
+  -  costs associated with an on-premises data center that has shifted the cost to the service provider
+  - non-physical costs
+  - eg. leasing software, training employees, cloud support
+
+## AWS Pricing Calculator
+Free cost estimate tool.
+
+To calculate the Total Cost of Ownership an organization needs to compare their existing cost against the AWS costs.
+
+## Migration Evaluator
+Estimating tool used to determine an organization existing on-premise cost so it can be compared against aws costs.
+
+## VM Import / Export
+Used to import virtual machine images into EC2.
+- upload virtual image to S3
+- use aws cli to import image to generate an AMI to import into EC2
+
+## Database Migration Service (DMS)
+`AWS Database Migration Service (DMS)`
+- allows you to quickly and securely migrate one database to another
+- can be used to migrate on-premise database to aws
+
+`AWS Schema Conversion Tool`
+- automatically convert a source database schema to a target database schema
