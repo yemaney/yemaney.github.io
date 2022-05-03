@@ -161,13 +161,22 @@
   - [Pen Testing](#pen-testing)
   - [AWS Artifact](#aws-artifact)
   - [AWS Inspector](#aws-inspector)
-  - [AWS Sheild](#aws-sheild)
+  - [AWS Shield](#aws-shield)
   - [Amazon Guard Duty](#amazon-guard-duty)
   - [Amazon Macie](#amazon-macie)
   - [AWS VPN](#aws-vpn)
   - [AWS Web Application Firewall (WAF)](#aws-web-application-firewall-waf)
   - [AWS Key Management Service (KMS)](#aws-key-management-service-kms)
   - [CloudHSM](#cloudhsm)
+- [Variation Study](#variation-study)
+  - [Know you initialisms](#know-you-initialisms)
+  - [AWS Config vs AWS AppConfig](#aws-config-vs-aws-appconfig)
+  - [SNS vs  SQS](#sns-vs--sqs)
+  - [SNS vs SES vs PinPoint vs WorkMail](#sns-vs-ses-vs-pinpoint-vs-workmail)
+  - [AWS Inspector vs AWS Trusted Advisor](#aws-inspector-vs-aws-trusted-advisor)
+  - [Connect Names Services](#connect-names-services)
+  - [AWS Artifact vs Amazon Inspector](#aws-artifact-vs-amazon-inspector)
+  - [ELB Variants](#elb-variants)
 
 # Cloud Concepts
 
@@ -1759,7 +1768,7 @@ AWS Inspector runs a security benchmark against specific EC2 instances.
 `Hardening`
 - act of eliminating as many security risks as possible
 
-## AWS Sheild
+## AWS Shield
 Managed DDoS protection service that safeguards applications running on AWS.
 
 Protects you against Layer 3, 4, and 7 attacks
@@ -1801,3 +1810,125 @@ A managed service that makes it easy for you to create and control the encryptio
 Enables you to generate and use your encryption keys on FIPS 140-2 Level 3 validated hardware.
 - usually used when enterprise needs to meet compliance
 
+# Variation Study
+
+## Know you initialisms
+`IAM` Identity and Access Management
+`S3` Simple Storage Service
+`SWF` Simple Workflow Service
+`SNS` Simple Notification Service
+`SQS` Simple Queue Service
+`SES` Simple Email Service
+`SSM` Simple Systems Manager
+`RDS` Relational Database Service
+`VPC` Virtual Private Cloud
+`VPN` Virtual Private Network
+`CFN` CloudFormation
+`WAF` Web Application Firewall
+`MQ` Amazon ActiveMQ
+`ASG` Auto Scaling Groups
+`TAM` Technical Account Manager
+`ELB` Elastic Load Balancer
+`ALB` Application Load Balancer
+`NLB` Network Load Balancer
+`GWLB` Gateway Load Balancer
+`CLB` Classic Load Balancer
+`EC2` Elastic Cloud Compute
+`ECS` Elastic Container Service
+`ECR` Elastic Container Repository
+`EBS` Elastic Block Storage
+`EFS` Elastic File Storage
+`EMR` Elastic MapReduce
+`EB` Elastic Beanstalk
+`ES` Elasticsearch
+`EKS` Elastic Kubernetes Service
+`MSK` Managed Kafka Service
+`RAM` AWS Resource Manager
+`ACM` Amazon Certificate Manager
+`PoLP` Principle of Least Privilege
+`IoT` Internet of Things
+`RI` Reserved Instances
+
+## AWS Config vs AWS AppConfig
+`AWS Config` is a governance tool for Compliance as Code (CoC).
+
+`AWS App Config` is used to automate the process of deploying application configuration variable changes to your web application (s).
+
+## SNS vs  SQS
+`Simple Notifications Service`
+- Pass Along Messages eg. PubSub
+- generally used for sending plain text emails 
+
+`Simple Queue Service`
+- Queue Up Messages, Guaranteed Delivery
+
+## SNS vs SES vs PinPoint vs WorkMail
+`Simple Notifications Service`
+- Practical and Internal Emails
+- plain text emails
+- Send notifications to subscribers of topics
+
+`Simple Email Service`
+- Transactional Emails, Emails that should be triggered based on in-app actions
+- sends HTML emails
+- can create Email Templates
+
+`Amazon PinPoint`
+- Promotional Emails, Create email campaigns
+
+`Amazon Workmail`
+- Email Web Client
+
+
+## AWS Inspector vs AWS Trusted Advisor
+Both are security tools and they both perform audits
+
+`Amazon Inspector`
+- Audits a single EC2 instance that you’ve selected
+- Generates a report from a long list of security checks i.e 699 checks.
+
+`Trusted Advisor`
+- Trusted Advisor doesn’t generate out a PDF report.
+- Gives you a holistic view of recommendations across multiple services and best practices
+
+## Connect Names Services
+`Direct Connect`
+- A Dedicated Fiber Optics Connection from your DataCenter to AWS
+
+`Amazon Connect`
+- Call Center as a Service
+
+`Media Connect`
+- Converts Videos to Different Video Types
+
+## AWS Artifact vs Amazon Inspector
+Both Artifact and Inspector compile out PDFs
+
+`AWS Artifact`
+- Why should an enterprise trust AWS?
+- Generates a security report that’s based on global compliance frameworks
+
+`Amazon Inspector`
+- How do we know this EC2 instance is Secure? Prove It?
+- analyzes your EC2 instance, then generates a PDF report
+
+## ELB Variants
+Elastic Load Balancer (ELB) has 4 different types of possible load balancers.
+
+`Application Load Balancer (ALB)`
+- Layer 7 - HTTP/S
+- create rules to change routing based on information found in an HTTP/S request
+- Can attach an AWS WAF
+
+`Network Load Balancer (NLB)`
+- Layer 3 and 4 – TCP and UDP
+- Where extreme performance is required for TCP and TLS traffic
+- Optimized for sudden and volatile traffic patterns while using a single static IP address per Availability Zone
+- Capable of handling millions of requests per second while maintaining ultra-low latencies
+
+`Gateway Load Balancer (GWLB)`
+- When you need to deploy a fleet of third-party virtual appliances that support GENEVE
+
+`Classic Load Balancer (CLB)`
+- Layer 3,4 and 7
+- Retires on Aug 15, 2022
