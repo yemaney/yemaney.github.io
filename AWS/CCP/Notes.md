@@ -139,6 +139,20 @@
   - [Migration Evaluator](#migration-evaluator)
   - [VM Import / Export](#vm-import--export)
   - [Database Migration Service (DMS)](#database-migration-service-dms)
+  - [Billing, Pricing, and Support](#billing-pricing-and-support)
+  - [AWS Support Plans](#aws-support-plans)
+  - [technical Account Manager](#technical-account-manager)
+  - [AWS Market Marketplace](#aws-market-marketplace)
+  - [Consolidated Billing](#consolidated-billing)
+  - [AWS Trusted Advisor](#aws-trusted-advisor)
+  - [Service Level Agreements (SLA)](#service-level-agreements-sla)
+  - [Health Dashboard's](#health-dashboards)
+  - [AWS Abuse](#aws-abuse)
+  - [AWS Partner Network (APN)](#aws-partner-network-apn)
+  - [AWS Budgets](#aws-budgets)
+  - [AWS Cost and Usage Reports (CUR)](#aws-cost-and-usage-reports-cur)
+  - [Billing Alarms](#billing-alarms)
+  - [AWS Cost Explorer](#aws-cost-explorer)
 
 # Cloud Concepts
 
@@ -1561,3 +1575,112 @@ Used to import virtual machine images into EC2.
 
 `AWS Schema Conversion Tool`
 - automatically convert a source database schema to a target database schema
+
+## Billing, Pricing, and Support
+
+## AWS Support Plans
+- `Basic`
+  - Email support only
+  - for billing and account
+  - 7 trusted advisor checks
+- `Developer : 29$/m`
+  - ech support via email ~24 hours until reply
+  - general guidance < 24hrs
+  - system impaired < 24hrs
+- `Business : 100$/m`
+  - production system impaired < 4hrs
+  - production system down < 1hr
+  - all trusted advisor checks
+- `Enterprise : 15000$/m`
+  - business critical system down < 15m
+  - personal concierge
+  - technical account manager
+
+## technical Account Manager
+- Build solutions, provide technical guidance and advocate for the customer
+- Ensure AWS environments remain operationally healthy whilst reducing cost and complexity
+- Develop trusting relationships with customers, understanding their business needs and technical challenges
+- Proactively find opportunities for customers to gain additional value from AWS
+
+## AWS Market Marketplace
+- curated digital catalog with thousands of software listings from independent software vendors.
+
+## Consolidated Billing
+Allows you to pay for multiple accounts with one bill.
+- can be used to get volume discounts across accounts
+
+`Cost Explorer`
+- ca be used to visualize consolidated billing
+
+## AWS Trusted Advisor
+A recommendation tool that automatically and actively monitors your AWS account to provide actionable recommendations across a series of categories
+
+Five categories of AWS Trusted Advisor:
+- Cost optimization
+- Performance
+- Security
+- Fault toleranceService limits
+
+## Service Level Agreements (SLA)
+A formal commitment about the expected level of service between a customer and a provider
+- when service level is not met, and customer meets its obligations, the customer will be eligible to receive
+
+- `Service level indicator (SLI)`
+  - a metric that indicates what measure of performance a customer is receiving at a given time
+- `Service level objective (SLO)`
+  - the objective that the provider has agreed to meet
+  - represented as a specific target percentage over a period of time.
+
+## Health Dashboard's
+- `Service Health Dashboard`
+  - shows the general status of AWS services
+- `Personal Health Dashboard`
+  - provides alerts and guidance for AWS events that might affect your environment.
+
+## AWS Abuse
+AWS Trust & Safety is a team that specifically deals with abuses occurring on the AWS platform for the following issues:
+- spam
+- port scanning
+- Denial-of-Service (DoS)
+- Intrusion attempts
+- Hosting prohibited content
+- Distributed malware
+
+## AWS Partner Network (APN)
+A global partner program.
+
+- Consulting Partner
+  - you help companies utilize AWS
+- Technology Partner
+  -  you build technology on top of AWS as a service offering
+-  A partner belongs to a specific Tier: Select, Advanced, or Premier
+
+## AWS Budgets
+AWS Budgets give you the ability to set up alerts if you exceed or are approaching your defined budget
+- can be tracked at the monthly, quarterly, or yearly levels, with customizable start and end dates
+- support EC2, RDS, Redshift, and ElastiCache reservations.
+
+`AWS Budget Reports`
+- create and send daily, weekly, or monthly reports to monitor the performance of your AWS Budget that will be emailed to specific emails.
+
+## AWS Cost and Usage Reports (CUR)
+Generate a detailed spreadsheet, enabling you to better analyze and understand your AWS costs
+- Places the reports into S3
+- Use Athena to turn the report into a queryable database
+- Use QuickSight to visualize your billing data as graphs
+
+`Cost Allocation Tags`:
+- optional metadata that can be attached to AWS resources
+- can be used to do better analysis with cost and usage reports
+- user defined or aws generated
+
+## Billing Alarms
+You can create your own Alarms in CloudWatch Alarms to monitor spending. They are commonly called “Billing Alarms”
+-  more flexible than AWS Budgets and ideal for more complex use-cases
+
+## AWS Cost Explorer
+Lets you visualize, understand, and manage your AWS costs and usage over time.
+- Specific type range and aggregation
+- robust filtering  and grouping functionalities
+- forecasting to get an idea of future costs
+- monthly or daily level of granularity
