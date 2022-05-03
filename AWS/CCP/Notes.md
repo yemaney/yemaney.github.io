@@ -153,6 +153,21 @@
   - [AWS Cost and Usage Reports (CUR)](#aws-cost-and-usage-reports-cur)
   - [Billing Alarms](#billing-alarms)
   - [AWS Cost Explorer](#aws-cost-explorer)
+- [Security](#security-1)
+  - [Defense in Depth](#defense-in-depth)
+  - [Confidentiality, Integrity, Availability (CIA)](#confidentiality-integrity-availability-cia)
+  - [Encryption](#encryption)
+  - [Digital Signatures and Signing](#digital-signatures-and-signing)
+  - [Pen Testing](#pen-testing)
+  - [AWS Artifact](#aws-artifact)
+  - [AWS Inspector](#aws-inspector)
+  - [AWS Sheild](#aws-sheild)
+  - [Amazon Guard Duty](#amazon-guard-duty)
+  - [Amazon Macie](#amazon-macie)
+  - [AWS VPN](#aws-vpn)
+  - [AWS Web Application Firewall (WAF)](#aws-web-application-firewall-waf)
+  - [AWS Key Management Service (KMS)](#aws-key-management-service-kms)
+  - [CloudHSM](#cloudhsm)
 
 # Cloud Concepts
 
@@ -1684,3 +1699,105 @@ Lets you visualize, understand, and manage your AWS costs and usage over time.
 - robust filtering  and grouping functionalities
 - forecasting to get an idea of future costs
 - monthly or daily level of granularity
+
+# Security
+Vulnerability
+- A weakness in the application, which can be a design flaw, that allows an attacker to cause harm to the stakeholders of an application
+
+## Defense in Depth
+The 7 layers of security.
+1. `Data` : access to business or customer data
+2. `Application` : applications are secure and free of vulnerabilities
+3. `Compute` : access to virtual machines, ports
+4. `Network` : limit communication between resoures using segmentation and access controls
+5. `Perimeter` : distributed denial of service (DDoS) protection
+6. `Identity` and access : controlling access to infrastructure and change controls
+7. `Physical` : limit access to a data center only to authorized personal
+
+## Confidentiality, Integrity, Availability (CIA)
+A model describing the foundation of security principles and their trade-off relationship.
+
+1. `Confidentiality` : pro of data from unauthorized users, using encryption
+2. `Integrity` : maintaining and assuring the accuracy and completeness of data over its lifecycle, using ACID compliant databases
+3. `Availability` : information needs to be available when needed
+
+## Encryption
+The process of encoding information using a key and a cypher to store sensitive data.
+
+- `Cypher`
+  - an algorithm that performs the encryption or decryption
+- `Cryptographic keys`
+  - a variable used in conjunction with a cypher in order to encrypt or decrypt data
+  - symmetric encryption : same key is used for encoding and decoding
+  - asymmetric encryption : two keys are used
+- `hashing` 
+  - function that accepts arbitrary size value and maps it to a fixed-size data structure, one-way process and is deterministic
+  - used to store passwords
+  - `salting` passwords : a random string not known to the attacker that the hash function accepts to mitigate the deterministic nature of hashing functions
+
+Encryption in Transit - data is secure when moving between locations, TLS, SSL
+
+Encryption at Rest - data is secure when residing on storage, AES, RSA
+
+## Digital Signatures and Signing
+A mathematical scheme for verifying the authenticity of digital messages or documents
+
+Three algorithms:
+1. `key generation` - generates a public and private key
+2. `signing` - generating a digital signature with a private key and inputted messages
+3. `signing verification` - verify the authenticity of the message with a public key
+
+## Pen Testing
+An authorized simulated cyber-attack on a computer system, performed to evaluate the security of the system.
+
+## AWS Artifact
+A self-serve portal for on-demand access to aws compliance reports.
+
+## AWS Inspector
+AWS Inspector runs a security benchmark against specific EC2 instances.
+
+`Hardening`
+- act of eliminating as many security risks as possible
+
+## AWS Sheild
+Managed DDoS protection service that safeguards applications running on AWS.
+
+Protects you against Layer 3, 4, and 7 attacks
+
+- 7 Application
+- 4 Transport
+- 3 Network
+
+## Amazon Guard Duty
+IDS/IPS - Intrusion Detection System and Intrusion Protection System.
+
+`Guard Duty` is a threat detection service that continuously monitors for malicious, suspicious activity and unauthorized behavior.It uses Machine Learning to analyze the following AWS logs:
+- CloudTrail Logs
+- VPC Flow Logs
+- DNS logs
+
+## Amazon Macie
+Macie is a fully managed service that continuously monitors S3 data access activity for anomalies, and generates detailed alerts when it detects the risk of unauthorized access or inadvertent data leaks.
+
+## AWS VPN
+Lets you establish a secure and private tunnel from your network or device to the AWS global network
+
+`AWS Site-to-Site VPN`
+- securely connect on-premises network or branch office site to VPC
+`AWS Client VPN`
+- securely connect users to AWS or on-premises networks
+
+## AWS Web Application Firewall (WAF)
+Protect your web applications from common web exploits
+- Write your own rules to ALLOW or DENY traffic based on the contents of HTTP requests
+- can be attached to either CloudFront or an Application Load Balancer
+
+## AWS Key Management Service (KMS)
+A managed service that makes it easy for you to create and control the encryption keys used to encrypt your data.
+- KMS uses Envelope Encryption.
+`[KMS Master Key] encrypts → [Envelope Data Key] encrypts → [Data]`
+
+## CloudHSM
+Enables you to generate and use your encryption keys on FIPS 140-2 Level 3 validated hardware.
+- usually used when enterprise needs to meet compliance
+
