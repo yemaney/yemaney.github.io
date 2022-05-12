@@ -11,9 +11,9 @@
 
     Current Objectives
 
-    | :clipboard:       | :construction_worker:       | :books:              |
-    | ----------------- | --------------------------- | -------------------- |
-    | documenting notes | documenting person projects | book recommendations |
+    | :clipboard:       | :construction_worker:         | :books:              |
+    | ----------------- | ----------------------------- | -------------------- |
+    | documenting notes | documenting personal projects | book recommendations |
 
-## My Stack
+## Subjects
 ![Python](./assets/python.svg)
