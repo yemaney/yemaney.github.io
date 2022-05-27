@@ -39,3 +39,59 @@ Long term credentials... -> don't change regularly
 - can be created, deleted, made inactive or active
 
 Has two parts : `Access Key ID + Secret Access Key`
+
+## IAM Policies
+Attached to AWS identities and either ALLOW or DENY access to AWS resources.
+
+Comprised of one or more statements that define what actions to allow and deny a resource.
+
+- `Sid`: (statement id), used to help reader what a statement does
+- `Effect` : what happens when the `action` and `resource` match the policy
+- `Action` : One or more actions the policy is concerned with
+- `Resource` : One or more resources the policy is concerned with
+
+Statements with `DENY` effect are given priority over `ALLOW`.
+The default effect is `DENY`.
+
+Inline vs Managed Policy
+- inline policies are created by adding a policy to an individual identity or resource
+  - used for specific or exceptional allows or denies
+- managed policies are created on their own and then attached to one or more entities
+  - reusable, low overhead
+  - should be used for the normal default operational rights ina business
+
+## IAM Users
+An identity used for `long term aws access`
+- humans, applications, or service accounts
+
+`Principle` : An entity trying to access an aws account
+- person or application, needs to authenticate against an identity within an IAM
+- authentication is done with either `username: password` or `access keys`
+- once an identity is authenticated, then aws knows which policies apply to it to authorize it
+
+`authentication` : proving identity
+`authorization` : checking which statements apply to the identity
+
+Limits
+- max `5,000` users per account
+- user can be a part of a max `10` groups
+
+## Amazon Resource Name
+Used to uniquely identify resources within any aws accounts.
+- used in policies to define the resources a statement is about
+
+```
+arn:aws:s3:::bucket     # refers to the bucket
+arn:aws:s3:::bucket/*   # refers to every object within the bucket, but not the bucket
+```
+
+## IAM Groups
+Containers for IAM Users. 
+- used to organize large sets of IAM Users.
+- not real identities, 
+  - no credentials 
+  - can't be used to log in or in resource policies
+  - can't be referenced as a principal in a policy
+- can have both inline and managed policies attached
+- no nesting of groups
+- `300` groups per account
