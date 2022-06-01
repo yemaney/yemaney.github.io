@@ -3,6 +3,9 @@
 - a discover service
 - finds the IP address for a given domain name
 - huge and distributed
+- DNS Root Servers ran by 12 large organizations
+- DNS Root Zone managed by IANA
+- a registry is an organization to maintains the zones for top level domains
 
 - `DNS Client` : software on device being used
 - `Resolver` : software on device or server that queries DNS on your behalf

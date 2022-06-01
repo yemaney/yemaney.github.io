@@ -17,3 +17,8 @@
 - used to create an EC2 or from an EC2
 - contains the root volume, the drive that boots the operating system
 - block device mapping, used to determine which volume is root volume and which is data volume
+
+Permission Options:
+1. Public Access
+2. Owner Only
+3. Specific AWS Accounts
