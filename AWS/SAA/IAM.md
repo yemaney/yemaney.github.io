@@ -95,3 +95,73 @@ Containers for IAM Users.
 - can have both inline and managed policies attached
 - no nesting of groups
 - `300` groups per account
+
+## IAM Roles
+- used when an identity is going to be assumed by multiple principles
+- assuming a role gives you temporary security credentials
+- `trust policy` : which identities can assume a role
+- `permissions policy` : policy that allows or denies the permissions
+
+
+`use cases :`
+1. common use case is when an aws service needs permissions
+2. When a user needs an emergency increase of permissions
+3. when integrating aws with an existing identity provider (identity federation)
+
+`benefits:`
+- now aws credentials on app, (temporarily created by role)
+- can be used with existing customer logins (facebook, active directory)
+- scale to millions of users to get around the iam user limit
+
+`service linked roles`
+- role that is linked directly to an AWS service
+- predefined by a service
+- provide permissions that a service needs to interact with other aws services
+- service might create or delete the role
+- `iam:PassRole` action allows an identity to pass an existing role to another service (role separation)
+
+## AWS Organizations
+Manage many accounts.
+
+`Steps:`
+1. Create an aws organization with a standard account
+   - account that creates the organization is now the `management account`
+   - `standard accounts` are those not belonging to the organization
+2. Invite other standard accounts into the organization
+   - the standard accounts who accept the invite are now `member accounts`
+
+`Composition:`
+1. `Organization Root` root container for aws organization
+  - contains either member accounts or the management account
+  - can also contain other containers called `organizational units (OU)`
+    - OU's can contain accounts or other OU's
+
+
+`Features:`
+1. Consolidated Billing
+   - accounts that join the organization lose their own billing method
+   - member accounts pass their billing through aws `management account` or `payer account`
+   - consolidation of `reservations` and `volume discounts`
+2. Can create new accounts directly within an organization
+
+
+`Common Pattern: Identity federation`
+- single aws account that contains all the identities that are logged into
+- use a feature called `role switch`, to role switch into other member accounts of the organization
+  - behind the scenes, this is done by `assuming roles` in the other aws accounts
+
+### Service Control Policies
+
+A policy document, attached to either:
+- root container of an organization (impact all accounts in organization)
+- or on or more organizational units (impact all accounts in the OU)
+- or individual aws accounts
+
+- `Member` accounts can be effected, the `management` account cannot.
+- SCP's are `account permission boundaries`
+  - limit what account (including account root user) can do
+    - `limiting account effectively limits the root user`
+  - `don't grant permission`
+    - control what permissions an account `CAN and CANNOT grant` via `identity policies`
+- use a deny list architecture
+  - implicitly allow all permissions, then add policy to deny services you want to restrict
