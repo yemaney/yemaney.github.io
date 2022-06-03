@@ -78,3 +78,58 @@ int main()
 }
 ```
 
+## Pointers
+Address variable that stores address of data.
+1. Accessing heap memory
+2. access resources outside of the program
+3. parameter passing
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    // declaration and initialization of pointer
+    int a = 10;
+    int *p;
+    // & = address
+    p = &a;
+
+    cout << a << endl;
+    cout << &a << endl;
+    cout << p << endl;
+    cout << *p << endl;
+
+    // pointers with arrays
+    int A[5] = {1, 2, 3, 4, 5};
+    int *q;
+    q = &A[0];
+
+    for (int i = 0; i < 5; i++)
+    {
+        cout << q[i] << endl;
+    }
+
+    // pointers with heap
+    int *r;
+    r = new int[5];
+    r[0] = 1;
+    r[1] = 10;
+    r[2] = 100, r[3] = 1000;
+    r[4] = 10000;
+
+    for (int i = 0; i < 5; i++)
+    {
+        cout << r[i] << endl;
+    }
+
+    // pointer size is independent of data type
+    cout << sizeof(p) << endl;
+    cout << sizeof(r) << endl;
+
+    // release memory in heap
+    delete[] r;
+}
+```
