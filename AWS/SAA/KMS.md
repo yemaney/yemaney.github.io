@@ -42,3 +42,35 @@
   - send encrypted key to KMS that decrypts it with the same CMK that created it
   - then use the newly decrypted key to decrypt that data
   - discard the data encrypted key
+
+## Encryption Approaches
+
+Encryption at Rest
+- protect data while it is being stored
+
+Encryption in Transit
+- protect data while it is being transferred
+- sender encrypts data before sending, receiver decrypts when it receives
+
+- Plaintext : Un-encrypted data
+- Algorithm : code that takes plain text and an encryption key to generate encrypted data
+- Key : password
+- Cipher text : encrypted data that is created by an algorithm taking a key and plaintext
+
+Symmetric Encryption
+- same key is used to encrypt and decrypt data
+
+Asymmetric Encryption
+- public and private key
+- public encrypts but cannot decrypt, private key decrypts
+- more computationally difficult than symmetric
+  - sometimes used to initially agree on a symmetric key, and then the symmetric key is used 
+
+Signing
+- used to prove identity
+- sender signs message with his private key
+  - receiver can use sender public key to verify that the private key was used to sign the message
+
+Steganography
+- used to hide the fact that encryption was used
+- cipher text is embedded in another plaintext data that serves as a medium of transportation
