@@ -88,3 +88,46 @@ DHCP Options Set
 - how compute devices receive IP addresses automatically
 - can't be edited, but can create a new one and reallocate
 - Auto Assign Public IPv4 or IPv6: assign public in addition to private IP automatically
+
+## Routing
+
+- a vpc router is a highly available device, present in every vpc
+- default routes traffic between subnets within a vpc
+- route tables control what happens to data as it leaves a subnet
+- `destination ips with larger prefix are given priority` when router chooses which route to use
+- destination is matched with a `target` which the router will forward data to
+- `route tables attached to zero or more subnets`
+- `subnet has to have a route table` either main or custom one attached
+- local routes always exist, and have first priority
+
+
+## Internet Gateway
+
+- `Regionally resilient` attached to a VPC
+- VPC can have 0 or 1 IGW
+- IGW can be attached to 0 or 1 VPC
+- runs from within the aws public zone
+- traffic between the VPC and the internet or aws public zone
+- managed service
+
+Steps:
+1. Create IGW
+2. attach IGW to VPC
+3. Create custom route table
+4. Associate RT with VPC
+5. Default routes => IGW
+6. configure subnet to allocate IPv4
+
+- a record is created and is maintained by IGW
+  - links instances private ips to their public IPv4
+  - instance doesn't know its public address
+- IPv6 can be publicly routed by default
+  - IGW does no tranlations
+  - instances do know their IPv6
+
+
+Bastion Host / Jumpbox
+- instance in a public subnet
+- incoming management connections
+- then access internal VPC resources
+- management point or entry point for private only VPC's
