@@ -7,7 +7,7 @@
 - nothing in or out without explicit configuration
 
 ### Default
-- one default VPC per region
+- `one default VPC per region`
 - comes with  internet gateway (IGW), Security Group (SG) & NACL
 - subnets assign public IPv4 addresses
 
@@ -33,8 +33,8 @@ Considerations
 - structure tiers and resiliency (availability) zones
 - are there any networks we can't use
 
-- minimum /28 (16IP)
-- maximum /16 (65456)
+- `minimum /28 (16IP)`
+- `maximum /16 (65456)`
 - *preference to start at 10.16.x.y*
 - reserve 2+ networks per region being used per account
 
@@ -76,7 +76,7 @@ DNS In a VPC
 - can optionally have IPv5 CIDR if it is enabled
 - subnets can communicate with other subnets in the VPC
 
-Reserved Ip's (5 in total)
+`Reserved Ip's (5 in total)`
 - Network Address, first address of subnet
 - Network + 1, used by VPC router
 - Network + 2, reserved for DNS
@@ -131,3 +131,112 @@ Bastion Host / Jumpbox
 - incoming management connections
 - then access internal VPC resources
 - management point or entry point for private only VPC's
+
+## Stateful vs Stateless Firewalls
+
+`Stateless firewall`
+- see `inbound` and `outbound` traffic as two `separate parts`
+- will require two rules, one rule for outbound traffic and another for inbound
+  - outbound rule must allow all ports
+- requests are bound for a well known ports
+- response is to a random ephemeral port used by the client to make a request
+
+`Stateful firewall`
+- can identify the request and response components of a connection as being related
+  - using port numbers and IP's
+- allowing a request automatically allows the response, and vice versa
+  - don't have to allow all outbound ports, since port relations are understood
+
+## Network Access Control Lists (NACL)
+Traditional firewall available within aws vpcs. 
+- (`stateless`)
+- see `inbound` and `outbound` traffic as two `separate parts`
+
+- `associated with subnets`
+  - every subnet has one nacl
+  - a nacl can be associated with many subnets
+  - filers traffic crossing the `subnet boundary`
+  - doesn't impact connections within a subnet
+  - cannot be assigned to aws resources, only subnets
+- rule match the DST IP/range, DST Port, protocol and Allow or Deny
+  - can explicitly deny and allow
+  - no logical resources
+- rules are `processed in order`
+  - lowest to highest rule numbers
+  - once a match occurs process stops
+  - * is an implicit deny if nothing else matches
+- app port & ephemeral ports are needed on each NACL for each communication type which occurs
+  - within a VPC
+  - to a VPC
+  - from a VPC
+- vpc's are created with a default nacl that has no effect
+  - has an allow all and implicit deny rule for both inbound and outbound rules
+- custom nacls can be created for a specific vpc and are initially associated with no subnets
+  - default only has the implicit deny, so all traffic is denied
+- used together with security groups to add explicit deny
+
+## Security Groups (SG)
+
+- stateful - detect response traffic automatically
+  - allowed (in or out) request -> allowed response
+- no explicit deny
+  - only allow or not allow (implicit deny)
+  - can't block specific bad actors
+- supports IP/CIDR and logical resources
+  - including other security groups and itself
+- attached to elastic network interfaces (ENI)
+  - attaching to an instances -> attach primary network interface of the instance
+
+Logical Reference
+- reference a security group in rules
+  - considers all instances within the security group being referenced
+- reference itself
+  - considers anything with the SG attached
+  - scales with adds and removes from the SG
+
+## Network Address Translation (NAT) and Nat Gateways
+Set of processes for remapping SRC and DST IP's.
+- when you want to keep resources private but give them access to making requests to resources in the public zone
+
+
+- `IP masquerading` many private IP's to one public IP
+  - gives private CIDR range outgoing internet access
+    - can make request and receive response
+  - cannot initiate from public internet to these private resources as each public IP maps to many private
+- runs from a `public subnet`
+  - so it can be given a public IP address
+  - default route table points to an Internet gateway
+- `AZ resilient service`
+  - deploy one in each AZ for regional resilience
+- pricing
+  - hourly charge per hour
+  - data processing charge per GB of processed data
+- `isn't required and doesn't work for IPv6 `
+  - since all IPv6 are publicly routable, unless nacl or sg are used
+
+
+EC2 as a NAT instance vs Nat Gateway
+- instance
+  - disable source and destination checks
+  - can be cheaper, but more management overhead
+  - use as a bastion server
+  - support NACL or SG
+- GW
+  - HA, high scalability, fully managed
+  - GW cannot be a bastion server
+  - only support nacl, use sg on instances behind GW
+
+## SSH Agent Forwarding
+
+- connecting using agent forwarding creates a separate ssh channel
+  - allowing agent running on the client to be used ont he bastion
+- when user, in bastion, connects to another resource
+  - the bastion can use the client ssh-agent to prove identity
+- private key remains on the client at all times
+  - authentication requests are forwarded
+  - same identity is used to connect to bastion and then through to the other resource
+
+- `eval ssh-agent` to check if agent is running
+- `ssh-add -K ./keyName.pem` add private key to ssh agent
+- `ssh -A -i "A4L.pem" ec2-user@ec2-34-229-86-153.compute-1.amazonaws.com` make an ssh connection with agent forwarding enabled
+- `ssh  ec2-user@10.16.109.185` ssh from bastion to other resource
