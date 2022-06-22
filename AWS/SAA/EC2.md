@@ -108,3 +108,13 @@ Different types of instances have different:
 
 Instance type Schema:
 `<instance family><generation><additional capabilities>.<size>`
+
+## SSH vs EC2 Instance Connect
+
+SSH
+- make sure instance security group allows your ip address
+
+Instance connect
+- uses aws ip to connect and presents it in the browser
+- make sure aws ip compatible with `EC2_INSTANCE_CONNECT` in your region is allowed
+ 
