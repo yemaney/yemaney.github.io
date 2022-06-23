@@ -162,3 +162,37 @@ Storage Performance
 
 `IO X IOPS = Throughput`
 - choose right block size and then maximize iops to maximize throughput
+
+## Elastic Block Store (EBS)
+
+- `block` storage, `raw` disk allocations
+- can be written to or read using a block number
+- can be encrypted using KMS
+- `AZ resilient` provisioned in one AZ
+- in general attached to one over a storage network
+- can be detached and reattached
+- not lifecycle linked to one instant, persistent
+- can create a `snapshot` (back up) to S3
+- can create a volume from snapshot (migrate between AZ's)
+- has different, physical storage types, sizes, performance profiles
+- billed based GB per month
+
+## EBS Volume Types
+
+- `GP2`
+  - default general purpose ssd based storage
+  - size range `1GB to 16TB`
+  - created with io credit allocation
+    - capacity of `5.4million` io credits
+    - fills at rate of baseline performance that is based on its size
+      - max of `100 or 3 io credit per second per gb of volume size
+      - `250 MiB/s`
+    - default of 3000 iops by depleting the bucket faster than it replenishes 
+    - EBS larger than `1 TB`, maximum `16,000` io credit per second
+      - baseline higher that burst, baseline always achieved, don't use credit system
+  - good for boot volumes, low latency applications
+- `GP3`
+  - every volume regardless of size starts with 3000 iops & 125 MiB/s
+  - `20% cheaper than GP2` at base price
+  - up to `16,000 iops` or `1000 MiB/s`
+  - add extra iops explicitly not based on size
