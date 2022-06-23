@@ -118,3 +118,47 @@ Instance connect
 - uses aws ip to connect and presents it in the browser
 - make sure aws ip compatible with `EC2_INSTANCE_CONNECT` in your region is allowed
  
+ ## Storage Basics
+
+ - `Direct` (local) attached storage
+   - directly connected to the EC2 host
+   - called the `instance store`
+   - `fast` because it is directly attached to the hardware
+   - if `disk` or `hardware` fails, then the storage can be lost
+   - if EC2 moves between hosts the storage can be lost
+ - `Network` attached storage
+   - called `EBS`
+   - highly `resilient`
+   - separate from instance hardware so it can survive issues with EC@ host
+ 
+ - `Ephemeral` Storage
+   - temporary storage
+   - `instance store`
+ - `Persistent` storage
+   - permanent
+   - lives on past the lifetime of the instance
+   - `EBS`
+
+
+- `Block` Storage
+  - create `volume` presented to `os` as a collection of uniquely addressable blocks
+  - no structure
+  - like empty hard drive/disk
+  - `os creates a file system on top of the block and mounts it`
+    - as c drive in windows or root in linux
+  - bootable
+- `File` Storage
+  - presented as a file share, has structure accessible over the network
+  - mountable not bootable
+- `Object` Storage
+  - collection of objects
+  - not mountable, not bootable
+
+Storage Performance
+
+- `IO (block) size` size of data writing to disk (MB)
+- `IOPS` input output operations per seconds (s)
+- `Throughput` amount of data that can be transferred ina  given second (MB/s)
+
+`IO X IOPS = Throughput`
+- choose right block size and then maximize iops to maximize throughput
