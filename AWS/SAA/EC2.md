@@ -179,6 +179,7 @@ Storage Performance
 
 ## EBS Volume Types
 
+`General Purpose`
 - `GP2`
   - default general purpose ssd based storage
   - size range `1GB to 16TB`
@@ -196,3 +197,36 @@ Storage Performance
   - `20% cheaper than GP2` at base price
   - up to `16,000 iops` or `1000 MiB/s`
   - add extra iops explicitly not based on size
+
+`Provisioned IOPS SSD`
+- io1/2/BlockExpress
+- IOPS can be adjusted independently of size
+- designed for super high performance with low latency & jitter
+- Up to `64,000 (256,000)` IOPS per volume and `1,000 (4,000)` MB/s (block express)
+- volume size ranges that are compatible `4 GB - 16 TB io1/2 , 4GB - 64TB block express`
+- max size to performance ratio
+  - io1 : `50`IOPS/GB MAX
+  - io2 : `500I`OPS/GB MAX
+  - BlockExpress : `1000`IOPS/GB MAX
+- pay for size and provisioned iops
+- per instance performance (performance cap for an individual ec2 instance)
+  - io1 : `260,000` IOPS & `7,500` MB/s
+  - io2 : `160,000` IOPS & `4,750` MB/s
+  - io2 & BlockExpress : `260,000` IOPS & `7,500` MB/s
+
+`Hard Disk Drive (HDD)`
+Both options provide less IOPS than SSD. Generally chosen for cost purposes.
+
+- st1 (throughput optimized)
+  -  A low-cost HDD designed for frequently accessed, throughput-intensive workloads.
+  - big data, data warehouses, log processing
+  - sequentially accessed data
+  - `125 GB` - `16 TB` in size
+  - `Base : 40MB/s/TB , Burst 250MB/s/TB`
+    - `max 500 IOPS - 500 MB/s` 
+- sc1  (cold HDD)
+  - The lowest-cost HDD design for less frequently accessed workloads.
+  - cold data, archives
+  - `125 GB` - `16 TB` in size
+  - `Base : 12MB/s/TB , Burst 80MB/s/TB`
+    - `max 250 IOPS - 250 MB/s`
