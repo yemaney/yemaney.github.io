@@ -279,3 +279,33 @@ provide block storage storage devices presented to the os and used as the basis 
 Extra
 - resilience w/ App in-build replication -> it depends
 - high performance -> it depends
+
+## EBS Snapshots
+
+Efficient way to back up EBS volumes to s3
+
+- the first is a full copy of `data used` on the volume
+- future snaps are incremental
+  - difference between previous snapshot and current state of volume
+- if you delete incremental snapshot, newer snapshots will still function
+  - each snapshot is self sufficient
+- `volumes can be created from snapshots`
+  - snapshots allow you to clone a volume
+  - new volume can be created in a new AZ, or regions since they are stored in S3
+  - `makes EBS volumes that are AZ resilient, to regionally resilient`
+
+`Performance`
+- new EBS -> full performance immediately
+- snaps `restore lazily` - fetched gradually
+- requested blocks are fetched immediately
+- `can force a read of all data immediately` from s3 to volume
+  - using a tool in instance os
+- `Fast Snapshot Restore (FSR)` - immediate restore
+  - up to 50 snaps per region, set on the snap and AZ
+  - costs extra
+
+`Billing`
+- `gigabyte / month`
+- used not allocated data
+  - charged for `changed or new allocation in snapshot`
+  - reference data that is not changed from older snapshots
