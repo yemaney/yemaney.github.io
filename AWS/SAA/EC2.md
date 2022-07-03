@@ -309,3 +309,22 @@ Efficient way to back up EBS volumes to s3
 - used not allocated data
   - charged for `changed or new allocation in snapshot`
   - reference data that is not changed from older snapshots
+
+## EBS Encryption
+
+- Encryption uses KMS which uses CMK
+- when an encrypted volume is created
+  -  CMK saves an encrypted DEK onto the volume
+- when the volume is first used
+  - EBS asks KMS to use CMK to decrypt the DEK which is then loaded into the memory of the EC2 host using it
+- EC2 instance running on the host can now use the decrypted DEK in the host, to interact with the encrypted EBS
+- cipher text stored at rest
+- snapshots of encrypted volumes, and volumes created from such snapshots all share the same DEK
+
+
+- accounts can be set to encrypt by default
+- each volume uses 1 unique DEK
+- can't change a volume to not be encrypted
+- os isn't aware of the encryption 
+  - (AES256) algo is done on host
+  - no performance loss
