@@ -230,3 +230,52 @@ Both options provide less IOPS than SSD. Generally chosen for cost purposes.
   - `125 GB` - `16 TB` in size
   - `Base : 12MB/s/TB , Burst 80MB/s/TB`
     - `max 250 IOPS - 250 MB/s`
+
+## Instance Store
+
+provide block storage storage devices presented to the os and used as the basis for a file system that can be used as applications
+
+- raw volumes that can be attached to an instance 
+- physically connected to `one ec2 host`
+  - instances on that host can access them
+- `highest storage performance in aws`
+  - D3 instance type -> 4.6 GB/s throughput
+  - I3 -> 16 GB/s throughput
+  - `more IOPS snd throughput vs EBS`
+- included in the prices, use it or lose it
+  - allocated a certain number of volumes based on instance type and size
+- `attach at launch time`
+- `ephemeral (temporary) storage`
+  - if an instance moves between hosts then data stored in instance store volume is lost
+    - if stopped and started, change instance type, or undergoing maintenance
+
+## EBS vs Instance Store
+
+`EBS`
+- pair with good size that can give the level of performance
+- `persistent` storage
+- `resilient` storage
+- storage `isolated` from instance lifecycle
+
+- Cheap -> ST1 or SC1
+- throughput or streaming -> ST1
+- Boot -> not ST1 or SC1
+
+- GP2/3 - up to `16,000IOPS`
+- io1/2 up to `64,000 IOPS (256,000 IOPS block express)`
+
+- take lots of individual ebs volumes to create `RAID0` set
+- achieve combined performance of all individual volumes
+  - RADI0 + EBS up to `260,000` IOPS (io1/2-BE/GP2/3)
+
+- keep in mind the `performance each volume gives`, and the `maximum performance of the instance itself`
+
+`Instance Store`
+- super high performance
+- cost -> instance store (often included)
+- `more than 260,000 IOPS`, CAN GET MILLIONS IOPS
+
+
+Extra
+- resilience w/ App in-build replication -> it depends
+- high performance -> it depends
