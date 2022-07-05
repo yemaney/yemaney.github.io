@@ -328,3 +328,37 @@ Efficient way to back up EBS volumes to s3
 - os isn't aware of the encryption 
   - (AES256) algo is done on host
   - no performance loss
+
+## Network Interfaces, Instance IPs and DNS
+
+- network interface
+  - Every ec2 has an elastic network interface (eni)
+    - can have `secondary eni in a separate subnet but same AZ`
+  - has 
+    - a mac address
+    - primary ipv4 private ip -> internal dns ip10-x-x-.ec2.internal
+    - 0 or more secondary ips
+    - 0 or 1 public ipv4 address
+      - dynamic, changes when ec2 is stopped and started in a different host
+      - dns -> ec2-x-x-x.compute-1.azmazonaws.com
+      - inside vpc resolves to primary private ip
+      -  outside of vpc it resolves to public ip
+    - 1 elastic ip per private ipv4 address
+      - allocated to an account
+      - can be associated with primary or secondary interface
+        - `if attached to primary, it replaces the public ipv4`
+    - 0 or more ipv6 addresses
+    - security groups
+    - source/destination check
+  - can detach secondary interfaces and move them to other ec2 instances
+
+Extra:
+- can move secondary eni mac licensing
+- multi-homed (subnets)
+  - use multiple interfaces, with different ips and security groups
+- os never sees public ipv4, only sees the private
+  - public ipv4 is handled by internet gateway using nat
+  - ipv6 public by default
+- ipv4 public ips are dynamic, stop/start or (change of host) changes ip
+- public dns resolves to private in vpc
+  - never leaves the vpc, for instance to instance communication
