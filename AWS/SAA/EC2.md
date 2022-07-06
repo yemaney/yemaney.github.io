@@ -18,10 +18,33 @@
 - contains the root volume, the drive that boots the operating system
 - block device mapping, used to determine which volume is root volume and which is data volume
 
-Permission Options:
+`Permission Options:`
 1. Public Access
 2. Owner Only
 3. Specific AWS Accounts
+
+
+- used to launch ec2 instances
+- can be created from an existing instance
+- can get from aws or community or marketplace
+- regional
+
+`Block device mapping`
+- ebs snapshots created from instance ami is created from
+- block devices mapping is a table that links, the newly created snapshots with the device id the snapshots had in the original ec2 instance
+- when ami is used to create a new instance
+  - snapshots are used to create new ebs volumes
+  - the volumes then are attached to the new instance using the same device ids as the original instance
+
+`Extra`:
+- only exist in `one region`
+- `ami baking` : creating an ami from a configured instance + application
+- can't be edited, launch instance, update configurations and make a new ami
+- can be copied between regions, including snapshots
+- default permissions is owner only
+
+`Billing`
+- storage cost of ebs volumes the ami references
 
 ## Virtualization
 Process of running more than one os on a piece of hardware.
