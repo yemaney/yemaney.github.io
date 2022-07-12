@@ -385,3 +385,51 @@ Extra:
 - ipv4 public ips are dynamic, stop/start or (change of host) changes ip
 - public dns resolves to private in vpc
   - never leaves the vpc, for instance to instance communication
+
+## Purchase Options
+
+- On-Demand (default)
+  - isolated, but multiple customer instances run on shared hardware
+  - instances of different sizes run on the same ec2 hosts, consuming a defined allocation of resources
+  - per-second billing while an instance is running
+    - associated resources such as storage consume capacity, so billed regardless of instance state
+  - no interruptions
+  - no capacity reservation
+  - predictable pricing
+  - no upfront cost
+  - no discount
+  - choose for short-term or unknown workloads or applications which can't be interrupted
+
+- Spot
+  - aws selling unused ex2 host capacity for up to 90% discount
+  - spot price is based on the spare capacity at a given time
+  - if spot price goes above your maximum price, then your instances are terminated
+  - never use for workloads which can't tolerate interruptions
+  - for workloads that are non time critical, can be rerun, cost sensitive, stateless, has bursty capacity need
+
+- Reserved
+  - for long term consistent usage
+  - unused reservation are still billed
+  - for a particular type of instance and locked to an AZ or Region
+    - reserve based on AZ also reserves capacity
+  - can have a partial effect
+    - ex) reservation for small T3 instances might partially apply to large T3 instances
+  - plans
+    - 1 year or 3 year
+    - no upfront -> reduce per second fee
+    - all upfront -> no per second fee, greatest discount
+    - partial upfront
+
+- Dedicated Hosts
+  - pay for host that contained the instances, no instance charges
+  - might have software licensing based on sockets or cores
+  - host affinity --> if instance is stop and started it remains on the same host
+  - only your instances run on the dedicated host
+
+- Dedicated Instances
+  - no other customers use the same hardware
+  - don't own or share the host
+  - hourly fee per region regardless of how many dedicated instances are being used
+  - for when you have requirements to not share hardware
+
+*On-demand, reserved, and spot*
