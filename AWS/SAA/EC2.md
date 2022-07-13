@@ -468,3 +468,27 @@ Extra:
     - up to 72% savings
   - products have an on-demand rate and a savings plane rate
   - get savings plan rate, up to to the amount you commit to
+
+## Instance Status Checks & Auto Recovery
+
+- Instance Status Checks
+  - each ec2 instance gets two 2 tests
+    - system status
+      - loss of system power, network connectivity,, host software/hardware issue 
+    - instance status
+      - corrupted file system, incorrect instance networking, os kernel issue
+  - resolution
+    - can manually stop and start an instance, restart, or terminate and recreate
+
+- Auto recovery
+  - moves instance to new host with same configs
+    - same instance ID, private IP addresses, Elastic IP addresses, and all instance metadata
+  - can create a cloudwatch alarm triggered when an instance fails a status check
+    - can send message
+    - can take action
+      - recover (auto-recover), reboot, stop, or terminate
+  - works only with instances with ebs volumes attached
+
+- Termination protection
+  - can be enabled in instance settings, to protect from accidental termination
+  - can separate permissions to enable and disable termination protection
