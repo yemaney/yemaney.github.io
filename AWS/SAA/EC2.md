@@ -407,19 +407,6 @@ Extra:
   - never use for workloads which can't tolerate interruptions
   - for workloads that are non time critical, can be rerun, cost sensitive, stateless, has bursty capacity need
 
-- Reserved
-  - for long term consistent usage
-  - unused reservation are still billed
-  - for a particular type of instance and locked to an AZ or Region
-    - reserve based on AZ also reserves capacity
-  - can have a partial effect
-    - ex) reservation for small T3 instances might partially apply to large T3 instances
-  - plans
-    - 1 year or 3 year
-    - no upfront -> reduce per second fee
-    - all upfront -> no per second fee, greatest discount
-    - partial upfront
-
 - Dedicated Hosts
   - pay for host that contained the instances, no instance charges
   - might have software licensing based on sockets or cores
@@ -433,3 +420,51 @@ Extra:
   - for when you have requirements to not share hardware
 
 *On-demand, reserved, and spot*
+
+- Reserved
+  - for long term consistent usage
+  - unused reservation are still billed
+  - for a particular type of instance and locked to an AZ or Region
+    - reserve based on AZ also reserves capacity
+  - can have a partial effect
+    - ex) reservation for small T3 instances might partially apply to large T3 instances
+  - plans
+    - 1 year or 3 year
+    - no upfront -> reduce per second fee
+    - all upfront -> no per second fee, greatest discount
+    - partial upfront
+  - scheduled reserved instances
+    - ideal for long term usage which doesn't run constantly
+      - specify frequency, duration, and time
+      - ex) batch processing daily for 5 hours at 23:00
+    - slightly cheaper than on demand
+    - doesn't support all instance types or regions
+    - 1200 hours per year minimum
+    - 1 year term minimum
+  - capacity reservation
+    - when major failure results in lack of available capacity in a region or AZ
+    - there is a priority list of which purchase options get available instances first
+      - reserved purchases -> on-demand -> spot
+    - regional reservation
+      - billing discount for valid instances launched in any AZ in that region
+      - don't reserve capacity, same priority as on-demand
+      - 1 or 3 year term
+    - zonal reservation
+      - same discount as regional reservation, but only apply to one az
+      - capacity reservation in the az
+      - 1 or 3 year term
+    - on-demand capacity reservation
+      - book to enure you always have access to capacity in an az
+      - at full on demand price
+      - no term limit
+      - pay regardless if you consume it
+
+- Savings Plans
+  - hourly commitment for a 1 or 3 year term
+  - general plan
+    - reservation of general compute $ amount, save up to 66%
+    - ec2, fargate, lambda
+  - ec2 savings plan
+    - up to 72% savings
+  - products have an on-demand rate and a savings plane rate
+  - get savings plan rate, up to to the amount you commit to
