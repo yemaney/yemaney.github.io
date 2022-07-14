@@ -517,3 +517,13 @@ Scaling is what happens when systems have to grow or shrink depending on changes
   - no real limits, keep adding instances
   - often `less expensive`, no large instance premium
   - `more granular`, by adding smaller instances
+
+## Instance Metadata
+
+- Service EC2 provides to instances
+- accessible inside all instance
+  - at ip `http://169.254.169.254/latest/meta-data/`
+- data about the instance that can be used to configure or manage the instance
+  - info on the environment that the instance is in
+  - ex) networking, authentication info, user data
+- not authenticated or encrypted
