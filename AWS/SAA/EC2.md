@@ -492,3 +492,28 @@ Extra:
 - Termination protection
   - can be enabled in instance settings, to protect from accidental termination
   - can separate permissions to enable and disable termination protection
+
+## Horizontal and Vertical Scaling
+
+Scaling is what happens when systems have to grow or shrink depending on changes to the load the experience.
+
+- Vertical
+  - `resizing the EC2 instance`
+  - `requires a reboot` which can potentially cause disruption
+  - generally scale during pre-agreed times (outage windows)
+    - limits how quickly you can respond
+  - larger instances cost more, cost increase scales faster than size increase
+  - `upper cap` on performance (instance size)
+  - no application modification required
+  - works for all applications even monoliths
+
+- Horizontal
+  - `changes the number of instances`
+  - require a `load balancer`
+    - to distribute traffic across multiple instances
+  - can be shifting across instances
+  - requires application support or `off-host sessions`
+  - `no disruption when scaling`
+  - no real limits, keep adding instances
+  - often `less expensive`, no large instance premium
+  - `more granular`, by adding smaller instances
