@@ -54,3 +54,40 @@ Allows you o use containers running on infrastructure managed by aws
     - how many copies, restarts
 - `ecs cluster` : where containers run from
   - upload task or service here
+
+## Cluster Modes
+
+Main difference is Admin overhead involved and costs.
+
+- ecs management components : handle scheduling, orchestration, cluster management, placement engine (where to run containers)
+
+`EC2 Mode`
+- ecs cluster created within a vpc
+  - benefits from `multiple AZ` available in the vpc
+- instances run the containers
+- specify an initial size which controls the number of container instances
+  - handled by an autoscaling group (`ASG`)
+- tasks and services
+  - get images from registry
+  - uses task and service definition to deploy container images onto container hosts as containers
+- `user manages the cluster`
+- `pay for instance even if they aren't running containers`
+
+`Fargate Mode`
+- still define task an service definitions, cluster, and vpc
+- runs  on `shared AWS infrastructure`
+- each task or service gets injected into vpc
+  - given an elastic network interface ENI (ip address within the vpc)
+- only pay for the resources that running containers consume
+
+Scenarios and Choices
+`EC2`
+- large workload
+- price conscious
+`ECS(EC2 mode)`
+- if you use containers
+`Fargate`
+- large workload
+- overhead conscious
+- small or burst workloads
+- batch or periodic workloads
