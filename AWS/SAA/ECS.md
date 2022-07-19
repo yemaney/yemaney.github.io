@@ -34,3 +34,23 @@ Container engine runs as a process within host os.
 - where images are uploaded and downloaded from
   - download centos base image from here for example
 
+## ECS Concepts
+
+Allows you o use containers running on infrastructure managed by aws
+
+- `ec2 mode`:  hosted on ec2 instances
+- `fargate` : serverless way of running docker containers
+- `container definition` : tells ecs which image to use and which ports are exposed
+- `task definition`: represents an `application` as a whole
+  - can be made of `one or more containers`
+  - store the: 
+    - `resources` used by task (cpu and memory)
+    - `networking` mode that task use
+    - `compatibility` (ex2 or fargate)
+    - `task role` : iam role that a task can assume to gain temporary credentials to interact with aws
+- `ecs service`
+  - service definition : define how we want a task to `scale`
+    - used to create HA along with a load balancer
+    - how many copies, restarts
+- `ecs cluster` : where containers run from
+  - upload task or service here
