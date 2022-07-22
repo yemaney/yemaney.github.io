@@ -527,3 +527,47 @@ Scaling is what happens when systems have to grow or shrink depending on changes
   - info on the environment that the instance is in
   - ex) networking, authentication info, user data
 - not authenticated or encrypted
+
+## Bootstrapping
+
+Process where scripts are run when an instance is first launched. To create an instance with a certain configuration.
+- enabled using user data
+
+`User data`
+- accessed via the meta-data ip
+- `http://169.254.169.254/latest/user-data/`
+- anything in userdata is executed by the instance Os
+- only executed on launch
+- ec2 doesn't interpret, the os needs to understand the user data
+- it's possible to have a bad config and instance to still run
+- not secure, don't use for passwords or long term credentials
+- 16KB size limit
+  - for larger, make script download larger file
+- can be modified when instance stopped
+
+`Boot-TimeToService`
+- Basic ami -> launch instance -> manual post launch configuration
+- Basic ami -> launch instance -> bootstrapping
+- Baked ami -> launch instance
+  - less flexible
+  - do for time intensive processes
+
+Ideally combine bootstrapping and baked ami
+
+`Cloudformation Init (CFN-INIT)`
+- a way to pass complex bootstrap configuration to an instance
+- simple configuration management system
+  - install packages with version awareness
+  -  manipulate groups and users
+  -  download sources 
+  -  create files 
+  -  run commands and check state 
+  -  run services
+- provided with directives via `metadata` and `AS::CloudFormation::init` on a CN resource
+- `works with stack update
+
+`CloudFormation CreationPolicy and Signals`
+- inform cloudformation if it has been configured correctly
+- creation policies create a `'WAIT STATE'` on resources 
+  - not allowing the resource to move to `CREATE_COMPLETE` until signalled using the cfn-signal tool
+- reported to the stack, and updates the instance state (OK or not)
