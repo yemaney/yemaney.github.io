@@ -571,3 +571,14 @@ Ideally combine bootstrapping and baked ami
 - creation policies create a `'WAIT STATE'` on resources 
   - not allowing the resource to move to `CREATE_COMPLETE` until signalled using the cfn-signal tool
 - reported to the stack, and updates the instance state (OK or not)
+
+## Instance Roles and Profiles
+
+- Roles that an instance can assume.
+- Anything running in the instance has the permissions granted by the role
+- `instance profile` : wrapper around an iam role
+  - allows permissions to get inside the instance
+  - attached to the instance
+- temporary credentials delivered via the instance meta-data
+  - `iam/security-credentials/role-name`
+- creating the role in the console also creates the profile, must create both separate with cloudformation
