@@ -409,9 +409,18 @@ Extra:
 
 - Dedicated Hosts
   - pay for host that contained the instances, no instance charges
-  - might have software licensing based on sockets or cores
+  - might have software licensing based on `sockets` or `cores`
   - host affinity --> if instance is stop and started it remains on the same host
   - only your instances run on the dedicated host
+  - specific family and size of instance
+    - nitro can use different size of instances at the same time
+  - on-demand & reserved options for pricing
+  - ami limits : rhel, suse linux, and windows amis aren't supported
+  - amazon rds instances are not supported
+  - placement groups are not supported
+  - hosts can be shared with other ORG accounts using Resource Access Manager (RAM)
+    - host own sees all instances running on it, but can only edit ones it owns
+    - instances owners, that ar not the host owner, can only see their instances
 
 - Dedicated Instances
   - no other customers use the same hardware
@@ -635,3 +644,6 @@ Allows you to control where ec2 instances are placed.
   - can launch as many instances as needed, spread across the partitions
   - have awareness of which partition the instance is in
   - use case : huge scale parallel systems
+
+## Dedicated Hosts
+
