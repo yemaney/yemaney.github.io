@@ -604,3 +604,34 @@ Ideally combine bootstrapping and baked ami
   - `configuration` tells the agent what to do (what data to capture)
   - `permissions` can be given by attaching a role to the instance
   - one log group for each log to capture. and one log stream in each log group for each instance sending data
+
+## Ec2 Placement Groups
+
+Allows you to control where ec2 instances are placed.
+
+- `Cluster` Placement Groups (`PERFORMANCE`)
+  - pack instances close together
+  - best practices : to let aws find a location with needed capacity
+    - launch all instances at the same time
+    - use same tyupe of instances
+  - `single AZ`, same rack, sometimes same host, all members have direct connections to each other
+    - 10Gbps stream (vs 5 normally)
+    - lowest latency and max packets per second (PPS) possible in aws
+    - should use enhanced networking for best performance
+  -  can span VPC peers, but performance will be impacted
+  -  requires a supported instance type
+  -  use cases : performance, fast speeds, low latency
+- `Spread` Placement Groups (`Resilience`)
+  - keep instances separated, different hardware (racks)
+    - each rack has its own network and power source
+  - can span multiple AZ's, 7 instances per AZ limit
+  - not supported for dedicated instances or hosts
+  - use case :small number of critical instances that need to be kept separated from each other
+- `Partition` Placement Groups (`Topology Awareness`)
+  - groups of instances spread apart
+  - can span multiple AZ's
+  - divided into `paritions`, max 7 per AZ
+  - each partition has its own racks no sharing
+  - can launch as many instances as needed, spread across the partitions
+  - have awareness of which partition the instance is in
+  - use case : huge scale parallel systems
