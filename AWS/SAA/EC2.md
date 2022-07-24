@@ -582,3 +582,14 @@ Ideally combine bootstrapping and baked ami
 - temporary credentials delivered via the instance meta-data
   - `iam/security-credentials/role-name`
 - creating the role in the console also creates the profile, must create both separate with cloudformation
+
+## SSM Parameter` Store
+
+- storage for `configuration` and `secrets`
+  - license codes, database strings, full configs and passwords
+- types: `String, StringList, SecureString`
+- supports hierarchy and versioning
+- plaintext and `ciphertext` (with KMS)
+- public parameters
+- integrated with IAM to authorize access
+- changes can create events
