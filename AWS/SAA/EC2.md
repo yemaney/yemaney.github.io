@@ -593,3 +593,14 @@ Ideally combine bootstrapping and baked ami
 - public parameters
 - integrated with IAM to authorize access
 - changes can create events
+
+## System and Application Logging on EC2
+
+- Monitoring inside the instance
+- cloudwatch is for metrics and cloudwatch logs is for logging
+  - neither natively capture data inside an instance
+- `cloudwatch agent` is required with some `configuration` and `permissions`
+  - software that runs inside the instance and captures os visible data and sends to cloudwatch
+  - `configuration` tells the agent what to do (what data to capture)
+  - `permissions` can be given by attaching a role to the instance
+  - one log group for each log to capture. and one log stream in each log group for each instance sending data
