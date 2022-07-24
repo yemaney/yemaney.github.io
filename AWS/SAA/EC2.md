@@ -645,5 +645,15 @@ Allows you to control where ec2 instances are placed.
   - have awareness of which partition the instance is in
   - use case : huge scale parallel systems
 
-## Dedicated Hosts
+## Enhanced Networking & EBS Optimized Instances
 
+Enhanced Networking
+- SR-IOV : Host has Network Interface Cards (NIC) that are virtualization aware
+  - higher I/O & Lower Host CPU Usage
+  - More Bandwith (fasster network speed)
+  - higher packets per second (PPS) and consistent lower latency
+
+EBS Optimized Instances
+- dedicated capacity for EBS (doesn't affect data networking)
+- most instances support, and have it enabled by default
+- required for high performance EBS volume types
