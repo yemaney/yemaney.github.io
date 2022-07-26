@@ -34,3 +34,16 @@ Services
 - `split-view` : overlapping `public` and `private` 
   - for `public` and `internal` use with the same zone name
 
+## CNAME vs R53 Alias
+
+- `cname` maps a name to another name
+  - ex) www.cat.op => cat.io
+  - invalid for naked/apex (cat.io)
+- many aws services use a dns name (ELBs)
+  - with cname, cat => elb would be invalid
+- `alias` : map a name to an aws resource
+- can be used for naked/apex and normal records
+  - for non apex/record functions like cname
+- no charge for alias requests pointing at aws resources
+- multiple types
+  - should be the same type as what the record is pointing at
