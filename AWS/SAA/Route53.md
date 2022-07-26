@@ -55,3 +55,16 @@ Services
   - all values are returned to client, then client chooses one
 - `use case` : when you want to route requests towards one service such as a web server
 - `doesn't support health checks`
+
+## Health Checks
+
+- separate from, but are used by records
+- `health checkers` located globally
+- health checks check every 30s (every 10s costs extra)
+- TCP, HTTP/HTTPS,  HTTP/HTTPS with string matching
+  - where a health checker makes a TCP connection and expects an response within a time limit
+- states : `healthy` or `unhealthy`
+- type:
+  - `endpoint` : assess the health of an endpoint that you specify
+  - `cloudwatch` : react to cloudwatch alarm
+  - `checks of checks (calculated)` : includes multiple checks
