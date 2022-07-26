@@ -109,3 +109,11 @@ Services
 - aws maintains a database of latency between the users general location and the regions tagged in records
 - the record returned is the one which offers the lowest estimated latency and is healthy
   - if a record is unhealthy, then the next lowest latency is returned
+
+## Geolocation Routing
+
+- records are tagged with location
+  - US state, country, continent, default
+  - R53 checks for records from the smallest to largest scope with default being the last check
+- not about the closest record, about controlling for relevant locations
+- use : restrict content based on users location
