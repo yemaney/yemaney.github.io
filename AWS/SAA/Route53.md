@@ -90,3 +90,12 @@ Services
     - if you have more than 8, then 8 are selected random
   - client picks which to use
 - improves the availability, but not a replacement for load balancing
+
+## Weighted Routing
+
+- simple form of load balancing or testing new software versions
+- can create multiple records with the same name
+- each record has a record weight associated with it
+- each record is returned based on the ratio of its weight to the total record weights
+- can be associated with a health check
+  - if a chosen record is unhealthy, then the process of selection is repeated until  a healthy one is chosen
