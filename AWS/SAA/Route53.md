@@ -117,3 +117,10 @@ Services
   - R53 checks for records from the smallest to largest scope with default being the last check
 - not about the closest record, about controlling for relevant locations
 - use : restrict content based on users location
+
+## Geoproximity Routing
+
+- records can be tagged with an aws region or lat & long coordinates
+- routing is distance based, but also includes am optional bias
+- a bias expands or shrinks the size of the geographic region in the decision making process
+
