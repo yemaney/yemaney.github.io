@@ -79,3 +79,14 @@ Services
   - any queries return the secondary record
 - `use case` : when you want to configure active passive failover
   - route traffic to a resource when the resource is healthy or to a different resource when the first resource is unhealthy
+
+## Multi Value Routing
+
+- like a mixture of simple and failover routing
+- can create many records with the same name
+  - each mapping to an ip address
+  - each can have an associated health check
+  - when queried up to 8 healthy records are returned
+    - if you have more than 8, then 8 are selected random
+  - client picks which to use
+- improves the availability, but not a replacement for load balancing
