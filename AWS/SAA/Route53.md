@@ -27,3 +27,10 @@ Services
 - resource records (`RR`) created within the hosted zone (items of data that dns uses)
 - externally registered domains can point at R53 public zone
 
+## R53 Private Hosted Zone
+
+- `associated with VPC's`, and only accessible in those VPCs
+  - using different account using cli/api
+- `split-view` : overlapping `public` and `private` 
+  - for `public` and `internal` use with the same zone name
+
