@@ -124,3 +124,16 @@ Services
 - routing is distance based, but also includes am optional bias
 - a bias expands or shrinks the size of the geographic region in the decision making process
 
+## Interoperability
+
+- R53 has two roles
+  - `registrar` role and `domain hosting` role
+- R53 (doing both)
+  - allocates 4 name servers (domain hosting)
+  - creates a zone file (domain hosting) on the ns'
+  - communicated with the registry TLD (Domain Registrar)
+    - sets the ns records for the domain to point to the 4 ns'
+- R53 doing only registrar (not common)
+  - ns are hosted somewhere else, but their information is passed to R53
+- R53 for hosting only
+  - incase a domain has been registered with another service earlier
