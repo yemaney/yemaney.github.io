@@ -68,3 +68,14 @@ Services
   - `endpoint` : assess the health of an endpoint that you specify
   - `cloudwatch` : react to cloudwatch alarm
   - `checks of checks (calculated)` : includes multiple checks
+
+## Failover Routing
+
+- can add multiple records of the same name
+  - a `primary` and `secondary`
+- if the primary record is healthy
+  - any queries return the primary record
+- if the primary record is not healthy
+  - any queries return the secondary record
+- `use case` : when you want to configure active passive failover
+  - route traffic to a resource when the resource is healthy or to a different resource when the first resource is unhealthy
