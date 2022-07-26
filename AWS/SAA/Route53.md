@@ -99,3 +99,13 @@ Services
 - each record is returned based on the ratio of its weight to the total record weights
 - can be associated with a health check
   - if a chosen record is unhealthy, then the process of selection is repeated until  a healthy one is chosen
+
+## Latency-Based Routing
+
+- used when optimizing for performance and user experience
+- can create multiple records with the same name
+- each record can have a record region associated with it
+  - latency based routing supports one record with the same name in each aws region
+- aws maintains a database of latency between the users general location and the regions tagged in records
+- the record returned is the one which offers the lowest estimated latency and is healthy
+  - if a record is unhealthy, then the next lowest latency is returned
