@@ -47,3 +47,11 @@ Services
 - no charge for alias requests pointing at aws resources
 - multiple types
   - should be the same type as what the record is pointing at
+
+## Simple Routing
+
+- `1` record per name (www)
+- each record can have `multiple values`
+  - all values are returned to client, then client chooses one
+- `use case` : when you want to route requests towards one service such as a web server
+- `doesn't support health checks`
