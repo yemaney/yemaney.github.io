@@ -35,3 +35,26 @@
   - `Graph`
     - nodes and edges representing relationships
       - both can have key value pairs of data
+
+## ACID v BASE
+
+- database transaction models
+- `cap theorem: (choose 2)`
+  - `consistency` : every read to a database will get the most recent write or get an error
+  - `availability` : every request will receive a non-error response, without the guarantee that you get the most recent write
+  - `partition tolerant` : system can be made of multiple network partitions
+- `acid : consistency`
+  - transactions are : 
+    - `atomic` : all or no components of a transaction succeeds or fails ex) banking transfers
+    - `consistent` : transaction move database from one valid state to another, no in-between
+    - `isolated` : concurrent transactions don't interfere with each other
+    - `durable` : once committed, transactions are durable, stored on non-volatile memory
+  - `RDS`
+  - `limits scaling`
+- `base : availability`
+  - transactions are : 
+    - `basically available` : read and write operations are available as much as possible without consistency guarantees
+    - `soft state` : database doesn't enforce consistency, offloaded to application/user
+    - `eventually` : if we wait long enough, reads from the system will be consistent
+  - `highly scalable`
+  - `nosql`
