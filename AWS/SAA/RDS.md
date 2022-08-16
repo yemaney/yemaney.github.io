@@ -58,3 +58,23 @@
     - `eventually` : if we wait long enough, reads from the system will be consistent
   - `highly scalable`
   - `nosql`
+
+## Databases on EC2
+
+- `usually a bad idea`
+  - `admin overhead` : managing ec2 and dbhost
+  - backup / DR management / replication
+  - ec2 runs in a single AZ
+  - missing features aws db products have, performance
+  - on or off, not serverless, no easy scaling
+
+- `putting database in an ec2 introduces dependency`
+  - need reliable communication between application and database ec2
+  - cost for data transferring across different AZ
+
+`justifications`
+- access to the db instance OS
+- advanced db option tuning
+- db or db version aws doesn't support
+- specific os/db combination aws doesn't provide
+- architecture aws doesn't provide
