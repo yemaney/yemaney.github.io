@@ -78,3 +78,21 @@
 - db or db version aws doesn't support
 - specific os/db combination aws doesn't provide
 - architecture aws doesn't provide
+
+## Relational Database Service (RDS)
+
+- Database-as-a-service (DBaas)
+  - managed database instance (1 or more databases)
+- multiple engines MySQL, MAriaDB, PostgreSQL, Oracle, Microsoft SQL Server
+- Amazon Aurora
+
+Architecture
+- RDS Database Instance
+  - use same tooling as engine to access
+  - has one attached block storage in the same AZ as the instance
+    - io1, gp2, magetic
+  - billed for the instance (cpu/memory) and for the storage GB/month
+  - access to to rds instance is controlled by its associated security group
+
+- create a subnet group
+  - inform which subnets to place rds instances into
