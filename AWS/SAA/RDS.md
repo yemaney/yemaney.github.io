@@ -96,3 +96,24 @@ Architecture
 
 - create a subnet group
   - inform which subnets to place rds instances into
+
+## RDS Multi AZ
+
+- secondary hardware is allocated in another AZ (standby replica)
+- access database using cname, which points to primary rds
+- `Synchronous Replication`
+  - database writes directed at primary database cname
+    - which writes changes to it's storage
+  - changes immediately replicated across to standby replica
+    - standby writes changes to it's storage
+  - almost zero lag, as replication occurs as data is being written to primary database
+- if error occurs with primary database
+  - rds changes the database endpoint cname to the standby replica
+
+- gives `high availability`, but not fault tolerance
+- not available for free tier
+- standby can't be directly used, doesn't increase performance
+- `60-120` seconds failover
+- `same region` only, work with other AZs in the VPC
+- `backups are taken from standby`, (removes performance impact)
+- failure reasons : az outage, primary failure, manual failure, instance type change, software patching
