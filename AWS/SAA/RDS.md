@@ -153,3 +153,17 @@ RDS is capable of performing Manual Snapshots and Automatic backups
 - creates a `new rds instance with new address`
   - will have to update application that use the database endpoint address
 - restoring using snapshots restores to single point in time
+
+## RDS READ-Replicas
+
+- RDS Read Replicas can be added to an RDS Instance - `5 direct per primary instance`.
+  - each providing an additional instance of read performance
+    - ie) make applications used replicas for read operations
+- offers `low RTO recovery` for any instance failure issues
+  - replicas can be promoted to a primary quickly
+  - don't help with data corruption as the corruption will be replicated to the RR.
+- like another RDS instance, has its `own address`
+- asynchronous replication form primary to read replica
+- can be in the `same region, or cross-region replicas`.
+  - `global ` performance improvements
+- read replicas can have read replicas, but lag start to be a problem
