@@ -117,3 +117,39 @@ Architecture
 - `same region` only, work with other AZs in the VPC
 - `backups are taken from standby`, (removes performance impact)
 - failure reasons : az outage, primary failure, manual failure, instance type change, software patching
+
+## RDS Backups and Restores
+
+
+`Recovery Point Objective (RPO)`
+- time between last backup and the point a failure occurred
+  - maximum data loss possible
+- influences technical solution and cost : 
+  - lower rpo -> HIGHER COST
+
+`Recovery Time Objective (RTO)`
+- time between a failure and when system is return to service
+- influenced by process, staff, tech, and documentation
+- generally lower values cost more
+
+RDS is capable of performing Manual Snapshots and Automatic backups
+- both use aws managed s3 buckets that aren't visible to user
+- gives region resilience
+- first snapshot is full, then onwards incremental
+- can affect performance of single instance, but if using multi-az used on standby
+- `Manual Snapshots` : live forever
+- `Automatic Backups` : configure how often it occurs
+  - `every five minutes, database transactions logs are written to s3`
+    - the actual data that changes in the database
+    - database can be restored back in time within a 5 minute granularity
+      - `RPO = 5 minutes`
+    - database snapshot is restored, then the transaction logs are replayed over the top of the snapshot
+  - are not retained indefinitely, automatically cleaned up
+    - 0-35 day retention period
+  - can retain automated backups after deleting rds instance, but they will still expire
+    - must take manual snapshot
+
+`RDS Restores`
+- creates a `new rds instance with new address`
+  - will have to update application that use the database endpoint address
+- restoring using snapshots restores to single point in time
