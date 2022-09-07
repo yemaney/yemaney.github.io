@@ -167,3 +167,24 @@ RDS is capable of performing Manual Snapshots and Automatic backups
 - can be in the `same region, or cross-region replicas`.
   - `global ` performance improvements
 - read replicas can have read replicas, but lag start to be a problem
+
+## RDS Data Security
+
+- authentication : how users can log in to rds
+  - can configure RDS to allow iam authentication
+    - create RDS `local DB account` configured to use `aws authentication token`
+    - policy attached to users or roles maps that iam identity onto the local RDS user
+    - `generate-db-auth-token` for `15 mins`
+- authorization : how access is controlled
+- encryption in transit : between client and rds
+  - SSL/TLS, can be `mandatory`
+- encryption at rest : how data is protect when it is written to disk
+  - default : EBS volume encryption with KMS
+    - `handled by RDS HOST/EBS`
+    - CMK generates data keys used for encryption operations
+    - `storage, logs, snapshots, and replicas are encrypted`
+    - `can't be removed` once added
+  - MSSQL and ORACLE support Transparent Data Encryption (`TDE`)
+    - encryption handled within the DB engine, `ie encrypted before leaving the instance`
+    - ORACLE supports integration with CloudHSM
+      - stronger key controls
