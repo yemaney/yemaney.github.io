@@ -230,3 +230,24 @@ RDS is capable of performing Manual Snapshots and Automatic backups
   - `backtrack` can be used which allow `in-place rewinds` to previous point in time
   - `fast clone` : makes a new databases `MUCH` faster than copying all the data
     - only stores differences of data that changed in the clone or the original
+
+## Aurora Serverless
+
+- removes the admin overhead of managing individual instances
+- scalable `Aurora Capacity UnitsACU`
+  - allocated from a shared pool managed by aws
+  - represent an amount of compute and memory
+  - can set `min and max` acu values
+  - can go to `0 and be paused`
+- billed per-second basis
+- same resilience as aurora, 6 replicas across AZs
+- requests go to a hidden layer `proxy fleet` managed by aws
+  - which broker connection with acu
+  - allows for seamless scaling
+- `Use cases`
+  - infrequently used application
+  - new applications
+  - variable workloads
+  - unpredictable workloads
+  - development and test databases
+  - multi-tenant applications  (scaling is aligned between infrastructure size and revenue )
