@@ -188,3 +188,45 @@ RDS is capable of performing Manual Snapshots and Automatic backups
     - encryption handled within the DB engine, `ie encrypted before leaving the instance`
     - ORACLE supports integration with CloudHSM
       - stronger key controls
+
+## Aurora Architecture
+
+- uses a `cluster`
+  - made of a single `primary` instance and `0 or more replicas`
+  - replicas can be used for reads during normal operation
+    - provide availability and read scalability
+- no local storage : uses `cluster volume`
+  - shared and available to all compute instances within a cluster 
+    - faster provision, improved availability and performance
+  - data written to primary disk, `aurora synchronously replicates` the data across 6 replicas in 3 AZs
+  - `aurora automatically detects failures` in disk volumes of shared storage
+    - when segment fails, aurora `immediately repairs using data inside other storage nodes`
+    - avoids data loss and reduces any need for snapshot restores
+  - `Up to 15 replicas`, that can be assigned to failover operations
+    - instances can be added without requiring storage provisioning
+  - `All SSD Based - high IOPS, low latency`
+  - Don't specify storage, `billed on what's used`, for the most used
+    - create new cluster and migrate data to reduce costs
+- `Cluster Endpoint`
+  - points at primary instance
+  - can be used for read and write operations
+- `Reader Endpoint`
+  - load balances across all available replicas
+  - used for read operations, easier reader scaling
+- `Custom Endpoint`
+  - can create custom endpoints
+- `individual endpoints`
+  - each instance (primary or replica) has its own endpoint
+- `Costs`
+  - no free-tier option
+    - doesn't support micro instances
+  - beyond rds single az, aurora offers better value
+  - compute : hourly charge per second, 10 minute min
+  - storage : GB-Month consumed, IO costs per request
+  - 100% DB Size in backups are included
+- `Backups`
+  - work in aurora in the same ay as RDS
+  - restores create a new cluster
+  - `backtrack` can be used which allow `in-place rewinds` to previous point in time
+  - `fast clone` : makes a new databases `MUCH` faster than copying all the data
+    - only stores differences of data that changed in the clone or the original
