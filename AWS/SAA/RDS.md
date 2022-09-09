@@ -251,3 +251,15 @@ RDS is capable of performing Manual Snapshots and Automatic backups
   - unpredictable workloads
   - development and test databases
   - multi-tenant applications  (scaling is aligned between infrastructure size and revenue )
+
+## Aurora Global Database
+
+- Create global level replication using aurora from a main region to up to `5 secondary regions`
+- entire secondary cluster is read only
+  - can have up to `16 replicas`, which can be promoted to R/W
+- replication occurs at the storage layer
+  - `1 second` replication from main to all regions
+  - no impact on db performance
+- Use Case:
+  - `cross-region` disaster recovery and Business continuity
+  - `global read scaling` : low latency performance improvements
