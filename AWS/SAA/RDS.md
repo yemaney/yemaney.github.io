@@ -279,3 +279,30 @@ RDS is capable of performing Manual Snapshots and Automatic backups
   - application can send request to another instance if a request fails
     - foundation of being able to build a `fault tolerant` application
     - faster availability
+
+## Database Migration Service (DMS)
+
+- no downtime
+- runs using a replication instance
+  - an ec2 instance with migration software that can communicate with the DMS service
+  - replication tasks : define the options relating to the migration
+- `source and destination endpoints` pointing at source and target databases
+- one endpoint must be aws
+- `full load`
+  - migrating existing all data
+- `full load + Change Data Capture (CDC)`
+  - migrates existing data and replicates any on going changes occurring on the source
+- `CDC Only`
+  - if you want to use an alternative method to transfer the bulk of the data
+  - migrate only the changes
+- Schema Conversion Tool (`SCT`)
+  - can assist with schema conversion
+  - used when converting one database engine to another
+  - not used when migrating between compatible engines
+  - works with OLTP and OLAP databases
+- `DMS & Snowball`
+  - larger migrations in multi TB size
+  1. use schema conversion tool to extract data locally and move to a snowball device
+  2. ship the device to aws, the load it onto aan s3 bucket
+  3. DMS migrates from s3 into the target store
+  4. CDC can capture changes and which can be written to target database via s3
