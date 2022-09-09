@@ -263,3 +263,19 @@ RDS is capable of performing Manual Snapshots and Automatic backups
 - Use Case:
   - `cross-region` disaster recovery and Business continuity
   - `global read scaling` : low latency performance improvements
+
+## Aurora Multi-Master
+
+- default aurora mode has one `r/w` and `0+` replicas
+  - `not fault tolerant`
+  - failover takes time as a replica is promoted
+- in `multi-master` mode all instances are `r/w`
+  - no cluster endpoint to use
+  - `no load balancing`, must be handled by application
+  - `application can connect with the instances directly`
+  - when writer gets a request, it tries to get others to agree to add the data to all data nodes
+  - changes is replicated to other nodes in memory cache
+    - so their reads are consistent with newly updated data
+  - application can send request to another instance if a request fails
+    - foundation of being able to build a `fault tolerant` application
+    - faster availability
