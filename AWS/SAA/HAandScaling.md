@@ -30,3 +30,15 @@
   - provide functionality to applications like queues, data streaming etc.
 
 - `Regional Scaling and Resilience`
+
+## Elastic Load Balancer Evolution
+
+- 3 types of load balancers (ELB) available
+  - split between between v1 (avoid) and v2(prefer)
+- CLB (v1), lacking features, more expensive
+- Application Load Balancer (ALB)
+  - HTTP/S/WebSocket
+- Network Load Balancer (NLB)
+  - TCP/TLS/UDP
+  - email, ssh
+- v2 : faster, cheaper, support target groups and rules
