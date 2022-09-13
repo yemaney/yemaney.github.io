@@ -136,3 +136,22 @@
   - private link
 - ALB
   - anything else
+
+## Launch Configuration and Templates
+
+- `define the configuration of an ec2 instance in advance`
+  - AMI, Instance Type, Storage, Key Pair
+  - Network and Security Groups
+  - Userdata and IAM role
+- not editable
+  - LT has versions
+- `LT has newer features`
+  - recommended over LC
+  - Placement Groups
+  - Capacity Reservations
+  - Elastic Graphics
+  - T2/T3 Unlimited
+- LC are used for autoscaling groups
+- LT 
+  - used for  autoscaling groups
+  - used to `launch ec2 instances directly`
