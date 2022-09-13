@@ -77,3 +77,62 @@
 - `Cross-Zone Load Balancing`
   - allows node to distribute connections equally across `all registered instances across all AZs`
   - allows for more even load balancing : when different AZs have unequal compute infrastructure
+
+## Application vs Network Load Balancers (ALB vs NLB)
+
+`Load Balancer Consolidation`
+- `Classic Load Balancer`
+  - clb has an attached ssl certificate and autoscaling group
+  - clb distributes incoming connections to instances
+  - `doesn't scale`; every unique https application name requires an individual clb because SNI isn't supported
+
+- `V2 Load Balancers`
+  - can use one load balancer for multiple applications
+    - allows consolidation
+  - `listener based rules`
+    - can hold multiple ssl certificates
+  - `host based rules`
+    - using SNI
+    - direct incoming connections at multiple target groups
+  - `target groups ` forward connections to multiple scaling autoscaling groups
+
+- `Application Load Balancer (ALB)`
+  - Layer 7 load balancer
+    - `listens on HTTP or HTTPS only`
+      - must have `SSL certs if HTTPS is used`
+  - connection are terminated on the ALB
+    - `no unbroken SSL connection`
+    - a new connection is made to the application
+  - `slower than NLB` : since more levels of network stack to process
+  - `application aware health checks`
+  - `rules` 
+    - direct connections which arrive at a listener
+    - processed in priority order
+    - `default rule = catchall`
+    - `rule conditions`
+      - content type, cookies, custom headers, user location and app behavior
+      - host-header, http-header, http-request-method
+      - path pattern, query string
+      - source ip
+    - `actions`
+      - forward, redirect, fixed-response, authenticate-oidc, authenticate-cognito
+
+- `Network Load Balancer (NLB)`
+  - `layer 4 : TCP, TLS, UDP, TCP_UDP`
+    - `no  HTTP or HTTPS`
+  - `really fast` (millions of rps, 25% of ALB latency)
+  - `health checks are not application aware`
+  - can have `static IP's` : useful for `whitelisting`
+  - can forward TCP to instances
+    - `unbroken end to end encryption`
+  - used with private link to provide services to other VPCs
+
+`Deciding on One`
+- NLB
+  - unbroken encryption 
+  - static IP for whitelisting
+  - fastest performance
+  - protocols not HTTP or HTTPS
+  - private link
+- ALB
+  - anything else
