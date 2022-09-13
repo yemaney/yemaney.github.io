@@ -155,3 +155,63 @@
 - LT 
   - used for  autoscaling groups
   - used to `launch ec2 instances directly`
+
+## Auto Scaling Groups
+
+- configure ec2 to `scale automatically depending on demand`
+  - `When and Where` to launch to
+- `self healing`
+  - uses ec2 health checks
+  - terminates bad ones, and provisions a new one in its place
+- uses launch template/configuration to know what to launch
+- `minium, desired, max`
+  - x:y:z
+- keep running instances at the desired capacity byb provisioning or terminating instances
+- `scaling policies`
+  - update desired based on metrics ie) cpu load
+  - `manual scaling` : manually adjust the desired capacity
+  - `scheduled scaling` : time based adjustment
+    - for periods of low or high usage
+  - `dynamic scaling`
+    - `simple`
+      - rule based on metric to provision or remove instances
+    - `stepped scaling`
+      - bigger +/- based on difference
+      - allow you to act quicker to extreme changes
+      - `preferred` over simple
+    - `target tracking`
+      - define a metric to maintain
+- `run within a vpc`
+  - subnets within the vpc are configured on the autoscaling groups
+  - configured subnets will be used to provision instances
+  - there will be an attempt to keep the number of instances in each subnet equal
+- `cooldown period`
+  - how long to wait after a scaling action before doing another one
+
+- `Integration with Load Balancers`
+  - used with ALB for `elasticity`
+  - ASH instances can automatically be added to or removed from a load balancers target group
+  - `can use load balancers health checks
+`
+- `Scaling Processes`
+  - `launch and terminate`
+    - suspend and resume
+  - `AddToLoadBalancer`
+    - if instances is added to LB on launch
+  - `AlarmNotification`
+    - accept notifications from CW
+  - `AZRebalance`
+    - balance instances evenly across all of the AZs
+  - `HealthCheck`
+    - on/off
+  - `ReplaceUnhealthy`
+  - `ScheduledActions`
+    - on/off
+  - `Standby`
+    - protect instance from ASG, when doing maintenance
+
+- `Cost`
+  - ASH are Free
+  - only resources created are billed
+  - use cooldowns to avoid rapid scaling
+  - think about more smaller instances
