@@ -215,3 +215,28 @@
   - only resources created are billed
   - use cooldowns to avoid rapid scaling
   - think about more smaller instances
+
+## ASG Scaling Policies
+
+- `ASG can be created without scaling policies`
+  - in this case min, max, desired capacity are `static`
+- `manual scaling`
+  - manual change scaling
+  - for test or urgent situations
+- `Dynamic scaling`
+  - automatically scaling based on a criteria
+  - `Simple scaling`
+    - define actions which occur when an alarm moves into an alarm state
+    - ex) cpu utilization less than 40%
+    - not flexible, or efficient
+      - same amount added or removed irrespective of size of load change
+  - `Step Scaling`
+    - more flexible, more conditions possible
+    - adjustments vary based on the size of alarm breach
+      - larger load changes can be configured to add or remove more than a lesser load change
+  - `Target Tracking`
+    - define an ideal value for a metric
+    - autoscaling groups makes adjustments to get close to the ideal metric value
+  - `Scaling based on SQS`
+    - ApproximateNumberOfMessagesVisible
+    - scale based on the number of messages in the queue
