@@ -240,3 +240,19 @@
   - `Scaling based on SQS`
     - ApproximateNumberOfMessagesVisible
     - scale based on the number of messages in the queue
+
+## ASG Lifecycle Hooks
+
+- `custom actions on instances during ASG actions`
+  - instance launch or terminate transitions
+- instances are paused
+  - until a timeout (then either continue or abandon)
+  - you complete the lifecycle action with`CompleteLifecycleAction`
+- can be integrated with EventBridge or SNS Notifications
+
+- Simple flow:
+  - `Scale out`
+    - Pending -> Pending Wait -> Pending : Proceed -> inService
+  - `Scale in`
+    - Terminating -> Terminating Wait -> Terminating Proceed -> Terminated
+  - send messages to SNS or EventBridge
