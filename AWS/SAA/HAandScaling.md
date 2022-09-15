@@ -256,3 +256,18 @@
   - `Scale in`
     - Terminating -> Terminating Wait -> Terminating Proceed -> Terminated
   - send messages to SNS or EventBridge
+
+## ASG HealthChecks
+
+- ASG assess health of instances within a group using health checks
+  - if instance fails a health check, it is replaced
+- `EC2 Checks`
+  - Stopping, Stopped, Terminated, Shutting Down or impaired (not 2/2 status) => `UNHEALTHY`
+- `ELB Check`
+  - running and passing ELB health check => `HEALTHY`
+  - can be more `application aware`
+- `Custom Check`
+  - instances marked healthy or unhealthy by an external tool
+- `health check grace period (Default 300s)`
+  - delay before starting checks
+  - allows system launch, bootstrapping and application start
