@@ -271,3 +271,30 @@
 - `health check grace period (Default 300s)`
   - delay before starting checks
   - allows system launch, bootstrapping and application start
+
+## SSL Offload & Session Stickiness
+
+- three different ways ELB can handle SSL
+  - `SSL Bridging`
+    - default
+    - listener is configured for HTTPS
+    - connection is terminated on the ELB, and needs a certificate for the domain name
+    - LB initiates a `new SSL connection to backend instances`
+    - pros : ELB gets to see unencrypted HTTP an can take actions
+    - cons : ELB and instances require SSL certificates  and instance need compute required for cryptographic operations
+  - `SSL Pass Through`
+    - `NLB passes clients connection directly to instances`
+    - Listener listens on TCP
+    - pros : no certificate exposure to aws
+    - cons : no load balancing based on HTTP since it is never decrypted, instances still need SSL certs and compute for cryptography
+  - `SSL Offloading`
+    - Listener is configured for HTTPS, connections are terminated and then `backend connections use HTTP`
+    - pros : certificate not required on instances
+    - cons : data is in plaintext format in aws network
+
+- `Session Stickiness`
+  - with no stickiness, connections are distributed equally across all in-service backend instances
+  - generates a cookie which licks the device toa  single backend instance for a duration
+    - `1s to 7 days`
+  - allow an application to function if the state of the user session is stored on an individual server
+  - can cause uneven load on servers, hurst load balancing
