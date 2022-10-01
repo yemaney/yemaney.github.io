@@ -298,3 +298,13 @@
     - `1s to 7 days`
   - allow an application to function if the state of the user session is stored on an individual server
   - can cause uneven load on servers, hurst load balancing
+
+## Gateway Load Balancer
+
+- network security at scale
+- help you run and scale 3rd party appliances
+  - like firewalls, intrusion detection, and prevention systems
+  - inbound and outbound transparent traffic inspection and protection
+- GWLB endpoints : where traffic enters or leaves from
+- GLWB balances across multiple backend appliances
+  - traffic and metadata is tunneled using Geneve protocol
