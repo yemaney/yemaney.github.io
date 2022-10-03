@@ -145,3 +145,25 @@
       - `define stuff outside if lambda handler`, and it can be reused again in invocations that occur in same context
   - `provisioned concurrency`
     - aws creates and `keeps a number of contexts warm`, improving start speed
+
+## CloudWatch Events and EventBridge
+
+- `CloudWatch Events` delivers a near realtime stream of system events
+  -  describing changes in aws products and service
+  -  events are JSON objects
+- `EventBridge` will replace cloudwatch events (a `superset`)
+  - `can handle events from third parties and custom applications`
+
+
+- `there is  default EventBus for a single aws account`
+  - stream of events that occur from any supported service inside the aws account
+  - `cloudwatch events has only one event bus`
+  - `EventBridge can create additional event buses`
+
+- `rules`
+  - rules are `linked to a specific event bus`
+  - define `targets`
+  - `matches an event` and `routes to one or more targets`
+  - `event pattern rule` : tries to matches actual events
+  - `scheduled rules`
+    - use a `cron expression` to schedule execution
