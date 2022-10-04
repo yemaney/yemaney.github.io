@@ -167,3 +167,12 @@
   - `event pattern rule` : tries to matches actual events
   - `scheduled rules`
     - use a `cron expression` to schedule execution
+
+## Serverless Architecture
+
+- low overhead : manage few, if any servers
+- applications are a collection of small and specialized functions
+- stateless and ephemeral environments : duration billin
+- event driven : consumption only when being used
+- FaaS is used where possible for compute functionality
+- managed services are used when possible : ex) S3, ddb
