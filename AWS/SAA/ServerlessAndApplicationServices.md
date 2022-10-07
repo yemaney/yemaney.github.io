@@ -176,3 +176,21 @@
 - event driven : consumption only when being used
 - FaaS is used where possible for compute functionality
 - managed services are used when possible : ex) S3, ddb
+
+## Simple Notification Service
+
+- `public` aws service
+- coordinates the sending and delivery of messages
+- messages are <= `256KB`
+- SNS `Topics` are the base entity of SNS
+  - permissions and configurations
+- `Publisher` : `send` messages to a TOPIC
+- `Subscribers` : `receive` messages from a TOPIC
+  - HTTP endpoints, EMAIL, SQS, SMS, Lambda, Mobile Push
+  - can `filter` subscribers for relevant messages
+  - can `fan out a single message to multiple` sqs queues to process related workloads
+- `Delivery Status` : can confirm for some resource like HTTP, lambda, SQS
+- `Delivery Retries`
+- `HA and Scalable within a Region`
+- Supports Server Side Encryption `(SSE)`
+- `Cross-Account` via Topic Policy
