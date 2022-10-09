@@ -194,3 +194,24 @@
 - `HA and Scalable within a Region`
 - Supports Server Side Encryption `(SSE)`
 - `Cross-Account` via Topic Policy
+
+## Step Functions
+
+- State Machine Service
+- serverless workflow START -> STATES -> END
+  - states are things that occur during the workflow
+- States
+  - `SUCCEED` % FAIL
+  - `WAIT` : pause workflow
+  - `CHOICE` : helps take a different path based on input
+  - `PARALLEL` : create parallel branches within the state machine
+  - `MAP` : takes a list as input, and performs an action for each item in list
+  - `TASK` : single unit of work performed by a state machine
+- `standard`
+  - default
+  - 1 year execution limit
+- `express`
+  - high volume
+  - 5 minutes execution
+- Created with Amazon States Language (`ASL`)
+- IAM Role used for permissions
