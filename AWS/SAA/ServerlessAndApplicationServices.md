@@ -418,3 +418,17 @@
   - `Targets` : S3, RDS, JDBC databases
 
 - *historically the ETL has been done by datapipeline*
+
+## MQ
+
+- AWS implementation of Apache ActiveMQ
+  - supports open standards such as JMS, AMQP, MQTT, OpenWire and STOMP
+- provides `both queues and topics`
+  - one-to-one or one-to-many
+- Single Instance or HA Pair
+- `VPC` based : need private networking
+- No native aws integration
+
+- `Use case:`
+  - migrating from an existing system
+  - if certain protocols are needed
