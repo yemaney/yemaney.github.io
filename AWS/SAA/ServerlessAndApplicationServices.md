@@ -215,3 +215,47 @@
   - 5 minutes execution
 - Created with Amazon States Language (`ASL`)
 - IAM Role used for permissions
+
+## API Gateway
+
+- Create and manage APIs
+- Endpoint/entrypoint for applications
+- sits between applications and integrations (services)
+- highly available, scalable, handles authorization, throttling, caching, CORS, transformations, OPENApi spec, direct integration with aws services
+- Phases
+  - Request Phase:
+    - authorize, validate, transform incoming data from clients into a form that integration can handle
+  - Response Phase:
+    - Takes output from integration and transforms, prepares, and returns it to the client
+- `Public Service`
+- `HTTP`, `REST`, `WebSocket` APIs
+- `Authentication`:
+  - `cognito`
+    - authenticate with cognito and receive token
+    - pass token token with request to api gateway, which then validates the token with cognito
+  - `lambda authorizer`
+    - client passes bearer token with request
+    - gateway calls a lambda authorizer, which returns iam policy and principle identifier
+- `Endpoint Types`
+  - `Edge-Optimized` : routed to nearest CloudFront point of presence (POP)
+  - `Regional` : clients in the same region
+  - `Private` : accessible only within a VPC
+- `Stages`
+  - APIs are deployed to stages, to isolate prod and testing
+  - `Canary` : deployments not made to stage but to canary (subsection of stage)
+  - configure certain percent of traffic to be sent to canary
+  - canary can be promoted to become new base stage
+- Errors
+  - `4XX` : Client Error, invalid request on client side
+  - `5XX` : Server Error, invalid request on server side
+  - `403` : Access Denied, authorization error
+  - `429` : throttling
+  - `502` : bad output return
+  - `503` : service unavailable
+  - `504` : integration failure (29s)
+- `Caching`
+  - configured per stage
+  - `0 t0 3600s TTL, default 300s`
+  - can be `encrypted`
+  - 500MB to 237GB
+  - reduce load, cost, and improved performance
