@@ -378,3 +378,23 @@
 - can't access data directly via storage, only via APIs
 - integrates with other AWS services
   - rekognition and connect
+
+## Cognito
+
+- authentication, authorization, and user management for web/mobile applications
+- `USER POOLS`
+  - `sign-in & sign-up  experience, managing user identities`
+  - users can also sign in through social identity providers like google, facebook etc.
+  - allows you to sign in and get a JSON Web Token (`JWT`)
+    - API Gateway can  directly authenticate with JWT
+  - supports MFA
+- `IDENTITY POOLS`
+  - Unauthenticated Identities : Guest Users
+  - `Federated Identities`
+    -  `SWAP external identity for temporary aws credentials`.
+  - assume iam role on behalf of identity and return credentials used to access aws resources
+
+- `User Pools and Identity Pools together`
+  - use cognito user pool social sign in to create JWT
+  - pass user pool token to Identity Pools
+  - `benefit : user pool abstracts all identity providers into one group`, identity pool only configured for a single identity provider (the user pool)
