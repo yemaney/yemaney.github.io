@@ -432,3 +432,19 @@
 - `Use case:`
   - migrating from an existing system
   - if certain protocols are needed
+
+## AppFlow
+
+- `fully managed integration service`
+  - exchange data between applications (connectors) using flows
+- architecture
+  - `connections`
+    - store configuration and credentials to access applications
+  - configure `source to destination field mapping`
+  - optional data `transformation`
+  - optional `filters and validation`
+- sync data across applications
+  - ex) sales force records => redshift
+- aggregate data from different source
+- public endpoints, but works with PrivateLink
+- AppFlow Custom Connector SDK (for custom connector)
