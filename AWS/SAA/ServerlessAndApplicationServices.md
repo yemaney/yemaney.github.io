@@ -398,3 +398,23 @@
   - use cognito user pool social sign in to create JWT
   - pass user pool token to Identity Pools
   - `benefit : user pool abstracts all identity providers into one group`, identity pool only configured for a single identity provider (the user pool)
+
+## Glue
+
+- Serverless ETL (Extract, Transform, Load)
+  - moves and transforms data between source and destination
+-  `Data catalog`
+  - persistent `metadata` about data sources in region
+  - `crawlers` connect to data sources, determine schema and create metadata
+- `Glue Job`
+  - ETL Jobs
+  - uses data catalog
+  - performs transformations using script
+  - can be initiated manually or via events
+  - glue allocates resources from warm pool when required
+- `Data Sources`:
+  - `Stores` : S3, RDS, JDBC compatible, dynamodb
+  - `Streams` : Kinesis data stream, apache kafka
+  - `Targets` : S3, RDS, JDBC databases
+
+- *historically the ETL has been done by datapipeline*
