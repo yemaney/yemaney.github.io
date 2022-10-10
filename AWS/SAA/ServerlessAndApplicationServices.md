@@ -259,3 +259,29 @@
   - can be `encrypted`
   - 500MB to 237GB
   - reduce load, cost, and improved performance
+
+## Simple Queue Service (SQS)
+
+- Public, fully managed, highly available, message queue service
+- used to decouple application components
+- `Standard`
+  - at least once delivery
+  - very high scaling
+- `FIFO`
+  - guarantee an order
+  - exactly once delivery
+  - scales less : 3000 messages per second with batching, 300 without
+- Messages up to `256KB` in size
+  - link to larger data
+- received messages are hidden (`VisibilityTimeout`)
+  - client has certain amount of time to process message and delete item from queue
+  - if client fails, it will reappear (for a retry)
+- `Dead-Letter Queues` can be used for problem messages
+- `ASGs can scale based on length of a queue, and lambdas can be invoked based on queue length`
+- `Billed based on requests`
+  - 1 request = 1-10 messages up to 25kKB
+  - `short polling` : immediate, can get 0 messages
+  - `long polling` : immediate (waitTimeSeconds)
+    - waits for messages, cheaper, preferred
+  - Encryption at rest (`KMS`) and in transit
+- `Queue Policy` (resource policy): can allow access from external account
