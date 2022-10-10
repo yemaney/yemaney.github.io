@@ -285,3 +285,96 @@
     - waits for messages, cheaper, preferred
   - Encryption at rest (`KMS`) and in transit
 - `Queue Policy` (resource policy): can allow access from external account
+
+## Kinesis
+
+- scalable streaming service
+- public service, high availability
+
+- SQS vs Kinesis
+  - Kineses
+    - ingestion, analytics, monitoring, app clicks
+    - multiple consumers
+    - rolling window persistence
+  - SQS
+    - worker pools, decoupling, asynchronous communication
+    - no persistence of messages
+    - 1 production group 1 consumption group
+
+- Kinesis
+  - Data Steams : large scale ingestion of data, consumption by consumers
+  - Firehose : near real time delivery services
+  - Data Analysis : real time SQL processing
+  - Video Streams : live video ingestion and analytics
+
+
+- Firehose vs Data Analytics
+  - Firehose : near realtime, simple lambda transformations
+  - Data Analytics : realtime, complex SQL transformations
+
+### Kinesis Data Streams
+
+- allow large scale ingestion of data into aws, and consumption of data by other compute services
+- `producers` send data into kinesis stream
+- `multiple consumers` can access data from that moving window
+- real time
+- `Scaling`
+  - streams can scale from low to near infinite data rates
+  - uses `shard` architecture
+  - starts with one shard, and addition shards are added as more performance is needed
+  - `1 shard : 1MB ingestion, 2MB Consumption capacity`
+  - more shards, more performance, more costly
+  - streams store a `24-hour` moving window of data by default
+    - can increase window to `7 days` at an increased cost
+    - kinesis data record : `1MB`
+
+### Kinesis Data Firehose
+
+- fully managed service to load data for data lakes, data stores, and analytics services
+
+- connects to kinesis stream and moves data to another service
+  - HTTP, splunk, Redshift, Elasticsearch, S3
+  - Redshift uses S3 as an intermediate storage
+  - *producer can send data to firehose directly*
+
+- automatic scaling, fully serverless, resilient
+- `near real time delivery` (60 seconds)
+  - delivery when buffer size fills (1MB) or buffer interval in seconds passes (60seconds)
+- supports `transformation` of data on the fly
+  - with `lambda`
+  - optionally store source data in s3 bucket
+- `billing` : based on data volume
+
+- Use cases
+  - provide persistence
+  - store data in a different format
+
+### Kinesis Data Analytics
+
+- real time processing of data
+- `Sources`
+  - in-application input stream : kinesis data streams or firehose
+  - reference data : from s3 used to enrich streaming data
+- Kinesis Analytics Application
+  - Application code processes input, using SQL
+  - processed data added to in-application output streams that are mapped to destination streams
+  - errors can be sent to in-application error stream
+- `Destinations`
+  - near real time
+    - kinesis firehose (S3, Redshift, Elasticsearch, splunk)
+  - real time
+    - lambda
+    - kinesis data streams
+- pay for data processed, but not cheap
+- use cases:
+  - streaming data needing real-time SQL processing
+    - time-series analytics, dashboards, metrics
+
+### Kinesis Video Streams
+
+- ingest live video data from producers
+- consumers can access data frame-by-frame or as needed
+- can persist and encrypt data
+- can't access data directly via storage, only via APIs
+- integrates with other AWS services
+  - rekognition and connect
