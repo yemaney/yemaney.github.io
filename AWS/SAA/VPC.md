@@ -240,3 +240,27 @@ EC2 as a NAT instance vs Nat Gateway
 - `ssh-add -K ./keyName.pem` add private key to ssh agent
 - `ssh -A -i "A4L.pem" ec2-user@ec2-34-229-86-153.compute-1.amazonaws.com` make an ssh connection with agent forwarding enabled
 - `ssh  ec2-user@10.16.109.185` ssh from bastion to other resource
+
+## VPC Flow Logs
+
+- `capture metadata (not content)`
+  - src ip, dest ip
+  - src port, dest port
+  - protocol
+    - ICMP=1, TCP=6, UDP=17
+  - action : ACCEPT, REJECT
+- can be attached to:
+  - `VPC` : applies to all ENIs in the VPC
+  - `Subnet` : applies to all ENIs in the Subnet
+  - `ENI` directly
+- `not realtime`
+- `destinations`
+  - S3
+    - Can query with Athena
+  - CloudWatchLogs
+- can capture ACCEPTED, REJECTED, or ALL metadata
+
+- not logged
+  - ec2 metadata service : 169.254.169.254
+  - DHCP
+  - amazon DNS, windows license
