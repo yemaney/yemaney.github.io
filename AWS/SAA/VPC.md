@@ -264,3 +264,9 @@ EC2 as a NAT instance vs Nat Gateway
   - ec2 metadata service : 169.254.169.254
   - DHCP
   - amazon DNS, windows license
+
+## Egress-Only Internet gateway
+
+- alternative to internet gateway, but gives privacy like NAT to IPv6
+- outbound-only for IPv6
+- create eigw, and make it as target for ::/0 route in VPC RT
