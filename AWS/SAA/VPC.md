@@ -311,3 +311,19 @@ EC2 as a NAT instance vs Nat Gateway
   - Zonal DNS : per interface
   - `Private DNS` : overrides the default DNS for services with interface endpoint
     - private instances will default to use interface
+
+## Peering
+
+- create encrypted network link between `two VPCs`
+- `same/cross-region`
+  - same region SGs `can reference peer SGs`
+- `same/cross-account`
+- optional : public host-names can resolve to private Ips
+  - ex) public -> private ec2 instance dns host name
+  - use same dns names to access services whether their in peer vpc or not
+- `does Not support transitive peering`
+  - a -> b -> c != a -> c
+  - must create a peering connection with each pair
+- routing configuration is needed, SGs and NACL can filter
+  - directing traffic to remote CIDR to peer gateway object
+  - `cannot be created where there is overlap in VPC CIDRs`
