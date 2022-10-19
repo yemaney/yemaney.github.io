@@ -270,3 +270,44 @@ EC2 as a NAT instance vs Nat Gateway
 - alternative to internet gateway, but gives privacy like NAT to IPv6
 - outbound-only for IPv6
 - create eigw, and make it as target for ::/0 route in VPC RT
+
+## Gateway Endpoint
+
+- provide private access to S3 and DynamoDB (which are public services)
+- `regional`
+  - HA
+  - can't access cross-region
+- prefix list added to route table
+  - represents the services (S3, DDB)
+  - points to gateway endpoint
+  - automatically configured by aws
+- associated with vpc
+  - `can only be accessed from within the vpc`
+  - set which subnets are going to be used with it
+- `Endpoint policy`
+  - control what it can access
+
+- use-case:
+  - allow vpc to access public resources
+  - `prevent leaky buckets`
+    - s3 buckets can be set to private only by allowing access only from a gateway endpoint
+
+## Interface Endpoint
+
+- provide private access to aws public services
+  - not ddb
+  - alternative to gateway endpoint
+- added to specific subnets
+  - `not HA`
+  - for HA, one endpoint per AZ
+- network access controlled via security groups
+- endpoint policies
+- `TCP` and `IPv4` only
+- Uses `PrivateLink`
+  - inject third part services into private VPC
+- Uses `DNS` and is allocated a private IP from the subnet it is in
+- endpoint provides new services DNS endpoint
+  - Regional DNS
+  - Zonal DNS : per interface
+  - `Private DNS` : overrides the default DNS for services with interface endpoint
+    - private instances will default to use interface
