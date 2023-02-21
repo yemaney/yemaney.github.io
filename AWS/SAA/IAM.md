@@ -165,3 +165,26 @@ A policy document, attached to either:
     - control what permissions an account `CAN and CANNOT grant` via `identity policies`
 - use a deny list architecture
   - implicitly allow all permissions, then add policy to deny services you want to restrict
+
+## Control Tower
+
+- quick and easy setups of multi-account environment
+- orchestrates other aws services to provide its functionality
+- `landing zone`
+  - multi-account environment
+  - `SSO/ID Federation`
+  - default ou's:
+    - Security : log archive & Audit Accounts (CloudTrail & Config Logs)
+    - Sandbox : test/less rigid security
+  - monitoring and notifications : cloudwatch and sns
+- `guard rails`
+  - detect/mandate rules/standards across all accounts
+  - mandator, strongly recommended, elective
+  - `preventive` : stops you doing things using scp
+  - `detective` : compliance checks (config rules)
+- `account factory`
+  - automate and standardize new account creation
+  - guard rails automatically added
+  - account and network standard configuration
+- `dashboard`
+  - single page oversight of entire environment

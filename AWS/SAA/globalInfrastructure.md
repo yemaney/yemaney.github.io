@@ -22,3 +22,12 @@
 
 `AZ Resilient`
 - run in a single AZ
+
+## Local Zones
+
+- infrastructure placed close to large population and industry centers
+- used to reduce distance of datacenter for `low latency`
+- 1 zones, `no built int resilience`
+- not all products supported
+- `support DX`
+- use for the highest performance

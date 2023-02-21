@@ -91,3 +91,59 @@ Scenarios and Choices
 - overhead conscious
 - small or burst workloads
 - batch or periodic workloads
+
+## Kubernetes
+
+- open-source system for automating deployment, scaling, and management of containerized applications.
+- `cluster`
+  - deployment of kubernetes, management, orchestration
+- `cluster control plane`
+  - manages the cluster, scheduling, applications, scaling and deploying
+  - `kube-apiserver`
+    - front end for kubernetes control plane
+    - what nodes interact with
+    - can horizontally scale for HA
+  - `etcd`q
+    - highly available key value storage within cluster
+  - `kube-scheduler`
+    - assigns node to pods based on needs and constraints
+  - `cloud-controller-manager`
+    - provide cloud specific control logic
+  - `kube-controller-manager`
+    - `node controller` : monitoring and responding to node outages
+    - `job controller` : run pods to execute jobs
+    - `endpoint controller` : populates endpoints in cluster
+    - `service account & token` : accounts/api token creation
+  - `kube-proxy`
+    - runs on each node
+    - coordinates networking
+- `cluster nodes`
+  - vm or physical server on which pods are placed in
+  - `containerd` or `Docker` software for handling container operations
+  - `kubelet` agent to interact with cluster control plane
+- `pods`
+  - 1+ containers, often one container per pod
+  - smallest units of computing
+  - pods are non-permanent
+- `service`
+  - abstraction, running on one or more pod
+- `ingress`
+  - exposes way into a service
+  - `ingress controller`
+    -  used to provide ingress
+-  `persistent storage`
+   -  lifecycle lives beyond any 1 pod
+
+## Elastic Kubernetes Service (EKS)
+
+- aws managed kubernetes
+- control plane scales and runs on multiple AZs
+- integrates with AWS services
+  - ECR, RLB, IAM, VPC, EBS, EFS
+- EKS cluster
+  - eks control plan & eks nodes
+- etcd distributed across multiple AZs
+- nodes
+  - self managed on ec2
+  - managed node groups : eks handles provisioning and lifecycle management
+  - fargate
