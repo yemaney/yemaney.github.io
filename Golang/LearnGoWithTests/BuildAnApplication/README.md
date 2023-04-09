@@ -6,3 +6,6 @@
 4. Use `http.NewRequest` to construct the requests you expect to come in to your system
 5. Using `interfaces` and `mocking` allows your to start coding in small steps. Because you don't need to create large requirements (like a db) and focus on the logic.
 6. TDD to drive out the interfaces you need
+7. use `http.NewServeMux()` for routing
+8. use `Type embedding`to compose new structs or interfaces. Should only expose what's appropriate
+9. use `encoding/json` to serialize and deserialize json
