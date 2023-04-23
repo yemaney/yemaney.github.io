@@ -8,7 +8,11 @@ import (
 
 // testing the server and the InMemoryPlayerStore work well together
 func TestRecordingWinsAndRetrievingThem(t *testing.T) {
-	store := NewInMemoryPlayerStore()
+	database, cleanDatabase := createTempFile(t, `[]`)
+	defer cleanDatabase()
+	store, err := NewFileSystemPlayerStore(database)
+	assertNoError(t, err)
+
 	server := NewPlayerServer(store)
 	player := "Pepper"
 

@@ -9,3 +9,6 @@
 7. use `http.NewServeMux()` for routing
 8. use `Type embedding`to compose new structs or interfaces. Should only expose what's appropriate
 9. use `encoding/json` to serialize and deserialize json
+10. `Seeker` interface to go to beginning of file
+11. `sort.Slice` for sorting slices
+12. `os.File` to handle files, `Truncate` to change size of file
