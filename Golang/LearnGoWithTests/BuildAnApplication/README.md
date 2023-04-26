@@ -12,3 +12,7 @@
 10. `Seeker` interface to go to beginning of file
 11. `sort.Slice` for sorting slices
 12. `os.File` to handle files, `Truncate` to change size of file
+13. `os.Stdin` and `bufio.Scanner` to read from standard input
+14. test using `mypackage_test` package name to see how others use your code
+15. export test helpers and stubs to make them easier to use and allow others importing the code easier ways to test
+16. update package structure to include `folders for each separate application`. reuse domain code by importing module
