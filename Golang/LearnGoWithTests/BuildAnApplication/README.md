@@ -16,3 +16,13 @@
 14. test using `mypackage_test` package name to see how others use your code
 15. export test helpers and stubs to make them easier to use and allow others importing the code easier ways to test
 16. update package structure to include `folders for each separate application`. reuse domain code by importing module
+17. `time.Afterfunc`: scheduling a function call after a specific duration
+18. `time.After(duration)`: returns a chan Time when the duration has expired. So if you wish to do something after a specific time, this can help.
+19. `time.NewTicker(duration)`: returns a Ticker which is similar to the above in that it returns a channel but this one "ticks" every duration, rather than just once. This is very handy if you want to execute some code every N duration.
+20. `separation of concerns`: separate the responsibilities of dealing with user input and responses away from domain code
+21. `messy tests`
+    1. If your tests look messy try and refactor them
+    2. If you've done this and they're still a mess it is very likely pointing to a flaw in your design
+22. `function implementing an interface`: 
+    1. When you define an interface with one method in it you might want to consider defining a MyInterfaceFunc type to complement it so users can implement your interface with just a function.
+    2. In Go you can add methods to types, not just structs. This is a very powerful feature, and you can use it to implement interfaces in more convenient ways.
