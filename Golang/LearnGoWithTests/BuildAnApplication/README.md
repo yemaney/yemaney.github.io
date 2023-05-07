@@ -26,3 +26,5 @@
 22. `function implementing an interface`: 
     1. When you define an interface with one method in it you might want to consider defining a MyInterfaceFunc type to complement it so users can implement your interface with just a function.
     2. In Go you can add methods to types, not just structs. This is a very powerful feature, and you can use it to implement interfaces in more convenient ways.
+23. user helper functions to retry assertions and add timeouts
+24. use go routines to ensure the assertions don't block anything and then use channels to let them signal that they have finished, or not
