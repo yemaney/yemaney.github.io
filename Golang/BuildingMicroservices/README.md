@@ -14,3 +14,8 @@ source: https://www.youtube.com/watch?v=VzBGi_n65iU&list=PLmD8u-IFdreyh6EUfevBcb
     - `go func()` to run server in goroutine
     - `make(chan os.Signal, 1)` to make channel for signals and `signal.Notify` to send shutdown signals
     - `http.Server.Shutdown` to gracefully shutdown when a signal is sent to the signal channel
+- episode 3
+    - create a `data` package to organize code for data
+    - `json.NewEncoder` to efficently write json
+    - use `tags` to control what json fields a written and what their names are
+    - check method before ServeHTTP in product handler
