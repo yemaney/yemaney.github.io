@@ -19,3 +19,7 @@ source: https://www.youtube.com/watch?v=VzBGi_n65iU&list=PLmD8u-IFdreyh6EUfevBcb
     - `json.NewEncoder` to efficently write json
     - use `tags` to control what json fields a written and what their names are
     - check method before ServeHTTP in product handler
+- episode 4
+    - `json.NewDecoder` to turn json into struct
+    - `r.URL.Path` to fine the /path after the url of the api that's hit
+    - `strconv.Atoi` to convert string into an int

@@ -2,6 +2,7 @@ package data
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"time"
 )
@@ -16,6 +17,11 @@ type Product struct {
 	CreatedOn   string  `json:"-"`
 	UpdatedOn   string  `json:"-"`
 	DeletedOn   string  `json:"-"`
+}
+
+func (p *Product) FromJSON(r io.Reader) error {
+	e := json.NewDecoder(r)
+	return e.Decode(p)
 }
 
 // Products is a collection of Product
@@ -35,6 +41,44 @@ func (p *Products) ToJSON(w io.Writer) error {
 // GetProducts returns a list of products
 func GetProducts() Products {
 	return productList
+}
+
+// AddProduct adds a Product to the productList
+func AddProduct(p *Product) {
+	p.ID = getNextId()
+	productList = append(productList, p)
+}
+
+// getNextId looks at the latest element the in productList and creates
+// a new id
+func getNextId() int {
+	lp := productList[len(productList)-1]
+	return lp.ID + 1
+}
+
+// UpdateProduct updates a Product in the productList
+func UpdateProduct(id int, p *Product) error {
+	_, pos, err := findProduct(id)
+	if err != nil {
+		return err
+	}
+
+	p.ID = id
+	productList[pos] = p
+	return nil
+}
+
+var ErrorProductNotFound = fmt.Errorf("Product Not Found")
+
+// findProduct takes an id parameter and tries to find a corrosponding Product in
+// productList
+func findProduct(id int) (*Product, int, error) {
+	for i, p := range productList {
+		if p.ID == id {
+			return p, i, nil
+		}
+	}
+	return nil, -1, ErrorProductNotFound
 }
 
 // productList is a hard coded list of products for this
