@@ -23,3 +23,11 @@ source: https://www.youtube.com/watch?v=VzBGi_n65iU&list=PLmD8u-IFdreyh6EUfevBcb
     - `json.NewDecoder` to turn json into struct
     - `r.URL.Path` to fine the /path after the url of the api that's hit
     - `strconv.Atoi` to convert string into an int
+- episode 5
+    - `github.com/gorilla/mux` frame work for servers
+    - `sm.Methods(http.MethodGet).Subrouter()` create subroutes for different methods
+    - `putRouter.HandleFunc("/{id:[0-9]+}", ph.UpdateProduct)` define path variables with regex
+    - `vars := mux.Vars(r)` and `vars["id"]`: get variables from path that gorrilla parsed in handlers
+    - `postRouter.Use(ph.MiddlewareProductValidation)` add middleware to a router
+    - `ctx := context.WithValue` and `r = r.WithContext(ctx)`: update the request with context in middleware
+    - `prod := r.Context().Value(KeyProduct{}).(*data.Product)` get variable from request context in main handler
