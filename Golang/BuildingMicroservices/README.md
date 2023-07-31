@@ -31,3 +31,8 @@ source: https://www.youtube.com/watch?v=VzBGi_n65iU&list=PLmD8u-IFdreyh6EUfevBcb
     - `postRouter.Use(ph.MiddlewareProductValidation)` add middleware to a router
     - `ctx := context.WithValue` and `r = r.WithContext(ctx)`: update the request with context in middleware
     - `prod := r.Context().Value(KeyProduct{}).(*data.Product)` get variable from request context in main handler
+- episode 6
+    - `github.com/go-playground/validator/v10` for validating structs
+    - `validate:"required"` tags to add to struct which will make sure the field will be validated by a func
+    - `validate.RegisterValidation("sku", validateSKU)` to register custom validation function
+    - add validation step to middleware
