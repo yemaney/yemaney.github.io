@@ -178,3 +178,178 @@ Extra
 |access|traverse an access path to reach a record|refer directly to any vertex by unique id or use an index to find vertices with a particular value|
 |order|data is ordered and database maintained ordering|no order|
 |querying|imperative|support declarative|
+
+## 3. Storage and Retrieval
+- database should be able to do two things:
+  - store data
+  - give back data at a later time
+- application developer should know how databases handle storage and retrieval of data
+  - to make decision on what storage engine to use in your project
+### Data Structures That Power Your Database
+- `index`
+  - an addition structure containing metadata about primary data to speed up reads
+  - slows down writes, because the index will have to be updated every time data is written
+  - application developer creates index depending on typical queries that are expected
+#### Log Structured
+- designed around the concept of many append-only log segment files
+- new data and modifications are appended to a log file sequentially
+- periodically `compact` and `merge`: to remove old duplicates of keys
+
+`hash indexes`
+  - in memory hash map where every key is mapped to the location where the value can be found
+  - `crash recovery`: if database is restarted in memory hash maps are lost, store snapshot of each segments hash map on disk which can be loaded into memory more quickly
+- `SSTables`
+  - same log structure as hash index
+  - `sorted string table sstable` : sort sequence of key-value pairs by key
+  - range queries are more efficient since data is sorted
+  - `merging` is more efficient : look at files side by side and copy lowest key
+  - `save memory`: don't need to keep index of all keys in memory can use a `sparse index`
+  - `save disk space and i/o bandwidth` : compress blocks that use same index key
+
+`LSM-Trees`
+  - log structured merge-tree
+  - cascade of SSTables that are merged in the background
+  - writes go to sorted in memory structure which is eventually written to disk
+
+- `bloom filters` : tell you if keys appears in database, to avoid wasting time looking for non existent keys
+#### Page-Oriented
+- B-Trees are the most widely used index, standard index implementation in relational databases
+- break database down into fix sized blocks/pages
+  - each page can be identified using and address/location
+  - one page is designated as the root of the b-tree
+  - page contains several keys and references to child pages
+  - each child is responsible for a continuous range of keys and references to their children nodes
+- update: search for the leaf page containing the key, and change the value, write to disk
+- adding: find page whose range encompasses the new key and add it to that page
+- if there isn't enough space in page, then page is split into two half-full pages and parent is updated to account for new subdivision of key ranges
+
+- `write-ahead log (WAL/redo log):` append-only file to which every B-tree modification must be written before it can be applied to the pages of the tree
+  - used after crash to restore database to consistent state
+#### Comparison
+- `Log-Structured Storage Engines`
+  - LSM-trees typically have `higher write throughput`
+  - smaller files by merging produce smaller files, more read and write requests within the available I/O
+  - compaction process can interfere with ongoing reads and writes and consumes bandwidth
+  - growing number of unmerged segments can slow down reads
+- `Page-Oriented Storage Engines`
+  - B-Trees typically have faster reads
+  - `Read Performance`: B-Tree structure reduces the number of disk accesses needed to locate data, faster reads
+  - `Predictable Latency`: Random read times are relatively stable
+  - fragmentation when page is split or when a row cannot fit into an existing page
+#### Other Index Structures
+`Storing values within the index`
+- key in an index is the thing that queries search for, but the value can be one of two things
+- `nonclustered index`
+  - storing only references to the data within the index
+  - avoids duplicating data when multiple secondary indexes are present: each index references a location in the heap file and the actual data is kept in one place
+- `clustered index`
+  - store all row data within the index
+  - hop from the index to the heap file is too much of a performance penalty
+- `covering index or index with included columns`
+  - stores some of a table’s columns within the index
+  - compromise between a clustered index and a nonclustered index
+- clustered and covering indexes can speed up reads, but they require additional storage and can add overhead on writes
+
+`Full-text search and fuzzy indexes`
+- search for one word expands to include synonyms, ignore grammatical variations, and to search for occurrences of words near each other in the same document
+- `Lucene` is able to search text for words within a certain edit distance
+
+`Keeping everything in memory`
+- `inmemory` databases
+- performance boost comes from avoiding the overhead of encoding in-memory data structures in a form that can be written to disk 
+- providing data models that are difficult to implement with disk-based indexes: priority queues and sets
+- some intended for caching use only, where it's acceptable for data to be lost if a machine is restarted
+- for persistence: write periodic snapshots to disk, or  replicate the in-memory state to other machines
+
+### Transaction Processing or Analytics
+
+- Online Transaction Processing (OLTP)
+  - access pattern: look up, insert, update, small number of records based on users input
+  - interactive
+- Online Analytic Processing (OLAP)
+  - access pattern: scan over a huge number of records, usually a few columns, calculate aggregate statistics
+
+
+|Property|Online Transaction Processing (OLTP)|Online Analytic Processing (OLAP)|
+|-|-|-|
+|Read Pattern|small number of records per query, fetched by key|Aggregate over large number of records|
+|Write Pattern|random-access, low latency writes from user input|Bulk import (ELT) or event stream|
+|Used By|end user/customer, via web application|Internal analyst, for decision support|
+|Data Represents|latest state of data|History of event over time|
+|Dataset Size|Gigabytes to Terabytes|Terabytes to Petabytes|
+|Bottleneck|Disk seek time|Disk bandwidth|
+
+#### Data Warehousing
+
+- Data Warehouse
+  - database separate from the ones used for OLTP systems
+  - analyst can query without affecting OLTP operations
+  - contains read-only copy of data in all the various OLTP systems of company
+  - data extracted from OLTP databases, transformed into analysis friendly schema, and then loaded into data warehouse (ELT)
+  - data warehouse can be optimized for analytic access patterns
+  - data model usually relational as SQL is good for analytics
+
+#### Schemas For Analytics
+- star schema (dimensional modeling)
+  - fact table: each row represents an event that happened at some point in time, created by referencing a bunch of dimensional tables that give data about event
+  - simple
+- snowflake schema
+  - dimensions are further broken down into sub-dimensions
+  - more normalized
+
+### Column-Oriented Storage
+
+- row oriented : store all values from one row together
+  - loads all attributes for each row before filtering
+- column oriented: store all values from each column together
+  - queries only loads required columns to save time
+
+#### Column Compression
+
+- column oriented storage lends itself well to compression, which reduces disk throughput demand by compressing data
+  - number of distinct values in a column are small compared to number of rows
+  - can use bitmap encoding
+
+`Memory bandwidth and vectorized processing`
+- column compression allows more rows from a column to fit in the same amount of L1 cache
+- vectorized processing: operate on such chunks of compressed column data directly
+
+#### Sort Order In Column Storage
+- can impose an order for how the rows are stored
+- data sorted entire row at a time, the key chosen based on common query
+- a second column can be used to sort rows that have same value in first sort column
+- helps with compression since sorting creates long sequences of repeating number if there isn't many distinct values
+
+`Several different sort orders`
+- redundantly store data sorted in different ways
+- different queries benefit from different sort orders
+
+#### Writing To Column-Oriented Storage
+- read optimizations make writes a little more difficult
+- like LSM-Tree, writes go to in memory sorted structure before being written to disk
+- queries will have to examine both column data on disk and recent writes in memory
+
+#### Aggregation: Data Cubes and Materialized Views
+- data warehouse queries often involve an aggregate function, such as COUNT, SUM, AVG, MIN, or MAX in SQL
+- materialized view: copy of the query results, written to disk
+  - need to be updated when underlying data changes
+  - updates make writes more expensive, make more sense in read heavy warehouse
+- virtual view: shortcut for writing queries
+  - SQL engine expands it into the view’s underlying query on the fly and then processes the expanded query
+- data cube or OLAP cube: common special case of a materialized view
+  - grid of aggregates grouped by different dimensions (example: SUM sales for each combination of date and product)
+  - certain queries become very fast because they have effectively been precomputed
+  - not as flexible as querying raw data: used to improve specific queries
+
+### Summary
+
+- OLTP: user facing, small queries, large volume of requests,  disk seek time is bottleneck
+- OLAP: analyst facing, large queries, lower volume of requests, disk bandwidth is bottleneck
+  - large number of rows, indexes are much less relevant.
+  - becomes important to encode data very compactly, to minimize the amount of data
+that the query needs to read from disk
+- log-structure: append to files and delete obsolete files but never update in place
+  - systematically turn random-access writes into sequential writes on disk to enable higher write throughput
+  - Bitcask, SSTables, LSM-trees, LevelDB, Cassandra, HBase, Lucene
+- page-oriented: treats the disk as a set of fixed-size pages that can be overwritten
+  - BTrees, RDBMS
