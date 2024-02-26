@@ -1,0 +1,6200 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+      
+      <link rel="icon" href="../../icon/mdi--cube-scan.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.11">
+    
+    
+      
+        <title>Foundations of Data Systems - My Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#foundations-of-data-systems" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 22v-2h3v-3h2v3.5c0 .39-.16.74-.46 1.04-.3.3-.65.46-1.04.46H17M7 22H3.5c-.39 0-.74-.16-1.04-.46-.3-.3-.46-.65-.46-1.04V17h2v3h3v2M17 2h3.5c.39 0 .74.16 1.04.46.3.3.46.65.46 1.04V7h-2V4h-3V2M7 2v2H4v3H2V3.5c0-.39.16-.74.46-1.04.3-.3.65-.46 1.04-.46H7m6 15.25 4-2.3v-4.59l-4 2.3v4.59m-1-6.33 4-2.29-4-2.35-4 2.35 4 2.29m-5 4.03 4 2.3v-4.59l-4-2.3v4.59m11.23-7.36c.5.32.77.75.77 1.32v6.32c0 .57-.27 1-.77 1.32l-5.48 3.18c-.5.32-1 .32-1.5 0l-5.48-3.18c-.5-.32-.77-.75-.77-1.32V8.91c0-.57.27-1 .77-1.32l5.48-3.18c.25-.13.5-.19.75-.19s.5.06.75.19l5.48 3.18Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Foundations of Data Systems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 22v-2h3v-3h2v3.5c0 .39-.16.74-.46 1.04-.3.3-.65.46-1.04.46H17M7 22H3.5c-.39 0-.74-.16-1.04-.46-.3-.3-.46-.65-.46-1.04V17h2v3h3v2M17 2h3.5c.39 0 .74.16 1.04.46.3.3.46.65.46 1.04V7h-2V4h-3V2M7 2v2H4v3H2V3.5c0-.39.16-.74.46-1.04.3-.3.65-.46 1.04-.46H7m6 15.25 4-2.3v-4.59l-4 2.3v4.59m-1-6.33 4-2.29-4-2.35-4 2.35 4 2.29m-5 4.03 4 2.3v-4.59l-4-2.3v4.59m11.23-7.36c.5.32.77.75.77 1.32v6.32c0 .57-.27 1-.77 1.32l-5.48 3.18c-.5.32-1 .32-1.5 0l-5.48-3.18c-.5-.32-.77-.75-.77-1.32V8.91c0-.57.27-1 .77-1.32l5.48-3.18c.25-.13.5-.19.75-.19s.5.06.75.19l5.48 3.18Z"/></svg>
+
+    </a>
+    My Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AWS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            AWS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes For AWS Certifications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/AWSBackup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Backup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/DomainNameSystem101/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DNS 101
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/EC2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Elastic Compute Cloud (EC2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/ECS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Elastic Container Service (ECS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/EFS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Elastic File System (EFS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/GlobalContentDelivery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloudfront
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/HAandScaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    High Availability and Scaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/HighAvailability_FaultTolerance_DisasterRecovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    High-Availability (HA)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/HybridEnvsAndMigration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HybridEnvsAndMigration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/IAM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IAM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/InfrastrucureAsCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    InfrastrucureAsCode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/KMS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Key Management Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/MachineLearning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MachineLearning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/NoSQLandDynamoDB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NoSQLandDynamoDB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/RDS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relation Database Service (RDS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/Route53/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/S3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simple Storage Service S3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/SecurityDeploymentOperations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SECURITY, DEPLOYMENT & OPERATIONS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/ServerlessAndApplicationServices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ServerlessAndApplicationServices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/TechFundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TechFundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/VPC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Virtual Private Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/cloudComputing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloudComputing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/cloudFormation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudFormation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/cloudWatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud Watch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/exam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exam
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/globalInfrastructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Global Infrastructure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/json/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JSON
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/networking_01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/sharedResponsibiltyModel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shared Responsibility Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/yaml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Yaml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_33" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_33" id="__nav_3_33_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CCP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_33_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_33">
+            <span class="md-nav__icon md-icon"></span>
+            CCP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/CCP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes For Certified Cloud Practitioner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AWS/CCP/Notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Algorithms
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Algorithms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 Introduction
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            01 Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithms/01_Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithms/01_Introduction/01.5_Time_Complexity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.5 Time Complexity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithms/01_Introduction/01.6-11_Classes_of_functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.6 Class of functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Boost
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Boost
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Boost/week02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week02
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Boost/week03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    week 3 : remote connections to vm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            C++
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02.DivingIn
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            02.DivingIn
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B/02.DivingIn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Coding
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Coding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Coding/SoftwareDesignPrinciples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SoftwareDesignPrinciples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSA
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            DSA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Structures and Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BinaryTrees
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            BinaryTrees
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/BinaryTrees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Binary Trees Notes:
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    FamousAlgos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            FamousAlgos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/FamousAlgos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Graphs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            Graphs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/Graphs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GreedyAlgorithms
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            GreedyAlgorithms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/GreedyAlgorithms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Greedy Algorithms Notes:
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    LinkedLists
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            LinkedLists
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/LinkedLists/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linked Lists Notes:
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Recursion
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_7">
+            <span class="md-nav__icon md-icon"></span>
+            Recursion
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/Recursion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recursion Notes:
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_8" id="__nav_8_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Searching
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_8">
+            <span class="md-nav__icon md-icon"></span>
+            Searching
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/Searching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Searching Notes:
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_9" id="__nav_8_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sorting
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_9">
+            <span class="md-nav__icon md-icon"></span>
+            Sorting
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/Sorting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sorting Notes:
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_10" id="__nav_8_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_10">
+            <span class="md-nav__icon md-icon"></span>
+            Strings
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/Strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_11" id="__nav_8_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_11">
+            <span class="md-nav__icon md-icon"></span>
+            Arrays
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays Notes:
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_12" id="__nav_8_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    binarySearchTrees
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_12">
+            <span class="md-nav__icon md-icon"></span>
+            binarySearchTrees
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA/binarySearchTrees/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Binary Search Tree Notes:
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DSA CPP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            DSA CPP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    0 2.Essentials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            0 2.Essentials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DSA_CPP/0_2.Essentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Essentials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Golang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Golang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_1" id="__nav_10_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BeginnerGoProjects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_1">
+            <span class="md-nav__icon md-icon"></span>
+            BeginnerGoProjects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/BeginnerGoProjects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learn Go Programming by Building 11 Projects – Full Course
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_1_2" id="__nav_10_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01.WebServer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            01.WebServer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/BeginnerGoProjects/01.WebServer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simple WebServer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_2" id="__nav_10_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BuildingMicroservices
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            BuildingMicroservices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/BuildingMicroservices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Building Microservices with Go
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_3" id="__nav_10_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GoBeginners
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            GoBeginners
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/ArraysAndSlices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays and Slices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/Channels/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Channels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/ControlFlow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control Flow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/DeferPanicRecover/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Defer, Panic, Recover
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/Looping/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Looping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/MapAndStructs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maps and Structs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/goroutines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Goroutines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/interfaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interfaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/pointers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pointers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/primitives/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Primitive Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/GoBeginners/variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Variables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4" id="__nav_10_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    LearnGoWithTests
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4">
+            <span class="md-nav__icon md-icon"></span>
+            LearnGoWithTests
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_1" id="__nav_10_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    BuildAnApplication
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            BuildAnApplication
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/BuildAnApplication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2" id="__nav_10_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Fundamentals
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_1" id="__nav_10_4_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01.hello world
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            01.hello world
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/01.hello_world/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hello World
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_2" id="__nav_10_4_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02.Integers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            02.Integers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/02.Integers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_3" id="__nav_10_4_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    03.Iteration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            03.Iteration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/03.Iteration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iteration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_4" id="__nav_10_4_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    04.ArraysAndSlices
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            04.ArraysAndSlices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/04.ArraysAndSlices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays and Slices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_5" id="__nav_10_4_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    05.StructsMethodsInterfaces
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            05.StructsMethodsInterfaces
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/05.StructsMethodsInterfaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Struct, Methods, & Interfaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_6" id="__nav_10_4_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    06.PointersErrors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            06.PointersErrors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/06.PointersErrors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pointers and Errors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_7" id="__nav_10_4_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    07.Maps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            07.Maps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/07.Maps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_8" id="__nav_10_4_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    08.DependencyInjection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            08.DependencyInjection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/08.DependencyInjection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dependency Injection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_9" id="__nav_10_4_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    09.Mocking
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            09.Mocking
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/09.Mocking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mocking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_10" id="__nav_10_4_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    10.Concurrency
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            10.Concurrency
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/10.Concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_11" id="__nav_10_4_2_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    11.Select
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            11.Select
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/11.Select/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Select
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_12" id="__nav_10_4_2_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    12.Reflection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            12.Reflection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/12.Reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_13" id="__nav_10_4_2_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    13.Sync
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            13.Sync
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/13.Sync/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sync
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_14" id="__nav_10_4_2_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    14.Context
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            14.Context
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/14.Context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_15" id="__nav_10_4_2_15_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    15.PropertyTests
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_15">
+            <span class="md-nav__icon md-icon"></span>
+            15.PropertyTests
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/15.PropertyTests/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Property Based Tests
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_16" id="__nav_10_4_2_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    16.Maths
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_16">
+            <span class="md-nav__icon md-icon"></span>
+            16.Maths
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/16.Maths/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maths
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_17" id="__nav_10_4_2_17_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    17.ReadingFiles
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_17">
+            <span class="md-nav__icon md-icon"></span>
+            17.ReadingFiles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/17.ReadingFiles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_17_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_17_2" id="__nav_10_4_2_17_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Posts
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_10_4_2_17_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_17_2">
+            <span class="md-nav__icon md-icon"></span>
+            Posts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/17.ReadingFiles/posts/post1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Post 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/17.ReadingFiles/posts/post2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Post 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_18" id="__nav_10_4_2_18_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    18.Templating
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_18">
+            <span class="md-nav__icon md-icon"></span>
+            18.Templating
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/18.Templating/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Templating Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_19" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_19" id="__nav_10_4_2_19_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    19.Generics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_19">
+            <span class="md-nav__icon md-icon"></span>
+            19.Generics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/19.Generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4_2_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_4_2_20" id="__nav_10_4_2_20_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    20.ArraysAndSlicesWithGenerics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_10_4_2_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_4_2_20">
+            <span class="md-nav__icon md-icon"></span>
+            20.ArraysAndSlicesWithGenerics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Golang/LearnGoWithTests/Fundamentals/20.ArraysAndSlicesWithGenerics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Javascript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Javascript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_2" id="__nav_11_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    21 Day Challenge
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_2">
+            <span class="md-nav__icon md-icon"></span>
+            21 Day Challenge
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Javascript/21-Day-Challenge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21-day-javascript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_11_3" id="__nav_11_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Beginners Javascript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_3">
+            <span class="md-nav__icon md-icon"></span>
+            Beginners Javascript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Javascript/Beginners-Javascript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learning the basics of Javascript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kubernetes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kubernetes/00-core/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kubernetes/01-scheduling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 scheduling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kubernetes/02-logging-and-monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 logging and monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kubernetes/03-application-lifecycle-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 application lifecycle management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kubernetes/04-cluster-maintenance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 cluster maintenance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux Command Line
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Linux Command Line
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux-Command-Line/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux-Command-Line
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux-Command-Line/ShellScripting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shell Scripting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vault
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Vault
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Vault/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VAULT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ddia
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            Ddia
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Data Intensive Application Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Foundations of Data Systems
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Foundations of Data Systems
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-reliable-scalable-and-maintainable-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Reliable, Scalable, and Maintainable Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Reliable, Scalable, and Maintainable Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintainability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintainability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-data-models-and-query-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Data Models and Query Languages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Data Models and Query Languages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relational-model-versus-document-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational Model Versus Document Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-languages-for-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Languages for Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-like-data-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph-Like Data Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-storage-and-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Storage and Retrieval
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Storage and Retrieval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-structures-that-power-your-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Structures That Power Your Database
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Structures That Power Your Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-structured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Structured
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#page-oriented" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page-Oriented
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-index-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Index Structures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-processing-or-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction Processing or Analytics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transaction Processing or Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-warehousing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Warehousing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schemas-for-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schemas For Analytics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-oriented-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column-Oriented Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Column-Oriented Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#column-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Compression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sort-order-in-column-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sort Order In Column Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-to-column-oriented-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing To Column-Oriented Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation-data-cubes-and-materialized-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregation: Data Cubes and Materialized Views
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-reliable-scalable-and-maintainable-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Reliable, Scalable, and Maintainable Applications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Reliable, Scalable, and Maintainable Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reliability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintainability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintainability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-data-models-and-query-languages" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Data Models and Query Languages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Data Models and Query Languages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relational-model-versus-document-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational Model Versus Document Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#query-languages-for-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Languages for Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-like-data-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph-Like Data Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-storage-and-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Storage and Retrieval
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Storage and Retrieval">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-structures-that-power-your-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Structures That Power Your Database
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Structures That Power Your Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log-structured" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Structured
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#page-oriented" class="md-nav__link">
+    <span class="md-ellipsis">
+      Page-Oriented
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-index-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Index Structures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-processing-or-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction Processing or Analytics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transaction Processing or Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-warehousing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Warehousing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schemas-for-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schemas For Analytics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-oriented-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column-Oriented Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Column-Oriented Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#column-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Compression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sort-order-in-column-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sort Order In Column Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-to-column-oriented-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing To Column-Oriented Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation-data-cubes-and-materialized-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregation: Data Cubes and Materialized Views
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="foundations-of-data-systems">Foundations of Data Systems</h1>
+<ul>
+<li>an application has to meet two types of requirements in order to be useful</li>
+<li><code>functional</code> : what it does</li>
+<li><code>non functional</code> : general properties like reliability, scalability, maintainability</li>
+</ul>
+<h2 id="1-reliable-scalable-and-maintainable-applications">1. Reliable, Scalable, and Maintainable Applications</h2>
+<h3 id="reliability">Reliability</h3>
+<ul>
+<li>system should work even when faced with faults and prevent failures from ocurring</li>
+<li><code>fault</code>: one component of system deviates from its spec</li>
+<li><code>failure</code>: entire system stops providing service</li>
+</ul>
+<p><code>hardware faults</code>:
+- add redundancy to hardware components
+- use fault-tolerannt software to tolerate loss of entire machines</p>
+<p><code>software errors</code>
+- tend to cause more issues since software is shared accross nodes
+- think about assumptions, testing, isolate processes, allow process to crash and restart,  monitor system in production</p>
+<p><code>human errors</code>
+- design systems to minimize opportunites for error
+  - don't make to limiting as people will try to get around it
+- decouple place where people make mistakes from where they can cause failures
+  - sandbox environments
+- test thoroughly: unit tests, system wide integration tetss, manual tests
+- make it fast to roll back configuration changes</p>
+<h3 id="scalability">Scalability</h3>
+<ul>
+<li>systems ability to cope with increased load</li>
+<li>depends on system architecture. load can be volume of reads, volume of writes, volume of data to store, complexity of data, response times, access patterns</li>
+</ul>
+<p><code>describing load</code>
+- <code>load parameters</code> depends on architecture of system: requests per second, reads and writes to database, number of simulatneous users
+- focus on average case vs bottleneck cases</p>
+<p><code>describe performance</code>
+- when load parameter is increased and system resources are unchanged, how is performance affected
+- when you increase a load parameter, how much do you need to increase the resources to keep performance unchanged
+- <code>reponse time</code>: what client sees. inclues service time, network delays, queing delays etc.
+- <code>latency</code> : time requests is waiting to be handled
+- use <code>percentiles</code> to understand median performance, and outliers
+- queing delays account for a large part of the reponse time at high percentiles
+  - <code>head of line blocking</code>: early slow request delay others behind in queue. which is why it's important to measure response times on the client side
+  - or when several backend calls are required to serve a single request</p>
+<p><code>approaches for coping with load</code>
+- <code>scaling up / verical scaling</code>: moving to a more powerful machine
+  - common wisodom to scale databases up for simplicity
+- <code>scaling out / horizontal scaling</code>: distubuting the load across multiple smaller machines, also known as <em>shared-nothing</em>
+  - <code>elastic</code>: can automatically add computing resources  when load increases.</p>
+<h3 id="maintainability">Maintainability</h3>
+<ul>
+<li>
+<p>it should be reasonable to expect different people can work on the system productively </p>
+</li>
+<li>
+<p>majority of cost of software is ongoing maintenence</p>
+</li>
+<li><code>operability</code>: make it easy to keep the system running smoothly</li>
+<li>good visibility into systems health</li>
+<li><code>simplicity</code>: make it easy for new engineers to understand</li>
+<li>complexity increases risk of bugs by hiding assumptions, unintedned consequences, and unexpected interactions</li>
+<li><code>abstractions</code>: can hide implementation detail</li>
+<li><code>evolvability</code>: make it easy to make changes to the system in the future</li>
+</ul>
+<h2 id="2-data-models-and-query-languages">2. Data Models and Query Languages</h2>
+<ul>
+<li>application are built by layering data models</li>
+<li>objects/data structures &gt; JSON/XML &gt; bytes in memory/disk/network &gt; electrical currents</li>
+<li>data models embody assumptions about how it is going to be used</li>
+<li>some usage are easy and some are not supported; some operations are fast and some perform badly</li>
+<li>One model can be emulated in terms of another model, but the result is often awkward.</li>
+<li>different systems for different purposes, not a single one-size-fits-all solution.</li>
+<li>schemas can either be explicit (enforced on write) or implicit (handled on read)</li>
+</ul>
+<h3 id="relational-model-versus-document-model">Relational Model Versus Document Model</h3>
+<p><code>Models</code>
+- <code>hierarchal model</code>
+  - represented all data as a tree of records nested within records
+  - not good for representing many-to-many relationships
+- <code>network model</code>
+  - record could have multiple parents
+    - ex: one record for a location which is linked to many users, allowing many to one and many to many
+  - many access paths, became cumbersome, updating code for querying and updating the database complicated and inflexible
+- <code>relational model</code>
+  - all data in a relation (table) made of up of rows
+  - no complicated access paths, query optimizer decides optimal path
+- <code>document model</code>
+  - similar storage as hierarchal model, with data in JSON
+  - greater scalability than relational, very large datasets or very high write throughput</p>
+<p><code>Comparison</code></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Relational</th>
+<th>Document</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>joins</td>
+<td>better support for joins, many to one, and many to many relationships</td>
+<td>joins not natively supported, work of joins shifted to application code, use document reference (unique identifier) to point to other documents and resolve using follow up queries</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>schema enforced at write time, changes require migrations</td>
+<td>schema-on-read approach (don't enforce any schema), more flexible, can immediately write new document structures and have application code handle variants</td>
+</tr>
+<tr>
+<td>data locality</td>
+<td>if getting document like data, requires access multiple different tables</td>
+<td>can enjoy better data locality if application needs most of document since entire document will be loaded, since updates can require rewriting of entire document it is recommended to keep documents small</td>
+</tr>
+<tr>
+<td>Object-Relational Mismatch</td>
+<td>require translation layer between objects in application code and the database model</td>
+<td>JSON model in document databases is usually similar to objects in application code, resulting in easier translation</td>
+</tr>
+</tbody>
+</table>
+<p>Extra
+- Many-to-One and Many-to-Many Relationships
+  - if a certain data is used by many different entities, it can make sense to store it as an ID
+    - enforce consistency across entities
+    - avoid ambiguity by making distinctions
+    - localization support (for translation)
+    - better search
+    - ease of updating, as changes only has to happen in one place
+      - less write overhead and inconsistencies
+      - removing duplication helps normalization in databases</p>
+<ul>
+<li>convergence of document and relational databases</li>
+<li>most relational databases support xml and json</li>
+<li>some document databases support relational like joins</li>
+</ul>
+<h3 id="query-languages-for-data">Query Languages for Data</h3>
+<p><code>imperative vs declarative</code>
+  - <code>imperative</code>: tell computer to perform certain operations in a specific order
+  - <code>declarative</code>: specify end goal but not how to get there
+    - concise, easier to  use, hides implementation details, more room for optimization, lends itself to parallel execution which is hard for imperative
+    - <code>SQL is declarative</code> </p>
+<ul>
+<li><code>map reduce querying</code></li>
+<li>programming model for processing large amounts of data in bulk across many machines</li>
+<li><code>in between declarative and imperative</code></li>
+<li>logic of the query is expressed with snippets of code, which are called repeatedly by the processing framework</li>
+</ul>
+<h3 id="graph-like-data-models">Graph-Like Data Models</h3>
+<ul>
+<li>graph made of two objects: <code>vertices/nodes and edges</code></li>
+</ul>
+<p><code>Graph models</code>
+- <code>property graphs</code>
+  - each vertex consists of:
+    - a unique identifier, set of outgoing edges, set of incoming edges, collection of properties (key-value pairs)
+  - each edge consists of:
+    - a unique identifier, vertex where it starts (tail), vertex where it ends (head), label describing the relationship between the two vertices, collection of properties (key-value pairs)</p>
+<ul>
+<li><code>triple-stores</code></li>
+<li>mostly similar to property graph model</li>
+<li>all information is stored in three part statement: <code>subject, predicate, object</code></li>
+<li>subject is a vertex</li>
+<li>
+<p>object can be either</p>
+<ul>
+<li>a value in a primitive datatype such as string or number</li>
+<li>in which case the predicate and object are the key value of property on the subject vertex</li>
+<li>another vertex in the graph</li>
+<li>in which case the predicate is and edge, the subject is the tail, and the object is the head</li>
+</ul>
+</li>
+<li>
+<p><code>graph store</code>:</p>
+</li>
+<li>represent property graph using a relational schema </li>
+<li>two relational tables, one for vertices and one for edges</li>
+<li>any vertex can have an edge connecting it with any other vertex (no schema restriction)</li>
+<li>given any vertex you can efficiently find both its incoming and outgoing edges, and traverse the graph</li>
+<li>can store different kinds of information using labels while still keeping a clean data model</li>
+</ul>
+<p><code>Querying</code>
+- <code>cypher query language</code>
+  - declarative query language for property graphs for Neo4j graph database
+- <code>graph queries in sql</code>
+  - can be done using the WITH RECURSIVE syntax to follow paths, but is difficult
+- <code>sparql query language</code>
+  - query language for triple-stores using the rdf data model
+- <code>datalog</code>
+  - query language of datomic
+  - data model similar to triple store, writes a <code>predicate(subject, object)</code>
+  - define rules that it uses to find data, less convenient for simple one off queries by copes better with complex data</p>
+<p><code>Comparison</code></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Network Model</th>
+<th>Graph Database</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schema</td>
+<td>had schema specifying which record type could be nested within other record type</td>
+<td>no restrictions</td>
+</tr>
+<tr>
+<td>access</td>
+<td>traverse an access path to reach a record</td>
+<td>refer directly to any vertex by unique id or use an index to find vertices with a particular value</td>
+</tr>
+<tr>
+<td>order</td>
+<td>data is ordered and database maintained ordering</td>
+<td>no order</td>
+</tr>
+<tr>
+<td>querying</td>
+<td>imperative</td>
+<td>support declarative</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-storage-and-retrieval">3. Storage and Retrieval</h2>
+<ul>
+<li>database should be able to do two things:</li>
+<li>store data</li>
+<li>give back data at a later time</li>
+<li>application developer should know how databases handle storage and retrieval of data</li>
+<li>to make decision on what storage engine to use in your project</li>
+</ul>
+<h3 id="data-structures-that-power-your-database">Data Structures That Power Your Database</h3>
+<ul>
+<li><code>index</code></li>
+<li>an addition structure containing metadata about primary data to speed up reads</li>
+<li>slows down writes, because the index will have to be updated every time data is written</li>
+<li>application developer creates index depending on typical queries that are expected</li>
+</ul>
+<h4 id="log-structured">Log Structured</h4>
+<ul>
+<li>designed around the concept of many append-only log segment files</li>
+<li>new data and modifications are appended to a log file sequentially</li>
+<li>periodically <code>compact</code> and <code>merge</code>: to remove old duplicates of keys</li>
+</ul>
+<p><code>hash indexes</code>
+  - in memory hash map where every key is mapped to the location where the value can be found
+  - <code>crash recovery</code>: if database is restarted in memory hash maps are lost, store snapshot of each segments hash map on disk which can be loaded into memory more quickly
+- <code>SSTables</code>
+  - same log structure as hash index
+  - <code>sorted string table sstable</code> : sort sequence of key-value pairs by key
+  - range queries are more efficient since data is sorted
+  - <code>merging</code> is more efficient : look at files side by side and copy lowest key
+  - <code>save memory</code>: don't need to keep index of all keys in memory can use a <code>sparse index</code>
+  - <code>save disk space and i/o bandwidth</code> : compress blocks that use same index key</p>
+<p><code>LSM-Trees</code>
+  - log structured merge-tree
+  - cascade of SSTables that are merged in the background
+  - writes go to sorted in memory structure which is eventually written to disk</p>
+<ul>
+<li><code>bloom filters</code> : tell you if keys appears in database, to avoid wasting time looking for non existent keys</li>
+</ul>
+<h4 id="page-oriented">Page-Oriented</h4>
+<ul>
+<li>B-Trees are the most widely used index, standard index implementation in relational databases</li>
+<li>break database down into fix sized blocks/pages</li>
+<li>each page can be identified using and address/location</li>
+<li>one page is designated as the root of the b-tree</li>
+<li>page contains several keys and references to child pages</li>
+<li>each child is responsible for a continuous range of keys and references to their children nodes</li>
+<li>update: search for the leaf page containing the key, and change the value, write to disk</li>
+<li>adding: find page whose range encompasses the new key and add it to that page</li>
+<li>
+<p>if there isn't enough space in page, then page is split into two half-full pages and parent is updated to account for new subdivision of key ranges</p>
+</li>
+<li>
+<p><code>write-ahead log (WAL/redo log):</code> append-only file to which every B-tree modification must be written before it can be applied to the pages of the tree</p>
+</li>
+<li>used after crash to restore database to consistent state</li>
+</ul>
+<h4 id="comparison">Comparison</h4>
+<ul>
+<li><code>Log-Structured Storage Engines</code></li>
+<li>LSM-trees typically have <code>higher write throughput</code></li>
+<li>smaller files by merging produce smaller files, more read and write requests within the available I/O</li>
+<li>compaction process can interfere with ongoing reads and writes and consumes bandwidth</li>
+<li>growing number of unmerged segments can slow down reads</li>
+<li><code>Page-Oriented Storage Engines</code></li>
+<li>B-Trees typically have faster reads</li>
+<li><code>Read Performance</code>: B-Tree structure reduces the number of disk accesses needed to locate data, faster reads</li>
+<li><code>Predictable Latency</code>: Random read times are relatively stable</li>
+<li>fragmentation when page is split or when a row cannot fit into an existing page</li>
+</ul>
+<h4 id="other-index-structures">Other Index Structures</h4>
+<p><code>Storing values within the index</code>
+- key in an index is the thing that queries search for, but the value can be one of two things
+- <code>nonclustered index</code>
+  - storing only references to the data within the index
+  - avoids duplicating data when multiple secondary indexes are present: each index references a location in the heap file and the actual data is kept in one place
+- <code>clustered index</code>
+  - store all row data within the index
+  - hop from the index to the heap file is too much of a performance penalty
+- <code>covering index or index with included columns</code>
+  - stores some of a table’s columns within the index
+  - compromise between a clustered index and a nonclustered index
+- clustered and covering indexes can speed up reads, but they require additional storage and can add overhead on writes</p>
+<p><code>Full-text search and fuzzy indexes</code>
+- search for one word expands to include synonyms, ignore grammatical variations, and to search for occurrences of words near each other in the same document
+- <code>Lucene</code> is able to search text for words within a certain edit distance</p>
+<p><code>Keeping everything in memory</code>
+- <code>inmemory</code> databases
+- performance boost comes from avoiding the overhead of encoding in-memory data structures in a form that can be written to disk 
+- providing data models that are difficult to implement with disk-based indexes: priority queues and sets
+- some intended for caching use only, where it's acceptable for data to be lost if a machine is restarted
+- for persistence: write periodic snapshots to disk, or  replicate the in-memory state to other machines</p>
+<h3 id="transaction-processing-or-analytics">Transaction Processing or Analytics</h3>
+<ul>
+<li>Online Transaction Processing (OLTP)</li>
+<li>access pattern: look up, insert, update, small number of records based on users input</li>
+<li>interactive</li>
+<li>Online Analytic Processing (OLAP)</li>
+<li>access pattern: scan over a huge number of records, usually a few columns, calculate aggregate statistics</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Online Transaction Processing (OLTP)</th>
+<th>Online Analytic Processing (OLAP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read Pattern</td>
+<td>small number of records per query, fetched by key</td>
+<td>Aggregate over large number of records</td>
+</tr>
+<tr>
+<td>Write Pattern</td>
+<td>random-access, low latency writes from user input</td>
+<td>Bulk import (ELT) or event stream</td>
+</tr>
+<tr>
+<td>Used By</td>
+<td>end user/customer, via web application</td>
+<td>Internal analyst, for decision support</td>
+</tr>
+<tr>
+<td>Data Represents</td>
+<td>latest state of data</td>
+<td>History of event over time</td>
+</tr>
+<tr>
+<td>Dataset Size</td>
+<td>Gigabytes to Terabytes</td>
+<td>Terabytes to Petabytes</td>
+</tr>
+<tr>
+<td>Bottleneck</td>
+<td>Disk seek time</td>
+<td>Disk bandwidth</td>
+</tr>
+</tbody>
+</table>
+<h4 id="data-warehousing">Data Warehousing</h4>
+<ul>
+<li>Data Warehouse</li>
+<li>database separate from the ones used for OLTP systems</li>
+<li>analyst can query without affecting OLTP operations</li>
+<li>contains read-only copy of data in all the various OLTP systems of company</li>
+<li>data extracted from OLTP databases, transformed into analysis friendly schema, and then loaded into data warehouse (ELT)</li>
+<li>data warehouse can be optimized for analytic access patterns</li>
+<li>data model usually relational as SQL is good for analytics</li>
+</ul>
+<h4 id="schemas-for-analytics">Schemas For Analytics</h4>
+<ul>
+<li>star schema (dimensional modeling)</li>
+<li>fact table: each row represents an event that happened at some point in time, created by referencing a bunch of dimensional tables that give data about event</li>
+<li>simple</li>
+<li>snowflake schema</li>
+<li>dimensions are further broken down into sub-dimensions</li>
+<li>more normalized</li>
+</ul>
+<h3 id="column-oriented-storage">Column-Oriented Storage</h3>
+<ul>
+<li>row oriented : store all values from one row together</li>
+<li>loads all attributes for each row before filtering</li>
+<li>column oriented: store all values from each column together</li>
+<li>queries only loads required columns to save time</li>
+</ul>
+<h4 id="column-compression">Column Compression</h4>
+<ul>
+<li>column oriented storage lends itself well to compression, which reduces disk throughput demand by compressing data</li>
+<li>number of distinct values in a column are small compared to number of rows</li>
+<li>can use bitmap encoding</li>
+</ul>
+<p><code>Memory bandwidth and vectorized processing</code>
+- column compression allows more rows from a column to fit in the same amount of L1 cache
+- vectorized processing: operate on such chunks of compressed column data directly</p>
+<h4 id="sort-order-in-column-storage">Sort Order In Column Storage</h4>
+<ul>
+<li>can impose an order for how the rows are stored</li>
+<li>data sorted entire row at a time, the key chosen based on common query</li>
+<li>a second column can be used to sort rows that have same value in first sort column</li>
+<li>helps with compression since sorting creates long sequences of repeating number if there isn't many distinct values</li>
+</ul>
+<p><code>Several different sort orders</code>
+- redundantly store data sorted in different ways
+- different queries benefit from different sort orders</p>
+<h4 id="writing-to-column-oriented-storage">Writing To Column-Oriented Storage</h4>
+<ul>
+<li>read optimizations make writes a little more difficult</li>
+<li>like LSM-Tree, writes go to in memory sorted structure before being written to disk</li>
+<li>queries will have to examine both column data on disk and recent writes in memory</li>
+</ul>
+<h4 id="aggregation-data-cubes-and-materialized-views">Aggregation: Data Cubes and Materialized Views</h4>
+<ul>
+<li>data warehouse queries often involve an aggregate function, such as COUNT, SUM, AVG, MIN, or MAX in SQL</li>
+<li>materialized view: copy of the query results, written to disk</li>
+<li>need to be updated when underlying data changes</li>
+<li>updates make writes more expensive, make more sense in read heavy warehouse</li>
+<li>virtual view: shortcut for writing queries</li>
+<li>SQL engine expands it into the view’s underlying query on the fly and then processes the expanded query</li>
+<li>data cube or OLAP cube: common special case of a materialized view</li>
+<li>grid of aggregates grouped by different dimensions (example: SUM sales for each combination of date and product)</li>
+<li>certain queries become very fast because they have effectively been precomputed</li>
+<li>not as flexible as querying raw data: used to improve specific queries</li>
+</ul>
+<h3 id="summary">Summary</h3>
+<ul>
+<li>OLTP: user facing, small queries, large volume of requests,  disk seek time is bottleneck</li>
+<li>OLAP: analyst facing, large queries, lower volume of requests, disk bandwidth is bottleneck</li>
+<li>large number of rows, indexes are much less relevant.</li>
+<li>becomes important to encode data very compactly, to minimize the amount of data
+that the query needs to read from disk</li>
+<li>log-structure: append to files and delete obsolete files but never update in place</li>
+<li>systematically turn random-access writes into sequential writes on disk to enable higher write throughput</li>
+<li>Bitcask, SSTables, LSM-trees, LevelDB, Cassandra, HBase, Lucene</li>
+<li>page-oriented: treats the disk as a set of fixed-size pages that can be overwritten</li>
+<li>BTrees, RDBMS</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yemaney/yemaney.github.io" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.top", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  </body>
+</html>
