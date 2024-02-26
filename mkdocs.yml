@@ -1,0 +1,50 @@
+site_name: My Docs
+docs_dir: .
+exclude_docs: |
+  .*
+theme:
+  icon:
+    logo: material/cube-scan
+  favicon: icon/mdi--cube-scan.svg
+  name: material
+  palette:
+    - scheme: default
+      primary: white
+      accent: teal
+      toggle:
+        name: Switch to light mode
+        icon: material/lightbulb-outline
+    - scheme: slate
+      primary: black
+      accent: teal
+      toggle:
+        name: Switch to dark mode
+        icon: material/lightbulb
+  features:
+    - search.suggest
+    - search.highlight
+    - navigation.top
+    - navigation.tracking
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+plugins:
+  - same-dir
+  - search
+  - tags:
+      tags_file: tags.md
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yemaney/yemaney.github.io
